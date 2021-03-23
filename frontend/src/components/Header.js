@@ -3,20 +3,23 @@ import { Button, Container, Nav, Navbar } from "react-bootstrap";
 
 const Header = () => {
   return (
-    <header className="my-3">
+    <header>
       <Navbar bg="light" expand="md">
         <Container fluid>
-          <Navbar.Brand href="/">
-            peachi
-            <span className="mx-2 text-muted">nail studio</span>
-          </Navbar.Brand>
+          <div className="logo">
+            <div>
+              <span className="h2">PEACHI</span>
+            </div>
+            <div className="text-muted">NAIL STUDIO</div>
+          </div>
+
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="text-center">
             <Nav className="ml-auto">
               <Nav.Link href="/about">About us</Nav.Link>
 
               <Nav.Link href="/login">Login</Nav.Link>
-              <Button type="button" className="btn btn-primary">
+              <Button type="button">
                 <Nav.Link className="text-light" href="/reservation">
                   Book Now
                 </Nav.Link>

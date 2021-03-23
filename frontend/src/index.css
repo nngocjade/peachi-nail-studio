@@ -1,15 +1,25 @@
-html {
+/* html {
   scroll-behavior: smooth;
+} */
+
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+
+body {
+  font-family: "Varela Round", sans-serif;
 }
 
 main {
   min-height: 90vh;
 }
 
+header {
+  padding-top: 1rem;
+}
+
 /* ====================== NAVBAR ============== */
 
 .navbar {
-  border: none;
+  background-color: transparent !important;
 }
 .navbar-toggler {
   outline: none;
@@ -17,11 +27,31 @@ main {
   border: none;
 }
 
+.logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* =============== BUTTON ================ */
 .btn {
+  border: none;
   border-radius: 25px;
   padding: 0 8px;
   margin-left: 10px;
+  background: #f46b45; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #eea949ad,
+    #f46b45c7
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #eea949ad,
+    #f46b45c7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  box-shadow: 2px 5px 5px 5px rgba(128, 128, 128, 0.15) !important;
 }
 
 /*====================== FOOTER =============== */
@@ -46,13 +76,13 @@ footer {
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: rgb(233, 233, 233);
+  background: rgb(199, 198, 198);
   border-radius: 20px;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555;
+  background: rgb(63, 63, 63);
 }
 
 /* HIDE SCROLLBAR */
