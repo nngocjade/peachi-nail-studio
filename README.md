@@ -6,6 +6,8 @@ Created with love by: Jade
 
 # FRONTEND
 
-bootswatch (bootstrap theme)
+fontAwesome
+google fonts
+logo icon from flaticon
 npm i react-bootstrap
-npm i react-router-dom react-router-bootstrap
+npm i react-router-dom react-router-bootstrap bootstrap
