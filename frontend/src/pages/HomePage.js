@@ -14,7 +14,7 @@ const HomePage = () => {
           magnam illum minima commodi dolorem quibusdam quod hic enim
           dignissimos excepturi.
         </div>
-        <Button type="button">Sign up</Button>
+        <Button type="button">Learn more</Button>
       </div>
       <div>
         <img className="big-peach" src={Logo} alt="logo" />
