@@ -2,12 +2,20 @@
 
 Created with love by: Jade
 
-# BACKEND
+# Installation
 
-# FRONTEND
+## BACKEND/ROUTE Folder
 
-fontAwesome
-google fonts
-logo icon from flaticon
-npm i react-bootstrap
-npm i react-router-dom react-router-bootstrap bootstrap
+- npm i express
+- npm i -D nodemon concurrently
+
+## FRONTEND Folder
+
+- npm i react-bootstrap
+- npm i react-router-dom react-router-bootstrap bootstrap
+
+# Other resources
+
+- fontAwesome
+- google fonts
+- logo icon from flaticon
