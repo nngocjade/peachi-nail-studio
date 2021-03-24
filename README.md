@@ -1,4 +1,4 @@
-# PEACHY NAIL SALON
+# PEACHI NAIL SALON
 
 Created with love by: Jade
 

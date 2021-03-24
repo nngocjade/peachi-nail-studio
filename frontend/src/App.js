@@ -22,7 +22,7 @@ const App = () => {
           <Route path="/" component={HomePage} exact />
         </Container>
       </main>
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 };
