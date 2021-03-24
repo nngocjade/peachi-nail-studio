@@ -101,4 +101,4 @@ const nailTrends = [
   },
 ];
 
-export default nailTrends;
+module.exports = nailTrends;

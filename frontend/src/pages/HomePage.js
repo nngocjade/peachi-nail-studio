@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../css/Home.css";
 import Logo from "../peach.svg";
 import { Container, Button, Row, Col } from "react-bootstrap";
-import nailTrends from "../nailTrends.js";
 import EachDesign from "../components/EachDesign";
+import axios from "axios";
 
 const HomePage = () => {
+  const [nailTrends, setNailTrends] = useState([]);
+
+  useEffect(() => {
+    const fetchNailTrends = async () => {
+      const { data } = await axios.get("/api/nailTrends");
+      setNailTrends(data);
+    };
+    fetchNailTrends();
+  }, []);
+
   return (
     <Container className="home" fluid="md">
       <Row>
