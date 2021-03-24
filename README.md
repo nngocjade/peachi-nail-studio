@@ -13,6 +13,7 @@ Created with love by: Jade
 
 - npm i react-bootstrap
 - npm i react-router-dom react-router-bootstrap bootstrap
+- npm i axios
 
 # Other resources
 
