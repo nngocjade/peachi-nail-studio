@@ -1,8 +1,10 @@
 const express = require("express");
-const nailTrends = require("./data/nailtrends.js");
 const dotenv = require("dotenv");
+const connectDB = require("./config/db");
+const nailTrends = require("./data/nailtrends.js");
 
 dotenv.config();
+connectDB();
 
 const app = express();
 
