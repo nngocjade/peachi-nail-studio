@@ -10,6 +10,7 @@ Created with love by: Jade
 - npm i -D nodemon concurrently
 - npm i dotenv
 - npm i mongoose
+- npm i bcryptjs
 
 ## FRONTEND Folder
 
