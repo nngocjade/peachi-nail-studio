@@ -1,7 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
-const nailTrends = require("./data/nailtrends.js");
+const nailDesigns = require("./data/nailDesigns.js");
 
 dotenv.config();
 connectDB();
@@ -9,7 +9,7 @@ connectDB();
 const app = express();
 
 app.get("/api/nailTrends", (req, res) => {
-  res.json(nailTrends);
+  res.json(nailDesigns);
 });
 
 const PORT = process.env.PORT || 5000;

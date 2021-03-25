@@ -1,4 +1,4 @@
-const nailTrends = [
+const nailDesigns = [
   {
     name: "Cheetah",
     image: "/images/CheattaColorBlockTips.png",
@@ -101,4 +101,4 @@ const nailTrends = [
   },
 ];
 
-module.exports = nailTrends;
+module.exports = nailDesigns;
