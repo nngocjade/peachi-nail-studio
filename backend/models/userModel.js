@@ -3,7 +3,7 @@
  technician 
 */
 
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 // import bcrypt from "bcryptjs";
 
 const userSchema = mongoose.Schema(
