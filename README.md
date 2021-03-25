@@ -11,6 +11,7 @@ Created with love by: Jade
 - npm i dotenv
 - npm i mongoose
 - npm i bcryptjs
+- npm i express-async-handler (error handling)
 
 ## FRONTEND Folder
 
