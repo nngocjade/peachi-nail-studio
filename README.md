@@ -8,6 +8,8 @@ Created with love by: Jade
 
 - npm i express
 - npm i -D nodemon concurrently
+- npm i dotenv
+- npm i mongoose
 
 ## FRONTEND Folder
 
