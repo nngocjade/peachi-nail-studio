@@ -4,13 +4,17 @@ const connectDB = require("./config/db");
 const NotFound = require("./middleware/errorMiddleware");
 const errorHandler = require("./middleware/errorMiddleware");
 const nailDesignRoutes = require("./routes/nailDesignRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 dotenv.config();
 connectDB();
 
 const app = express();
 
+app.use(express.json());
+
 app.use("/api/nailDesigns", nailDesignRoutes);
+app.use("/api/users", userRoutes);
 
 // MIDDLEWARE ERROR HANDLER
 app.use(NotFound.NotFound);
