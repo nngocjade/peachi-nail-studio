@@ -5,6 +5,8 @@ import Logo from "../peach.svg";
 import { Container, Button, Row, Col } from "react-bootstrap";
 import EachDesign from "../components/EachDesign";
 import { listNailDesigns } from "../redux/actions/nailDesignActions";
+import Loader from "../components/Loader";
+import Message from "../components/Message";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -20,9 +22,9 @@ const HomePage = () => {
   return (
     <Container className="home" fluid="md">
       {loading ? (
-        <h1>Loading...</h1>
+        <Loader />
       ) : error ? (
-        <h3>{error}</h3>
+        <Message variant="danger">{error}</Message>
       ) : (
         <>
           <Row>
