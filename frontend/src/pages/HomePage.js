@@ -10,7 +10,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchNailTrends = async () => {
-      const { data } = await axios.get("/api/nailTrends");
+      const { data } = await axios.get("/api/nailDesigns");
       setNailTrends(data);
     };
     fetchNailTrends();
