@@ -12,6 +12,7 @@ Created with love by: Jade
 - npm i mongoose
 - npm i bcryptjs
 - npm i express-async-handler (error handling)
+- npm i npm i jsonwebtoken
 
 ## FRONTEND Folder
 
