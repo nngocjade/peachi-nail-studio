@@ -1,12 +1,15 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+
 const NotFound = require("./middleware/errorMiddleware");
 const errorHandler = require("./middleware/errorMiddleware");
+
 const nailDesignRoutes = require("./routes/nailDesignRoutes");
 const userRoutes = require("./routes/userRoutes");
 
 dotenv.config();
+
 connectDB();
 
 const app = express();
@@ -18,7 +21,6 @@ app.use("/api/users", userRoutes);
 
 // MIDDLEWARE ERROR HANDLER
 app.use(NotFound.NotFound);
-
 app.use(errorHandler.errorHandler);
 
 const PORT = process.env.PORT || 5000;
