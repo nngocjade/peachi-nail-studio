@@ -1,27 +1,51 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import { Button, Container, Nav, Navbar } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+
+import { logout } from "../redux/actions/userActions";
+
+import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
+import { LinkContainer } from "react-router-bootstrap";
 
 const Header = () => {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+
+  const { userInfo } = userLogin;
+
+  // const logoutHandler = () => {
+  //   dispatch(logout());
+  // };
+
   return (
     <header>
       <Navbar bg="light" expand="md">
         <Container fluid>
-          <Nav.Link href="/">
+          <LinkContainer to="/">
             <div className="logo">
               <div>
                 <span className="h2">PEACHI</span>
               </div>
               <div className="text-muted">NAIL STUDIO</div>
             </div>
-          </Nav.Link>
+          </LinkContainer>
 
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="text-center">
             <Nav className="ml-auto">
               <Nav.Link href="/about">About us</Nav.Link>
-
-              <Nav.Link href="/login">Login</Nav.Link>
+              {userInfo ? (
+                <NavDropdown title={userInfo.name} id="username">
+                  <LinkContainer to="/profile">
+                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  {/* <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item> */}
+                </NavDropdown>
+              ) : (
+                <LinkContainer to="/login">Login</LinkContainer>
+              )}
               <Button type="button">
                 <Nav.Link className="text-light" href="/reservation">
                   Book Now
