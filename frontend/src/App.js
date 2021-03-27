@@ -8,6 +8,7 @@ import LoginPage from "./pages/LoginPage";
 import RegisterPage from "./pages/RegisterPage";
 import AboutPage from "./pages/AboutPage";
 import ReservationPage from "./pages/ReservationPage";
+import ProfilePage from "./pages/ProfilePage";
 
 const App = () => {
   return (
@@ -18,6 +19,7 @@ const App = () => {
           <Route path="/about" component={AboutPage} />
           <Route path="/reservation" component={ReservationPage} />
           <Route path="/login" component={LoginPage} />
+          <Route path="/profile" component={ProfilePage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/" component={HomePage} exact />
         </Container>
