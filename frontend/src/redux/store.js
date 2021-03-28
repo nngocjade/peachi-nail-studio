@@ -9,6 +9,8 @@ import { nailDesignListReducer } from "./reducers/nailDesignReducers";
 import {
   userLoginReducer,
   userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
 } from "../redux/reducers/userReducers";
 
 const reducer = combineReducers({
@@ -16,6 +18,8 @@ const reducer = combineReducers({
 
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
