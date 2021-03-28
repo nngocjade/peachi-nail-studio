@@ -34,7 +34,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav" className="text-center">
             <Nav className="ml-auto">
               <Nav.Link href="/about">About us</Nav.Link>
-              {userInfo ? (
+              {userInfo && !userInfo.isAdmin ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile/:id">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
@@ -43,10 +43,28 @@ const Header = () => {
                     Logout
                   </NavDropdown.Item>
                 </NavDropdown>
-              ) : (
+              ) : !userInfo ? (
                 <LinkContainer to="/login">
                   <Nav.Link>Login</Nav.Link>
                 </LinkContainer>
+              ) : (
+                " "
+              )}
+              {userInfo && userInfo.isAdmin && (
+                <NavDropdown title="Admin" id="adminmenu">
+                  <LinkContainer to="/profile/:id">
+                    <NavDropdown.Item>Admin Profile</NavDropdown.Item>
+                  </LinkContainer>
+                  <LinkContainer to="/admin/userlist">
+                    <NavDropdown.Item>Client List</NavDropdown.Item>
+                  </LinkContainer>
+                  <NavDropdown.Item onClick={logoutHandler}>
+                    Logout
+                  </NavDropdown.Item>
+                  {/* <LinkContainer to="/admin/productlist">
+                    <NavDropdown.Item>Product</NavDropdown.Item>
+                  </LinkContainer> */}
+                </NavDropdown>
               )}
               <Button type="button">
                 <Nav.Link className="text-light" href="/reservation">
