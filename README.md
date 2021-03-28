@@ -20,6 +20,7 @@ Created with love by: Jade
 - npm i react-router-dom react-router-bootstrap bootstrap
 - npm i axios
 - npm i redux redux-thunk redux-devtools-extension
+- npm i react-google-login
 
 # Other resources
 

@@ -9,6 +9,7 @@ import RegisterPage from "./pages/RegisterPage";
 import AboutPage from "./pages/AboutPage";
 import ReservationPage from "./pages/ReservationPage";
 import ProfilePage from "./pages/ProfilePage";
+import UserListPage from "./pages/UserListPage";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
           <Route path="/login" component={LoginPage} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/register" component={RegisterPage} />
+          <Route path="/admin/userlist" component={UserListPage} />
           <Route path="/" component={HomePage} exact />
         </Container>
       </main>
