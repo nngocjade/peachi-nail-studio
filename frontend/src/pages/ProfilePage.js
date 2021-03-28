@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { LinkContainer } from "react-router-bootstrap";
 import { Form, Button, Row, Col, Table, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message.js";
@@ -8,6 +7,7 @@ import {
   getUserDetails,
   updateUserProfile,
 } from "../redux/actions/userActions.js";
+import { USER_UPDATE_PROFILE_RESET } from "../redux/constants/userConstants";
 
 const ProfilePage = ({ history, location }) => {
   const [name, setName] = useState("");
@@ -32,6 +32,7 @@ const ProfilePage = ({ history, location }) => {
       history.push("/login");
     } else {
       if (!user.name || !user.name || success) {
+        dispatch({ type: USER_UPDATE_PROFILE_RESET });
         dispatch(getUserDetails("profile"));
       } else {
         setName(user.name);
