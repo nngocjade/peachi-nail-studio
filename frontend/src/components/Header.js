@@ -13,9 +13,9 @@ const Header = () => {
 
   const { userInfo } = userLogin;
 
-  // const logoutHandler = () => {
-  //   dispatch(logout());
-  // };
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
 
   return (
     <header>
@@ -39,12 +39,14 @@ const Header = () => {
                   <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
-                  {/* <NavDropdown.Item onClick={logoutHandler}>
+                  <NavDropdown.Item onClick={logoutHandler}>
                     Logout
-                  </NavDropdown.Item> */}
+                  </NavDropdown.Item>
                 </NavDropdown>
               ) : (
-                <LinkContainer to="/login">Login</LinkContainer>
+                <LinkContainer to="/login">
+                  <Nav.Link>Login</Nav.Link>
+                </LinkContainer>
               )}
               <Button type="button">
                 <Nav.Link className="text-light" href="/reservation">
