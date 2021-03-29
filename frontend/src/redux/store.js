@@ -3,7 +3,10 @@ import thunk from "redux-thunk";
 import { composeWithDevTools } from "redux-devtools-extension";
 
 // ============= NAIL DESIGNS REDUCERS ===================
-import { nailDesignListReducer } from "./reducers/nailDesignReducers";
+import {
+  nailDesignListReducer,
+  nailDesignDeleteReducer,
+} from "./reducers/nailDesignReducers";
 
 // =================== USER LOGIN REDUCER ================
 import {
@@ -18,6 +21,7 @@ import {
 
 const reducer = combineReducers({
   nailDesignList: nailDesignListReducer,
+  nailDesignDelete: nailDesignDeleteReducer,
 
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,

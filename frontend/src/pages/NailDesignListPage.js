@@ -4,7 +4,10 @@ import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message";
 import Loader from "../components/Loader";
-import { listNailDesigns } from "../redux/actions/nailDesignActions";
+import {
+  listNailDesigns,
+  deleteNailDesign,
+} from "../redux/actions/nailDesignActions";
 
 const NailDesignListPage = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -12,12 +15,12 @@ const NailDesignListPage = ({ history, match }) => {
   const nailDesignList = useSelector((state) => state.nailDesignList);
   const { loading, error, nailDesigns } = nailDesignList;
 
-  // const nailDesignDelete = useSelector((state) => state.nailDesignDelete);
-  // const {
-  //   loading: loadingDelete,
-  //   error: errorDelete,
-  //   success: successDelete,
-  // } = nailDesignDelete;
+  const nailDesignDelete = useSelector((state) => state.nailDesignDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = nailDesignDelete;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
@@ -28,11 +31,12 @@ const NailDesignListPage = ({ history, match }) => {
     } else {
       dispatch(listNailDesigns());
     }
-  }, [dispatch, history, userInfo]);
+    // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
+  }, [dispatch, history, userInfo, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
-      // dispatch(deleteProduct(id));
+      dispatch(deleteNailDesign(id));
     }
   };
 
@@ -52,8 +56,8 @@ const NailDesignListPage = ({ history, match }) => {
           </Button>
         </Col>
       </Row>
-      {/* {loadingDelete && <Loader />}
-      {errorDelete && <Message variant="danger">{errorDelete}</Message>} */}
+      {loadingDelete && <Loader />}
+      {errorDelete && <Message variant="danger">{errorDelete}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
