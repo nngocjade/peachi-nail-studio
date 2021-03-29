@@ -9,6 +9,9 @@ import {
   NAILDESIGN_CREATE_SUCCESS,
   NAILDESIGN_CREATE_FAIL,
   NAILDESIGN_CREATE_RESET,
+  NAILDESIGN_DETAILS_REQUEST,
+  NAILDESIGN_DETAILS_SUCCESS,
+  NAILDESIGN_DETAILS_FAIL,
 } from "../constants/nailDesignConstants";
 
 // ======================== NAIL DESIGN LIST REDUCER ==========================
@@ -20,6 +23,24 @@ export const nailDesignListReducer = (state = { nailDesigns: [] }, action) => {
     case NAILDESIGN_LIST_SUCCESS:
       return { loading: false, nailDesigns: action.payload };
     case NAILDESIGN_LIST_FAIL:
+      return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+// ======================== NAIL DESIGN DETAILS REDUCER ==========================
+
+export const nailDesignDetailsReducer = (
+  state = { nailDesign: { reviews: [] } },
+  action
+) => {
+  switch (action.type) {
+    case NAILDESIGN_DETAILS_REQUEST:
+      return { ...state, loading: true };
+    case NAILDESIGN_DETAILS_SUCCESS:
+      return { loading: false, nailDesign: action.payload };
+    case NAILDESIGN_DETAILS_FAIL:
       return { loading: false, error: action.payload };
     default:
       return state;

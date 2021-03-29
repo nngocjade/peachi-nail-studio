@@ -5,6 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 // ============= NAIL DESIGNS REDUCERS ===================
 import {
   nailDesignListReducer,
+  nailDesignDetailsReducer,
   nailDesignDeleteReducer,
   nailDesignCreateReducer,
 } from "./reducers/nailDesignReducers";
@@ -22,6 +23,7 @@ import {
 
 const reducer = combineReducers({
   nailDesignList: nailDesignListReducer,
+  nailDesignDetails: nailDesignDetailsReducer,
   nailDesignDelete: nailDesignDeleteReducer,
   nailDesignCreate: nailDesignCreateReducer,
 
