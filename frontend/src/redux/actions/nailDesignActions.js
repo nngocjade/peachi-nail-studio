@@ -9,6 +9,9 @@ import {
   NAILDESIGN_CREATE_REQUEST,
   NAILDESIGN_CREATE_SUCCESS,
   NAILDESIGN_CREATE_FAIL,
+  NAILDESIGN_DETAILS_REQUEST,
+  NAILDESIGN_DETAILS_SUCCESS,
+  NAILDESIGN_DETAILS_FAIL,
 } from "../constants/nailDesignConstants";
 import { logout } from "./userActions.js";
 
@@ -29,6 +32,31 @@ export const listNailDesigns = () => async (dispatch) => {
       type: NAILDESIGN_LIST_FAIL,
       payload:
         error.message && error.response.data.message
+          ? error.response.data.message
+          : error.message,
+    });
+  }
+};
+
+// =========== LIST NAIL DESIGN DETAILS ACTION ==================
+
+export const listNailDesignDetails = (id) => async (dispatch) => {
+  try {
+    dispatch({ type: NAILDESIGN_DETAILS_REQUEST });
+
+    const { data } = await axios.get(`/api/nailDesigns/${id}`);
+
+    console.log("list product details", data);
+
+    dispatch({
+      type: NAILDESIGN_DETAILS_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    dispatch({
+      type: NAILDESIGN_DETAILS_FAIL,
+      payload:
+        error.response && error.response.data.message
           ? error.response.data.message
           : error.message,
     });
