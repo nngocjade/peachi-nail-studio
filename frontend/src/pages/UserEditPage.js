@@ -4,8 +4,8 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message.js";
 import Loader from "../components/Loader.js";
-import { getUserDetails } from "../redux/actions/userActions.js";
-// import { USER_UPDATE_RESET } from "../redux/constants/userConstants";
+import { getUserDetails, updateUser } from "../redux/actions/userActions.js";
+import { USER_UPDATE_RESET } from "../redux/constants/userConstants";
 
 const UserEditPage = ({ match, history }) => {
   const userId = match.params.id;
@@ -19,31 +19,31 @@ const UserEditPage = ({ match, history }) => {
   const userDetails = useSelector((state) => state.userDetails);
   const { loading, error, user } = userDetails;
 
-  // const userUpdate = useSelector((state) => state.userUpdate);
-  // const {
-  //   loading: loadingUpdate,
-  //   error: errorUpdate,
-  //   success: successUpdate,
-  // } = userUpdate;
+  const userUpdate = useSelector((state) => state.userUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = userUpdate;
 
-  // useEffect(() => {
-  //   if (successUpdate) {
-  //     dispatch({ type: USER_UPDATE_RESET });
-  //     history.push("/admin/userlist");
-  //   } else {
-  //     if (!user.name || user._id !== userId) {
-  //       dispatch(getUserDetails(userId));
-  //     } else {
-  //       setName(user.name);
-  //       setEmail(user.email);
-  //       setIsAdmin(user.isAdmin);
-  //     }
-  //   }
-  // }, [user, dispatch, userId, successUpdate, history]);
+  useEffect(() => {
+    if (successUpdate) {
+      dispatch({ type: USER_UPDATE_RESET });
+      history.push("/admin/userlist");
+    } else {
+      if (!user.name || user._id !== userId) {
+        dispatch(getUserDetails(userId));
+      } else {
+        setName(user.name);
+        setEmail(user.email);
+        setIsAdmin(user.isAdmin);
+      }
+    }
+  }, [user, dispatch, userId, successUpdate, history]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // dispatch(updateUser({ _id: userId, name, email, isAdmin }));
+    dispatch(updateUser({ _id: userId, name, email, isAdmin }));
   };
 
   return (
@@ -55,8 +55,8 @@ const UserEditPage = ({ match, history }) => {
         <Row>
           <Col md={5}>
             <h1>Edit User</h1>
-            {/* {loadingUpdate && <Loader />}
-            {errorUpdate && <Message variant="danger">{errorUpdate}</Message>} */}
+            {loadingUpdate && <Loader />}
+            {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
             {loading ? (
               <Loader />
             ) : error ? (
