@@ -10,6 +10,7 @@ const {
   updateUserProfile,
   getUsers,
   deleteUser,
+  getUserById,
 } = require("../controllers/userController");
 
 router.route("/").post(registerUser).get(protect, admin, getUsers);
@@ -21,6 +22,9 @@ router
   .get(protect, getUserProfile)
   .put(protect, updateUserProfile);
 
-router.route("/:id").delete(protect, admin, deleteUser);
+router
+  .route("/:id")
+  .delete(protect, admin, deleteUser)
+  .get(protect, admin, getUserById);
 
 module.exports = router;
