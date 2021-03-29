@@ -37,7 +37,7 @@ const NailDesignListPage = ({ history, match }) => {
 
   useEffect(() => {
     dispatch({ type: NAILDESIGN_CREATE_RESET });
-    if (!userInfo.isAdmin) {
+    if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
     if (successCreate) {
