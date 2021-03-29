@@ -1,7 +1,15 @@
+// ========================= LIST ================================
 export const NAILDESIGN_LIST_REQUEST = "NAILDESIGN_LIST_REQUEST";
 export const NAILDESIGN_LIST_SUCCESS = "NAILDESIGN_LIST_SUCCESS";
 export const NAILDESIGN_LIST_FAIL = "NAILDESIGN_LIST_FAIL";
 
+// ========================= DELETE ================================
 export const NAILDESIGN_DELETE_REQUEST = "NAILDESIGN_DELETE_REQUEST";
 export const NAILDESIGN_DELETE_SUCCESS = "NAILDESIGN_DELETE_SUCCESS";
 export const NAILDESIGN_DELETE_FAIL = "NAILDESIGN_DELETE_FAIL";
+
+// ========================= CREATE ================================
+export const NAILDESIGN_CREATE_REQUEST = "NAILDESIGN_CREATE_REQUEST";
+export const NAILDESIGN_CREATE_SUCCESS = "NAILDESIGN_CREATE_SUCCESS";
+export const NAILDESIGN_CREATE_FAIL = "NAILDESIGN_CREATE_FAIL";
+export const NAILDESIGN_CREATE_RESET = "NAILDESIGN_CREATE_RESET";
