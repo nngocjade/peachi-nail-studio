@@ -11,6 +11,7 @@ const {
   getUsers,
   deleteUser,
   getUserById,
+  updateUser,
 } = require("../controllers/userController");
 
 router.route("/").post(registerUser).get(protect, admin, getUsers);
@@ -25,6 +26,7 @@ router
 router
   .route("/:id")
   .delete(protect, admin, deleteUser)
-  .get(protect, admin, getUserById);
+  .get(protect, admin, getUserById)
+  .put(protect, admin, updateUser);
 
 module.exports = router;
