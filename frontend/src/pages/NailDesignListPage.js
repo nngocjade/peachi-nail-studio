@@ -7,7 +7,9 @@ import Loader from "../components/Loader";
 import {
   listNailDesigns,
   deleteNailDesign,
+  createNailDesign,
 } from "../redux/actions/nailDesignActions";
+import { NAILDESIGN_CREATE_RESET } from "../redux/constants/nailDesignConstants";
 
 const NailDesignListPage = ({ history, match }) => {
   const dispatch = useDispatch();
@@ -22,17 +24,36 @@ const NailDesignListPage = ({ history, match }) => {
     success: successDelete,
   } = nailDesignDelete;
 
+  const nailDesignCreate = useSelector((state) => state.nailDesignCreate);
+  const {
+    loading: loadingCreate,
+    error: errorCreate,
+    success: successCreate,
+    nailDesign: createdNailDesign,
+  } = nailDesignCreate;
+
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    if (!userInfo || !userInfo.isAdmin) {
+    dispatch({ type: NAILDESIGN_CREATE_RESET });
+    if (!userInfo.isAdmin) {
       history.push("/login");
+    }
+    if (successCreate) {
+      history.push(`/admin/nailDesign/${createdNailDesign._id}/edit`);
     } else {
       dispatch(listNailDesigns());
     }
     // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
-  }, [dispatch, history, userInfo, successDelete]);
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successDelete,
+    successCreate,
+    createdNailDesign,
+  ]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
@@ -40,8 +61,8 @@ const NailDesignListPage = ({ history, match }) => {
     }
   };
 
-  const createProductHandler = (product) => {
-    // CREATE PRODUCTS
+  const createProductHandler = () => {
+    dispatch(createNailDesign());
   };
 
   return (
@@ -58,6 +79,8 @@ const NailDesignListPage = ({ history, match }) => {
       </Row>
       {loadingDelete && <Loader />}
       {errorDelete && <Message variant="danger">{errorDelete}</Message>}
+      {loadingCreate && <Loader />}
+      {errorCreate && <Message variant="danger">{errorCreate}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
