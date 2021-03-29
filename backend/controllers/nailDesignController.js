@@ -10,4 +10,21 @@ const getNailDesigns = asyncHandler(async (req, res) => {
   res.json(nailDesigns);
 });
 
-module.exports = { getNailDesigns };
+// ====================== ADMIN only ==========================
+
+// @desc    Delete a nail design
+// @route   DELETE /api/nailDesigns/:id
+// @access  Private/Admin
+const deleteNailDesign = asyncHandler(async (req, res) => {
+  const nailDesign = await NailDesigns.findById(req.params.id);
+
+  if (nailDesign) {
+    await nailDesign.remove();
+    res.json({ message: "Nail design removed" });
+  } else {
+    res.status(404);
+    throw new Error("Nail design not found");
+  }
+});
+
+module.exports = { getNailDesigns, deleteNailDesign };
