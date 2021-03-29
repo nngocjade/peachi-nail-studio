@@ -155,16 +155,16 @@ const deleteUser = asyncHandler(async (req, res) => {
 // // @description       Get user by ID
 // // @route             Get /api/users/:id
 // // @access            Private/Admin
-// const getUserById = asyncHandler(async (req, res) => {
-//   const user = await await User.findById(req.params.id).select("-password");
+const getUserById = asyncHandler(async (req, res) => {
+  const user = await await User.findById(req.params.id).select("-password");
 
-//   if (user) {
-//     res.json(user);
-//   } else {
-//     res.status(404);
-//     throw new Error("User not found");
-//   }
-// });
+  if (user) {
+    res.json(user);
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
 
 // // ===================== UPDATE USER ========================
 
@@ -200,6 +200,6 @@ module.exports = {
   updateUserProfile,
   getUsers,
   deleteUser,
-  // getUserById,
+  getUserById,
   // updateUser,
 };
