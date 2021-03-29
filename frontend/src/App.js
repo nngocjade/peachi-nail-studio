@@ -11,6 +11,7 @@ import ReservationPage from "./pages/ReservationPage";
 import ProfilePage from "./pages/ProfilePage";
 import UserListPage from "./pages/UserListPage";
 import UserEditPage from "./pages/UserEditPage";
+import NailDesignListPage from "./pages/NailDesignListPage";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
           <Route path="/register" component={RegisterPage} />
           <Route path="/admin/userlist" component={UserListPage} />
           <Route path="/admin/user/:id/edit" component={UserEditPage} />
+          <Route path="/admin/nailDesignList" component={NailDesignListPage} />
           <Route path="/" component={HomePage} exact />
         </Container>
       </main>
