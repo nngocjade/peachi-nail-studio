@@ -15,8 +15,8 @@ const UserListPage = ({ history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  // const userDelete = useSelector((state) => state.userDelete);
-  // const { success: successDelete } = userDelete;
+  const userDelete = useSelector((state) => state.userDelete);
+  const { success: successDelete } = userDelete;
 
   useEffect(() => {
     if (userInfo && userInfo.isAdmin) {
@@ -24,13 +24,13 @@ const UserListPage = ({ history }) => {
     } else {
       history.push("/login");
     }
-  }, [dispatch, history, userInfo]);
+  }, [dispatch, history, userInfo, successDelete]);
 
-  // const deleteHandler = (id) => {
-  //   if (window.confirm("Are you sure?")) {
-  //     dispatch(deleteUser(id));
-  //   }
-  // };
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure?")) {
+      dispatch(deleteUser(id));
+    }
+  };
   return (
     <>
       <h1>Clients</h1>
@@ -70,14 +70,14 @@ const UserListPage = ({ history }) => {
                       <i className="fas fa-edit"></i>
                     </Button>
                   </LinkContainer>
-                  {/* <Button
+                  <Button
                     variant="danger"
                     className="btn-sm"
                     onClick={() => deleteHandler(user._id)}
                   >
                     {" "}
                     <i className="fas fa-trash"></i>
-                  </Button> */}
+                  </Button>
                 </td>
               </tr>
             ))}
