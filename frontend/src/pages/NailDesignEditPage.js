@@ -25,7 +25,7 @@ const NailDesignEditPage = ({ match, history }) => {
 
   useEffect(() => {
     if (!nailDesign.name || nailDesign._id !== nailDesignId) {
-      // dispatch(listNailDesignDetails(nailDesignId));
+      dispatch(listNailDesignDetails(nailDesignId));
     } else {
       setName(nailDesign.name);
       setImage(nailDesign.image);
