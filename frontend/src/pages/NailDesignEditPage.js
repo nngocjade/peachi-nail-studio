@@ -4,8 +4,11 @@ import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../components/Message.js";
 import Loader from "../components/Loader.js";
-import { listNailDesignDetails } from "../redux/actions/nailDesignActions";
-// import {} from '../redux/constants/nailDesignConstants'
+import {
+  listNailDesignDetails,
+  updateNailDesign,
+} from "../redux/actions/nailDesignActions";
+import { NAILDESIGN_UPDATE_RESET } from "../redux/constants/nailDesignConstants.js";
 
 const NailDesignEditPage = ({ match, history }) => {
   const nailDesignId = match.params.id;
@@ -21,23 +24,44 @@ const NailDesignEditPage = ({ match, history }) => {
   const nailDesignDetails = useSelector((state) => state.nailDesignDetails);
   const { loading, error, nailDesign } = nailDesignDetails;
 
+  const nailDesignUpdate = useSelector((state) => state.nailDesignUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = nailDesignUpdate;
+
   console.log("nailDesignDetails", nailDesignDetails);
 
   useEffect(() => {
-    if (!nailDesign.name || nailDesign._id !== nailDesignId) {
-      dispatch(listNailDesignDetails(nailDesignId));
+    if (successUpdate) {
+      dispatch({ type: NAILDESIGN_UPDATE_RESET });
+      history.push("/admin/nailDesignlist");
     } else {
-      setName(nailDesign.name);
-      setImage(nailDesign.image);
-      setCategory(nailDesign.category);
-      setStyle(nailDesign.style);
-      setDescription(nailDesign.description);
+      if (!nailDesign.name || nailDesign._id !== nailDesignId) {
+        dispatch(listNailDesignDetails(nailDesignId));
+      } else {
+        setName(nailDesign.name);
+        setImage(nailDesign.image);
+        setCategory(nailDesign.category);
+        setStyle(nailDesign.style);
+        setDescription(nailDesign.description);
+      }
     }
-  }, [nailDesign, dispatch, nailDesignId]);
+  }, [nailDesign, dispatch, nailDesignId, successUpdate, history]);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // update nail design list
+    dispatch(
+      updateNailDesign({
+        _id: nailDesignId,
+        name,
+        image,
+        category,
+        style,
+        description,
+      })
+    );
   };
 
   return (
@@ -49,8 +73,8 @@ const NailDesignEditPage = ({ match, history }) => {
         <Row>
           <Col md={5}>
             <h1>Edit Nail Design</h1>
-            {/* {loadingUpdate && <Loader />}
-            {errorUpdate && <Message variant="danger">{errorUpdate}</Message>} */}
+            {loadingUpdate && <Loader />}
+            {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
             {loading ? (
               <Loader />
             ) : error ? (
