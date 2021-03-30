@@ -23,6 +23,8 @@ export const listNailDesigns = () => async (dispatch) => {
 
     const { data } = await axios.get("/api/nailDesigns");
 
+    console.log("list nail designs", data);
+
     dispatch({
       type: NAILDESIGN_LIST_SUCCESS,
       payload: data,
@@ -46,7 +48,7 @@ export const listNailDesignDetails = (id) => async (dispatch) => {
 
     const { data } = await axios.get(`/api/nailDesigns/${id}`);
 
-    console.log("list product details", data);
+    console.log("list nail design details", data);
 
     dispatch({
       type: NAILDESIGN_DETAILS_SUCCESS,

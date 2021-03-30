@@ -12,6 +12,7 @@ import ProfilePage from "./pages/ProfilePage";
 import UserListPage from "./pages/UserListPage";
 import UserEditPage from "./pages/UserEditPage";
 import NailDesignListPage from "./pages/NailDesignListPage";
+import NailDesignEditPage from "./pages/NailDesignEditPage";
 
 const App = () => {
   return (
@@ -25,8 +26,13 @@ const App = () => {
           <Route path="/profile" component={ProfilePage} />
           <Route path="/register" component={RegisterPage} />
           <Route path="/admin/userlist" component={UserListPage} />
-          <Route path="/admin/user/:id/edit" component={UserEditPage} />
+          <Route exact path="/admin/user/:id/edit" component={UserEditPage} />
           <Route path="/admin/nailDesignList" component={NailDesignListPage} />
+          <Route
+            exact
+            path="/admin/nailDesign/:id/edit"
+            component={NailDesignEditPage}
+          />
           <Route path="/" component={HomePage} exact />
         </Container>
       </main>

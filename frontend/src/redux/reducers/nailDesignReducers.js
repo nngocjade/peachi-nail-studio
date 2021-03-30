@@ -32,7 +32,7 @@ export const nailDesignListReducer = (state = { nailDesigns: [] }, action) => {
 // ======================== NAIL DESIGN DETAILS REDUCER ==========================
 
 export const nailDesignDetailsReducer = (
-  state = { nailDesign: { reviews: [] } },
+  state = { nailDesign: [] },
   action
 ) => {
   switch (action.type) {
