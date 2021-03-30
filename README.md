@@ -13,6 +13,7 @@ Created with love by: Jade
 - npm i bcryptjs
 - npm i express-async-handler (error handling)
 - npm i npm i jsonwebtoken
+- npm i multer (image upload)
 
 ## FRONTEND Folder
 
