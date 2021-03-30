@@ -57,7 +57,7 @@ const createNailDesign = asyncHandler(async (req, res) => {
     name: "Sample name",
     category: "NailArt",
     style: "sample style",
-    image: "/image/sample.jpg",
+    image: "/images/sample.jpg",
     description: "sample description",
     rating: 10,
     numReviews: 0,

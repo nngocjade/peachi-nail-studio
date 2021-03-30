@@ -8,6 +8,7 @@ import {
   nailDesignDetailsReducer,
   nailDesignDeleteReducer,
   nailDesignCreateReducer,
+  nailDesignUpdateReducer,
 } from "./reducers/nailDesignReducers";
 
 // =================== USER LOGIN REDUCER ================
@@ -26,6 +27,7 @@ const reducer = combineReducers({
   nailDesignDetails: nailDesignDetailsReducer,
   nailDesignDelete: nailDesignDeleteReducer,
   nailDesignCreate: nailDesignCreateReducer,
+  nailDesignUpdate: nailDesignUpdateReducer,
 
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,

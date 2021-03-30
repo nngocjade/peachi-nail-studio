@@ -12,6 +12,10 @@ import {
   NAILDESIGN_DETAILS_REQUEST,
   NAILDESIGN_DETAILS_SUCCESS,
   NAILDESIGN_DETAILS_FAIL,
+  NAILDESIGN_UPDATE_REQUEST,
+  NAILDESIGN_UPDATE_SUCCESS,
+  NAILDESIGN_UPDATE_FAIL,
+  NAILDESIGN_UPDATE_RESET,
 } from "../constants/nailDesignConstants";
 
 // ======================== NAIL DESIGN LIST REDUCER ==========================
@@ -52,7 +56,7 @@ export const nailDesignDetailsReducer = (
  * -------------------------- ADMIN ONLY -------------------------------
  * ===================================================================
  */
-// ================ NAIL DESIGN DELETE REDUCER =========================
+// ================ DELETE REDUCER =========================
 
 export const nailDesignDeleteReducer = (state = {}, action) => {
   switch (action.type) {
@@ -67,7 +71,7 @@ export const nailDesignDeleteReducer = (state = {}, action) => {
   }
 };
 
-// ================ NAIL DESIGN CREATE REDUCER =========================
+// ================ CREATE REDUCER =========================
 
 export const nailDesignCreateReducer = (state = {}, action) => {
   switch (action.type) {
@@ -79,6 +83,23 @@ export const nailDesignCreateReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case NAILDESIGN_CREATE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+// ================ UPDATE REDUCER =========================
+
+export const nailDesignUpdateReducer = (state = { nailDesign: {} }, action) => {
+  switch (action.type) {
+    case NAILDESIGN_UPDATE_REQUEST:
+      return { loading: true };
+    case NAILDESIGN_UPDATE_SUCCESS:
+      return { loading: false, success: true, nailDesign: action.payload };
+    case NAILDESIGN_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    case NAILDESIGN_UPDATE_RESET:
+      return { nailDesign: {} };
     default:
       return state;
   }
