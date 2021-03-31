@@ -34,6 +34,7 @@ const Header = () => {
           <Navbar.Collapse id="basic-navbar-nav" className="text-center">
             <Nav className="ml-auto">
               <Nav.Link href="/about">About us</Nav.Link>
+              <Nav.Link href="/blog">Blog</Nav.Link>
               {userInfo && !userInfo.isAdmin ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile/:id">

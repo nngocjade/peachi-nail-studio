@@ -13,6 +13,7 @@ import UserListPage from "./pages/UserListPage";
 import UserEditPage from "./pages/UserEditPage";
 import NailDesignListPage from "./pages/NailDesignListPage";
 import NailDesignEditPage from "./pages/NailDesignEditPage";
+import BlogPage from "./pages/BlogPage";
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
       <main className="py-3">
         <Container fluid>
           <Route path="/about" component={AboutPage} />
+          <Route path="/blog" component={BlogPage} />
           <Route path="/reservation" component={ReservationPage} />
           <Route path="/login" component={LoginPage} />
           <Route path="/profile" component={ProfilePage} />

@@ -14,6 +14,8 @@ Created with love by: Jade
 - npm i express-async-handler (error handling)
 - npm i npm i jsonwebtoken
 - npm i multer (image upload)
+- npm i body-parser
+- npm i cors
 
 ## FRONTEND Folder
 

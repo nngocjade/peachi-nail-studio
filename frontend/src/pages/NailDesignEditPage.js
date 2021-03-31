@@ -132,7 +132,7 @@ const NailDesignEditPage = ({ match, history }) => {
                     custom
                     onChange={uploadFileHandler}
                   ></Form.File>
-                  {/* {uploading && <Loader />} */}
+                  {uploading && <Loader />}
                 </Form.Group>
 
                 {/* CATEGORY */}
