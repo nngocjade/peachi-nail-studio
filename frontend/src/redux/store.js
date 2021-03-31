@@ -22,6 +22,8 @@ import {
   userUpdateReducer,
 } from "../redux/reducers/userReducers";
 
+import { blogPostListReducer } from "./reducers/blogPostReducers";
+
 const reducer = combineReducers({
   nailDesignList: nailDesignListReducer,
   nailDesignDetails: nailDesignDetailsReducer,
@@ -36,6 +38,8 @@ const reducer = combineReducers({
   userList: userListReducer,
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
+
+  blogPostList: blogPostListReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")

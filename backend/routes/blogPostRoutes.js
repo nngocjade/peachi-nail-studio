@@ -7,6 +7,6 @@ const {
 } = require("../controllers/blogPostController");
 
 router.get("/", getBlogPosts);
-router.get("/", createBlogPost);
+router.post("/", createBlogPost);
 
 module.exports = router;
