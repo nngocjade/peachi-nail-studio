@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
-import BlogPosts from "../components/Posts/BlogPosts";
 import { listBlogPosts } from "../redux/actions/blogPostActions";
+import BlogPost from "../components/blogPost/BlogPost";
+import BlogPostForm from "../components/blogPost/BlogPostForm";
 
 const BlogPage = () => {
   const dispatch = useDispatch();
@@ -19,9 +20,10 @@ const BlogPage = () => {
 
   return (
     <Container>
+      <BlogPostForm />
       <h1>POSTS</h1>
       {blogPosts.map((blogPost) => (
-        <BlogPosts blogPost={blogPost} />
+        <BlogPost blogPost={blogPost} />
       ))}
     </Container>
   );

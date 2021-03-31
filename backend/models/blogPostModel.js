@@ -4,7 +4,7 @@ const postSchema = mongoose.Schema({
   title: {
     type: String,
   },
-  message: {
+  description: {
     type: String,
   },
   creator: {
@@ -13,8 +13,10 @@ const postSchema = mongoose.Schema({
   tags: {
     type: [String],
   },
-  selectedFile: {
+  image: {
     type: String,
+    required: true,
+    unique: true,
   },
   linkCount: {
     type: Number,

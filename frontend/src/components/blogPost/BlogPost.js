@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
-const BlogPost = () => {
+const BlogPost = ({ blogPost }) => {
   const defaultImage =
     "https://image.freepik.com/free-vector/cute-pink-peach-sliced-seamless-patten_39151-367.jpg";
   return (
