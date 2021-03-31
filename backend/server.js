@@ -10,20 +10,20 @@ const errorHandler = require("./middleware/errorMiddleware");
 const nailDesignRoutes = require("./routes/nailDesignRoutes");
 const userRoutes = require("./routes/userRoutes");
 const uploadRoutes = require("./routes/uploadRoutes");
-const postRoutes = require("./routes/blogPostRoutes");
+const blogPostRoutes = require("./routes/blogPostRoutes");
 
 dotenv.config();
 
 connectDB();
 
 const app = express();
+app.use(express.json());
 
 app.use("/api/nailDesigns", nailDesignRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/upload", uploadRoutes);
-app.use("/api/blogPosts", postRoutes);
+app.use("/api/blogPosts", blogPostRoutes);
 
-app.use(express.json());
 app.use(cors());
 
 const _dirname = path.resolve();
