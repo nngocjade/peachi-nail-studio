@@ -14,14 +14,17 @@ const getBlogPosts = asyncHandler(async (req, res) => {
 });
 
 const createBlogPost = asyncHandler(async (req, res) => {
-  const blogPost = req.body;
-
-  const newBlogPost = new BlogPost(blogPost);
-
   try {
-    await newBlogPost.save();
+    const blogPost = new BlogPost({
+      title: "Sample title",
+      description: "short description",
+      creator: "sample creator",
+      image: "/images/sample.jpg",
+      likeCount: 5,
+    });
 
-    res.status(201).json(newBlogPost);
+    const createdBlogPost = await blogPost.save();
+    res.status(201).json(createdBlogPost);
   } catch (error) {
     res.status(404).json({ message: error.message });
   }

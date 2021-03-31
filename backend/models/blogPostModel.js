@@ -18,13 +18,16 @@ const postSchema = mongoose.Schema({
     required: true,
     unique: true,
   },
-  linkCount: {
+  likeCount: {
     type: Number,
     default: 0,
   },
   createdAt: {
     type: Date,
     default: new Date(),
+  },
+  updated: {
+    type: Date,
   },
 });
 
