@@ -3,7 +3,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const cors = require("cors");
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const NotFound = require("./middleware/errorMiddleware");
 const errorHandler = require("./middleware/errorMiddleware");
 
@@ -23,8 +23,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/upload", uploadRoutes);
 app.use("/api/blogPosts", postRoutes);
 
-app.use(express.json({ limit: "30mb", extended: true }));
-app.use(express.urlencoded({ limit: "30mb", extended: true }));
+app.use(express.json());
 app.use(cors());
 
 const _dirname = path.resolve();
