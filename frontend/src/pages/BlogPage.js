@@ -12,8 +12,6 @@ const BlogPage = () => {
 
   const { loading, error, blogPosts } = blogPostList;
 
-  console.log("blogPost", blogPosts);
-
   useEffect(() => {
     dispatch(listBlogPosts());
   }, [dispatch]);
