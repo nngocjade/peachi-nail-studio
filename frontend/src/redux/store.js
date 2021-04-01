@@ -24,6 +24,7 @@ import {
 
 import {
   blogPostListReducer,
+  blogPostDetailsReducer,
   blogPostCreateReducer,
 } from "./reducers/blogPostReducers";
 
@@ -43,6 +44,7 @@ const reducer = combineReducers({
   userUpdate: userUpdateReducer,
 
   blogPostList: blogPostListReducer,
+  blogPostDetails: blogPostDetailsReducer,
   blogPostCreate: blogPostCreateReducer,
 });
 

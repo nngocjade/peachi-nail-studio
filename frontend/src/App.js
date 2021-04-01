@@ -15,6 +15,7 @@ import NailDesignListPage from "./pages/NailDesignListPage";
 import NailDesignEditPage from "./pages/NailDesignEditPage";
 import BlogPage from "./pages/BlogPage";
 import BlogPostListPage from "./pages/BlogPostListPage";
+import BlogPostEditPage from "./pages/BlogPostEditPage";
 
 const App = () => {
   return (
@@ -38,6 +39,11 @@ const App = () => {
             exact
             path="/admin/nailDesign/:id/edit"
             component={NailDesignEditPage}
+          />
+          <Route
+            exact
+            path="/admin/blogPost/:id/edit"
+            component={BlogPostEditPage}
           />
           <Route path="/" component={HomePage} exact />
         </Container>
