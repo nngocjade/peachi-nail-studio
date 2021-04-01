@@ -106,7 +106,7 @@ const BlogPostListPage = ({ history, match }) => {
                   <td>{blogPost.createdAt}</td>
                   <td>{blogPost.updated}</td>
                   <td>
-                    <LinkContainer to={`/admin/blogPosts/${blogPost._id}/edit`}>
+                    <LinkContainer to={`/admin/blogPost/${blogPost._id}/edit`}>
                       <Button variant="light" className="btn-sm">
                         <i className="fas fa-edit"></i>
                       </Button>
