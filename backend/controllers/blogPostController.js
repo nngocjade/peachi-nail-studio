@@ -15,6 +15,21 @@ const getBlogPosts = asyncHandler(async (req, res) => {
   }
 });
 
+// ===================== GET BLOG POST BY ID ===================
+
+// @description       Fetch single blog post
+// @route             GET /api/blogPosts/:id
+// @access            Public
+const getBlogPostById = asyncHandler(async (req, res) => {
+  const blogPost = await BlogPost.findById(req.params.id);
+  if (blogPost) {
+    res.json(blogPost);
+  } else {
+    res.status(404);
+    throw new Error("Blog Post not found");
+  }
+});
+
 // ====================== CREATE BLOG POST ====================
 
 // const createBlogPost = asyncHandler(async (req, res) => {
@@ -66,8 +81,27 @@ const updateBlogPost = asyncHandler(async (req, res) => {
   }
 });
 
+// ====================== UPDATE BLOG POST ====================
+
+// @desc    Delete a blog post
+// @route   DELETE /api/blogPosts/:id
+// @access  Private/Admin
+const deleteBlogPost = asyncHandler(async (req, res) => {
+  const blogPost = await BlogPost.findById(req.params.id);
+
+  if (blogPost) {
+    await blogPost.remove();
+    res.json({ message: "Blog Post removed" });
+  } else {
+    res.status(404);
+    throw new Error("Blog Post not found");
+  }
+});
+
 module.exports = {
   getBlogPosts,
+  getBlogPostById,
   createBlogPost,
   updateBlogPost,
+  deleteBlogPost,
 };
