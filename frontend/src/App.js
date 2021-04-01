@@ -14,6 +14,7 @@ import UserEditPage from "./pages/UserEditPage";
 import NailDesignListPage from "./pages/NailDesignListPage";
 import NailDesignEditPage from "./pages/NailDesignEditPage";
 import BlogPage from "./pages/BlogPage";
+import BlogPostListPage from "./pages/BlogPostListPage";
 
 const App = () => {
   return (
@@ -27,9 +28,12 @@ const App = () => {
           <Route path="/login" component={LoginPage} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/register" component={RegisterPage} />
+
           <Route path="/admin/userlist" component={UserListPage} />
-          <Route exact path="/admin/user/:id/edit" component={UserEditPage} />
           <Route path="/admin/nailDesignList" component={NailDesignListPage} />
+          <Route path="/admin/blogPostList" component={BlogPostListPage} />
+
+          <Route exact path="/admin/user/:id/edit" component={UserEditPage} />
           <Route
             exact
             path="/admin/nailDesign/:id/edit"
