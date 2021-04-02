@@ -46,7 +46,14 @@ const BlogPostListPage = ({ history, match }) => {
       dispatch(listBlogPosts());
     }
     // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
-  }, [dispatch, history, userInfo, successCreate, createdBlogPost]);
+  }, [
+    dispatch,
+    history,
+    userInfo,
+    successCreate,
+    createdBlogPost,
+    successDelete,
+  ]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
