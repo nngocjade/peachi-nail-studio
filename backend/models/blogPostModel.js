@@ -19,7 +19,6 @@ const postSchema = mongoose.Schema({
   image: {
     type: String,
     required: true,
-    unique: true,
   },
   likeCount: {
     type: Number,

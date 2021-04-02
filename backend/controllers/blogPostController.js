@@ -51,7 +51,13 @@ const getBlogPostById = asyncHandler(async (req, res) => {
 
 const createBlogPost = asyncHandler(async (req, res) => {
   try {
-    const blogPost = new BlogPost(req.body);
+    const blogPost = new BlogPost({
+      title: "Sample title",
+      description: "Add some description",
+      tags: ["tag1", "tag2", "tag3", "tag4", "etc..."],
+      image: "add an image link here OR browse to upload",
+      creator: "who is the creator?",
+    });
 
     const createdBlogPost = await blogPost.save();
     res.status(201).json(createdBlogPost);
@@ -63,13 +69,14 @@ const createBlogPost = asyncHandler(async (req, res) => {
 // ====================== UPDATE BLOG POST ====================
 
 const updateBlogPost = asyncHandler(async (req, res) => {
-  const { title, description, creator, image } = req.body;
+  const { title, description, creator, tags, image } = req.body;
 
   const blogPost = await BlogPost.findById(req.params.id);
 
   if (blogPost) {
     blogPost.title = title;
     blogPost.description = description;
+    blogPost.tags = tags;
     blogPost.image = image;
     blogPost.creator = creator;
 

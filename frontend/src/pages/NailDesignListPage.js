@@ -61,7 +61,7 @@ const NailDesignListPage = ({ history, match }) => {
     }
   };
 
-  const createProductHandler = () => {
+  const createDesignHandler = () => {
     dispatch(createNailDesign());
   };
 
@@ -72,7 +72,7 @@ const NailDesignListPage = ({ history, match }) => {
           <h1>Nail Design List</h1>
         </Col>
         <Col className="text-right">
-          <Button className="my-3" onClick={createProductHandler}>
+          <Button className="my-3" onClick={createDesignHandler}>
             <i className="fas fa-plus"></i> Add Design
           </Button>
         </Col>

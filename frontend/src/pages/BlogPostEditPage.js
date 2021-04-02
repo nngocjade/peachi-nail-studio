@@ -3,9 +3,15 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import axios from "axios";
 import Loader from "../components/Loader";
-import { list, listBlogPostDetails } from "../redux/actions/blogPostActions";
+import {
+  list,
+  listBlogPostDetails,
+  updateBlogPost,
+} from "../redux/actions/blogPostActions";
+import { Link } from "react-router-dom";
+import { BLOGPOST_UPDATE_RESET } from "../redux/constants/blogPostConstants";
 
-const BlogPostEditPage = ({ match }) => {
+const BlogPostEditPage = ({ match, history }) => {
   const blogPostId = match.params.id;
 
   const [title, setTitle] = useState("title");
@@ -19,6 +25,29 @@ const BlogPostEditPage = ({ match }) => {
 
   const blogPostDetails = useSelector((state) => state.blogPostDetails);
   const { loading, error, blogPost } = blogPostDetails;
+
+  const blogPostUpdate = useSelector((state) => state.blogPostUpdate);
+  const {
+    loading: loadingUpdate,
+    error: errorUpdate,
+    success: successUpdate,
+  } = blogPostUpdate;
+
+  useEffect(() => {
+    if (successUpdate) {
+      dispatch({ type: BLOGPOST_UPDATE_RESET });
+      history.push("/admin/blogPostlist");
+    }
+    if (blogPost._id !== blogPostId) {
+      dispatch(listBlogPostDetails(blogPostId));
+    } else {
+      setTitle(blogPost.title);
+      setDescription(blogPost.description);
+      setCreator(blogPost.creator);
+      setTags(blogPost.tags);
+      setImage(blogPost.image);
+    }
+  }, [dispatch, blogPostId, blogPost._id, history, blogPost, successUpdate]);
 
   const uploadFileHandler = async (e) => {
     const file = e.target.files[0];
@@ -43,25 +72,25 @@ const BlogPostEditPage = ({ match }) => {
     }
   };
 
-  useEffect(() => {
-    if (blogPost._id !== blogPostId) {
-      dispatch(listBlogPostDetails(blogPostId));
-    } else {
-      setTitle(blogPost.title);
-      setDescription(blogPost.description);
-      setCreator(blogPost.creator);
-      setTags(blogPost.tags);
-      setImage(blogPost.image);
-    }
-  }, [dispatch, blogPostId, blogPost._id]);
-
-  const submitHandler = () => {
-    // dispatch create blog post
+  const submitHandler = (e) => {
+    e.preventDefault();
+    dispatch(
+      updateBlogPost({
+        _id: blogPostId,
+        title,
+        description,
+        tags,
+        image,
+      })
+    );
   };
   return (
     <Container>
       <Row>
         <Col>
+          <Link to="/admin/blogPostList" className="btn btn-light my-3">
+            Go Back
+          </Link>
           <h1>Edit Blog Post</h1>
           <h2>Form:</h2>
           <Form onSubmit={submitHandler}>
