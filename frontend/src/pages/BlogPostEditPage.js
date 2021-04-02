@@ -4,12 +4,12 @@ import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import axios from "axios";
 import Loader from "../components/Loader";
 import {
-  list,
   listBlogPostDetails,
   updateBlogPost,
 } from "../redux/actions/blogPostActions";
 import { Link } from "react-router-dom";
 import { BLOGPOST_UPDATE_RESET } from "../redux/constants/blogPostConstants";
+import Message from "../components/Message";
 
 const BlogPostEditPage = ({ match, history }) => {
   const blogPostId = match.params.id;
@@ -79,8 +79,9 @@ const BlogPostEditPage = ({ match, history }) => {
         _id: blogPostId,
         title,
         description,
-        tags,
         image,
+        tags,
+        creator,
       })
     );
   };
@@ -92,74 +93,86 @@ const BlogPostEditPage = ({ match, history }) => {
             Go Back
           </Link>
           <h1>Edit Blog Post</h1>
-          <h2>Form:</h2>
-          <Form onSubmit={submitHandler}>
-            {/* Title */}
-            <Form.Group controlId="title">
-              <Form.Label>Title</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+          {loadingUpdate && <Loader />}
+          {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant="danger">{error}</Message>
+          ) : !loading ? (
+            <>
+              <h2>Form:</h2>
+              <Form onSubmit={submitHandler}>
+                {/* Title */}
+                <Form.Group controlId="title">
+                  <Form.Label>Title</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
 
-            {/* DESCRIPTION */}
-            <Form.Group controlId="description">
-              <Form.Label>Description</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter description"
-                value={description}
-                onChange={(e) => setDescription(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+                {/* DESCRIPTION */}
+                <Form.Group controlId="description">
+                  <Form.Label>Description</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter description"
+                    value={description}
+                    onChange={(e) => setDescription(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
 
-            {/* CREATOR */}
-            <Form.Group controlId="creator">
-              <Form.Label>Creator</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter creator name"
-                value={creator}
-                onChange={(e) => setCreator(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+                {/* CREATOR */}
+                <Form.Group controlId="creator">
+                  <Form.Label>Creator</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter creator name"
+                    value={creator}
+                    onChange={(e) => setCreator(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
 
-            {/* TAGS */}
-            <Form.Group controlId="tags">
-              <Form.Label>Tags</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter tags"
-                value={tags}
-                onChange={(e) => setTags(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+                {/* TAGS */}
+                <Form.Group controlId="tags">
+                  <Form.Label>Tags</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter tags"
+                    value={tags}
+                    onChange={(e) => setTags(e.target.value)}
+                  ></Form.Control>
+                </Form.Group>
 
-            {/* IMAGE */}
-            <Form.Group controlId="image">
-              <Form.Label>Image</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter image url"
-                value={image}
-                onChange={(e) => setImage(e.target.value)}
-              ></Form.Control>
-              <Form.File
-                id="image-file"
-                label="Choose File"
-                custom
-                onChange={uploadFileHandler}
-              ></Form.File>
-              {uploading && <Loader />}
-            </Form.Group>
+                {/* IMAGE */}
+                <Form.Group controlId="image">
+                  <Form.Label>Image</Form.Label>
+                  <Form.Control
+                    type="text"
+                    placeholder="Enter image url"
+                    value={image}
+                    onChange={(e) => setImage(e.target.value)}
+                  ></Form.Control>
+                  <Form.File
+                    id="image-file"
+                    label="Choose File"
+                    custom
+                    onChange={uploadFileHandler}
+                  ></Form.File>
+                  {uploading && <Loader />}
+                </Form.Group>
 
-            <Button variant="primary" type="submit">
-              Update
-            </Button>
-          </Form>
+                <Button variant="primary" type="submit">
+                  Update
+                </Button>
+              </Form>
+            </>
+          ) : (
+            "error"
+          )}
         </Col>
       </Row>
     </Container>
