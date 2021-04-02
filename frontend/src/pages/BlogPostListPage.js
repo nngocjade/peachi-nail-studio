@@ -7,6 +7,7 @@ import Loader from "../components/Loader";
 import {
   listBlogPosts,
   createBlogPost,
+  deleteBlogPost,
 } from "../redux/actions/blogPostActions";
 import { BLOGPOST_CREATE_RESET } from "../redux/constants/blogPostConstants";
 
@@ -16,12 +17,12 @@ const BlogPostListPage = ({ history, match }) => {
   const blogPostList = useSelector((state) => state.blogPostList);
   const { loading, error, blogPosts } = blogPostList;
 
-  // const nailDesignDelete = useSelector((state) => state.nailDesignDelete);
-  // const {
-  //   loading: loadingDelete,
-  //   error: errorDelete,
-  //   success: successDelete,
-  // } = nailDesignDelete;
+  const blogPostDelete = useSelector((state) => state.blogPostDelete);
+  const {
+    loading: loadingDelete,
+    error: errorDelete,
+    success: successDelete,
+  } = blogPostDelete;
 
   const blogPostCreate = useSelector((state) => state.blogPostCreate);
   const {
@@ -39,20 +40,19 @@ const BlogPostListPage = ({ history, match }) => {
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
-    // if (successCreate) {
-    //   history.push(`/admin/nailDesign/${createdBlogPost._id}/edit`);
-    // }
-    else {
+    if (successCreate) {
+      history.push(`/admin/blogPost/${createdBlogPost._id}/edit`);
+    } else {
       dispatch(listBlogPosts());
     }
     // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
-  }, [dispatch, history, userInfo, successCreate]);
+  }, [dispatch, history, userInfo, successCreate, createdBlogPost]);
 
-  // const deleteHandler = (id) => {
-  //   if (window.confirm("Are you sure")) {
-  //     dispatch(deleteBlogPost(id));
-  //   }
-  // };
+  const deleteHandler = (id) => {
+    if (window.confirm("Are you sure")) {
+      dispatch(deleteBlogPost(id));
+    }
+  };
 
   const createBlogPostHandler = () => {
     dispatch(createBlogPost());
@@ -70,10 +70,10 @@ const BlogPostListPage = ({ history, match }) => {
           </Button>
         </Col>
       </Row>
-      {/* {loadingDelete && <Loader />}
+      {loadingDelete && <Loader />}
       {errorDelete && <Message variant="danger">{errorDelete}</Message>}
       {loadingCreate && <Loader />}
-      {errorCreate && <Message variant="danger">{errorCreate}</Message>} */}
+      {errorCreate && <Message variant="danger">{errorCreate}</Message>}
       {loading ? (
         <Loader />
       ) : error ? (
@@ -106,18 +106,18 @@ const BlogPostListPage = ({ history, match }) => {
                   <td>{blogPost.createdAt}</td>
                   <td>{blogPost.updated}</td>
                   <td>
-                    <LinkContainer to={`/admin/blogPost/${blogPost._id}/edit`}>
+                    <LinkContainer to={`/admin/blogPosts/${blogPost._id}/edit`}>
                       <Button variant="light" className="btn-sm">
                         <i className="fas fa-edit"></i>
                       </Button>
                     </LinkContainer>
-                    {/* <Button
+                    <Button
                       variant="danger"
                       className="btn-sm"
-                      onClick={() => deleteHandler(nailDesign._id)}
+                      onClick={() => deleteHandler(blogPost._id)}
                     >
                       <i className="fas fa-trash"></i>
-                    </Button> */}
+                    </Button>
                   </td>
                 </tr>
               ))}

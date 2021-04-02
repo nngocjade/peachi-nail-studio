@@ -9,6 +9,13 @@ import {
   BLOGPOST_DETAILS_REQUEST,
   BLOGPOST_DETAILS_SUCCESS,
   BLOGPOST_DETAILS_FAIL,
+  BLOGPOST_UPDATE_REQUEST,
+  BLOGPOST_UPDATE_SUCCESS,
+  BLOGPOST_UPDATE_FAIL,
+  BLOGPOST_UPDATE_RESET,
+  BLOGPOST_DELETE_REQUEST,
+  BLOGPOST_DELETE_SUCCESS,
+  BLOGPOST_DELETE_FAIL,
 } from "../constants/blogPostConstants";
 
 // ======================== BLOGPPOST LIST REDUCER ==========================
@@ -47,7 +54,7 @@ export const blogPostDetailsReducer = (state = { blogPost: [] }, action) => {
  * ===================================================================
  */
 
-// ================ CREATE REDUCER =========================
+// ========================= CREATE REDUCER =========================
 
 export const blogPostCreateReducer = (state = {}, action) => {
   switch (action.type) {
@@ -59,6 +66,38 @@ export const blogPostCreateReducer = (state = {}, action) => {
       return { loading: false, error: action.payload };
     case BLOGPOST_CREATE_RESET:
       return {};
+    default:
+      return state;
+  }
+};
+
+// ========================= UPDATE REDUCER =========================
+
+export const blogPostUpdateReducer = (state = { blogPost: {} }, action) => {
+  switch (action.type) {
+    case BLOGPOST_UPDATE_REQUEST:
+      return { loading: true };
+    case BLOGPOST_UPDATE_SUCCESS:
+      return { loading: false, success: true, blogPost: action.payload };
+    case BLOGPOST_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    case BLOGPOST_UPDATE_RESET:
+      return { blogPost: {} };
+    default:
+      return state;
+  }
+};
+
+// ================ DELETE REDUCER =========================
+
+export const blogPostDeleteReducer = (state = {}, action) => {
+  switch (action.type) {
+    case BLOGPOST_DELETE_REQUEST:
+      return { loading: true };
+    case BLOGPOST_DELETE_SUCCESS:
+      return { loading: false, success: true };
+    case BLOGPOST_DELETE_FAIL:
+      return { loading: false, error: action.payload };
     default:
       return state;
   }
