@@ -42,7 +42,7 @@ const App = () => {
           />
           <Route
             exact
-            path="/admin/blogPost/:id/edit"
+            path="/admin/blogPosts/:id/edit"
             component={BlogPostEditPage}
           />
           <Route path="/" component={HomePage} exact />
