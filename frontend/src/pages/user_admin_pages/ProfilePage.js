@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Table, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message.js";
-import Loader from "../components/Loader.js";
+import Message from "../../components/Message.js";
+import Loader from "../../components/Loader.js";
 import {
   getUserDetails,
   updateUserProfile,
-} from "../redux/actions/userActions.js";
-import { USER_UPDATE_PROFILE_RESET } from "../redux/constants/userConstants";
+} from "../../redux/actions/userActions.js";
+import { USER_UPDATE_PROFILE_RESET } from "../../redux/constants/userConstants";
 
 const ProfilePage = ({ history, location }) => {
   const [name, setName] = useState("");

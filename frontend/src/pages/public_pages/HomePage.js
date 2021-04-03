@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../css/Home.css";
-import Logo from "../peach.svg";
+import "../../css/Home.css";
+import Logo from "../../peach.svg";
 import { Container, Button, Row, Col } from "react-bootstrap";
-import EachDesign from "../components/EachDesign";
-import { listNailDesigns } from "../redux/actions/nailDesignActions";
-import Loader from "../components/Loader";
-import Message from "../components/Message";
+import EachDesign from "../../components/EachDesign";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
+import { listNailDesignDetails } from "../../redux/actions/nailDesignActions";
 
 const HomePage = () => {
   const dispatch = useDispatch();
@@ -16,7 +16,7 @@ const HomePage = () => {
   const { loading, error, nailDesigns } = nailDesignList;
 
   useEffect(() => {
-    dispatch(listNailDesigns());
+    dispatch(listNailDesignDetails());
   }, [dispatch]);
 
   return (

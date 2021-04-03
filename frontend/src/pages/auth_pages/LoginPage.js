@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import "../css/Login.css";
+import "../../css/Login.css";
 import { Link } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
-import { login } from "../redux/actions/userActions";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
+import { login } from "../../redux/actions/userActions";
 
 const LoginPage = ({ location, history }) => {
   const [email, setEmail] = useState("");

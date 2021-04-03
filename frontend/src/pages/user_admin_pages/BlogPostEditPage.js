@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import axios from "axios";
-import Loader from "../components/Loader";
+import Loader from "../../components/Loader";
 import {
   listBlogPostDetails,
   updateBlogPost,
-} from "../redux/actions/blogPostActions";
+} from "../../redux/actions/blogPostActions";
 import { Link } from "react-router-dom";
-import { BLOGPOST_UPDATE_RESET } from "../redux/constants/blogPostConstants";
-import Message from "../components/Message";
+import { BLOGPOST_UPDATE_RESET } from "../../redux/constants/blogPostConstants";
+import Message from "../../components/Message";
 
 const BlogPostEditPage = ({ match, history }) => {
   const blogPostId = match.params.id;

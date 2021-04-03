@@ -2,13 +2,13 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message.js";
-import Loader from "../components/Loader.js";
+import Message from "../../components/Message.js";
+import Loader from "../../components/Loader";
 import {
   listNailDesignDetails,
   updateNailDesign,
-} from "../redux/actions/nailDesignActions";
-import { NAILDESIGN_UPDATE_RESET } from "../redux/constants/nailDesignConstants.js";
+} from "../../redux/actions/nailDesignActions";
+import { NAILDESIGN_UPDATE_RESET } from "../../redux/constants/nailDesignConstants.js";
 import axios from "axios";
 
 const NailDesignEditPage = ({ match, history }) => {

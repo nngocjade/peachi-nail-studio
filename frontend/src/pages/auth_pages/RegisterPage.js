@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Row, Col, Container, Form, Button } from "react-bootstrap";
-import Message from "../components/Message.js";
-import Loader from "../components/Loader.js";
+import Message from "../../components/Message.js";
+import Loader from "../../components/Loader.js";
 import { Link } from "react-router-dom";
-import { register } from "../redux/actions/userActions.js";
+import { register } from "../../redux/actions/userActions.js";
 
 const RegisterPage = ({ location, history }) => {
   const [name, setName] = useState("");

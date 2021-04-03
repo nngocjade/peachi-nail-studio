@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Container } from "react-bootstrap";
-import { listBlogPosts } from "../redux/actions/blogPostActions";
-import BlogPost from "../components/blogPost/BlogPost";
+import { listBlogPosts } from "../../redux/actions/blogPostActions";
+import BlogPost from "../../components/blogPost/BlogPost";
 
 const BlogPage = () => {
   const dispatch = useDispatch();

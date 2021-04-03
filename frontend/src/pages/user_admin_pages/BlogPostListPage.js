@@ -2,78 +2,78 @@ import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message";
-import Loader from "../components/Loader";
+import Message from "../../components/Message";
+import Loader from "../../components/Loader";
 import {
-  listNailDesigns,
-  deleteNailDesign,
-  createNailDesign,
-} from "../redux/actions/nailDesignActions";
-import { NAILDESIGN_CREATE_RESET } from "../redux/constants/nailDesignConstants";
+  listBlogPosts,
+  createBlogPost,
+  deleteBlogPost,
+} from "../../redux/actions/blogPostActions";
+import { BLOGPOST_CREATE_RESET } from "../../redux/constants/blogPostConstants";
 
-const NailDesignListPage = ({ history, match }) => {
+const BlogPostListPage = ({ history, match }) => {
   const dispatch = useDispatch();
 
-  const nailDesignList = useSelector((state) => state.nailDesignList);
-  const { loading, error, nailDesigns } = nailDesignList;
+  const blogPostList = useSelector((state) => state.blogPostList);
+  const { loading, error, blogPosts } = blogPostList;
 
-  const nailDesignDelete = useSelector((state) => state.nailDesignDelete);
+  const blogPostDelete = useSelector((state) => state.blogPostDelete);
   const {
     loading: loadingDelete,
     error: errorDelete,
     success: successDelete,
-  } = nailDesignDelete;
+  } = blogPostDelete;
 
-  const nailDesignCreate = useSelector((state) => state.nailDesignCreate);
+  const blogPostCreate = useSelector((state) => state.blogPostCreate);
   const {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    nailDesign: createdNailDesign,
-  } = nailDesignCreate;
+    blogPost: createdBlogPost,
+  } = blogPostCreate;
 
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
   useEffect(() => {
-    dispatch({ type: NAILDESIGN_CREATE_RESET });
+    dispatch({ type: BLOGPOST_CREATE_RESET });
     if (!userInfo || !userInfo.isAdmin) {
       history.push("/login");
     }
     if (successCreate) {
-      history.push(`/admin/nailDesign/${createdNailDesign._id}/edit`);
+      history.push(`/admin/blogPost/${createdBlogPost._id}/edit`);
     } else {
-      dispatch(listNailDesigns());
+      dispatch(listBlogPosts());
     }
     // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
   }, [
     dispatch,
     history,
     userInfo,
-    successDelete,
     successCreate,
-    createdNailDesign,
+    createdBlogPost,
+    successDelete,
   ]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
-      dispatch(deleteNailDesign(id));
+      dispatch(deleteBlogPost(id));
     }
   };
 
-  const createDesignHandler = () => {
-    dispatch(createNailDesign());
+  const createBlogPostHandler = () => {
+    dispatch(createBlogPost());
   };
 
   return (
     <>
       <Row className="align-items-center">
         <Col>
-          <h1>Nail Design List</h1>
+          <h1>Blog Post List</h1>
         </Col>
         <Col className="text-right">
-          <Button className="my-3" onClick={createDesignHandler}>
-            <i className="fas fa-plus"></i> Add Design
+          <Button className="my-3" onClick={createBlogPostHandler}>
+            <i className="fas fa-plus"></i> Add Post
           </Button>
         </Col>
       </Row>
@@ -91,25 +91,29 @@ const NailDesignListPage = ({ history, match }) => {
             <thead>
               <tr>
                 <th>ID</th>
-                <th>NAME</th>
-                <th>CATEGORY</th>
-                <th>STYLE</th>
+                <th>TITLE</th>
                 <th>DESCRIPTION</th>
+                <th>CREATOR</th>
+                <th>IMAGE</th>
+                <th>LINK COUNT</th>
+                <th>CREATED AT</th>
+                <th>LAST UPDATED</th>
                 <th></th>
               </tr>
             </thead>
             <tbody>
-              {nailDesigns.map((nailDesign) => (
-                <tr key={nailDesign._id}>
-                  <td>{nailDesign._id}</td>
-                  <td>{nailDesign.name}</td>
-                  <td>{nailDesign.category}</td>
-                  <td>{nailDesign.style}</td>
-                  <td>{nailDesign.description}</td>
+              {blogPosts.map((blogPost) => (
+                <tr key={blogPost._id}>
+                  <td>{blogPost._id}</td>
+                  <td>{blogPost.title}</td>
+                  <td>{blogPost.description}</td>
+                  <td>{blogPost.creator}</td>
+                  <td>{blogPost.image}</td>
+                  <td>{blogPost.likeCount}</td>
+                  <td>{blogPost.createdAt}</td>
+                  <td>{blogPost.updated}</td>
                   <td>
-                    <LinkContainer
-                      to={`/admin/nailDesign/${nailDesign._id}/edit`}
-                    >
+                    <LinkContainer to={`/admin/blogPosts/${blogPost._id}/edit`}>
                       <Button variant="light" className="btn-sm">
                         <i className="fas fa-edit"></i>
                       </Button>
@@ -117,7 +121,7 @@ const NailDesignListPage = ({ history, match }) => {
                     <Button
                       variant="danger"
                       className="btn-sm"
-                      onClick={() => deleteHandler(nailDesign._id)}
+                      onClick={() => deleteHandler(blogPost._id)}
                     >
                       <i className="fas fa-trash"></i>
                     </Button>
@@ -132,4 +136,4 @@ const NailDesignListPage = ({ history, match }) => {
   );
 };
 
-export default NailDesignListPage;
+export default BlogPostListPage;

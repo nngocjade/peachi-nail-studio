@@ -2,10 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import Message from "../components/Message.js";
-import Loader from "../components/Loader.js";
-import { getUserDetails, updateUser } from "../redux/actions/userActions.js";
-import { USER_UPDATE_RESET } from "../redux/constants/userConstants";
+import Message from "../../components/Message.js";
+import Loader from "../../components/Loader.js";
+import { getUserDetails, updateUser } from "../../redux/actions/userActions.js";
+import { USER_UPDATE_RESET } from "../../redux/constants/userConstants";
 
 const UserEditPage = ({ match, history }) => {
   const userId = match.params.id;
