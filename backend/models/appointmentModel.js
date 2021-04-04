@@ -5,7 +5,7 @@ var slot = require("./slotModel");
 var appointmentSchema = new Schema(
   {
     client: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
-    technician: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    admin: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     time: { type: Number, enum: [1, 2, 3, 4] }, // 1 === 9 AM, 2 === 10 AM
     date: Date,
   },

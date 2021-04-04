@@ -41,7 +41,7 @@ const BlogPostListPage = ({ history, match }) => {
       history.push("/login");
     }
     if (successCreate) {
-      history.push(`/admin/blogPost/${createdBlogPost._id}/edit`);
+      history.push(`/admin/blogPosts/${createdBlogPost._id}/edit`);
     } else {
       dispatch(listBlogPosts());
     }

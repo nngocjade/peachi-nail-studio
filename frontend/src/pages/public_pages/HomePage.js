@@ -6,17 +6,19 @@ import { Container, Button, Row, Col } from "react-bootstrap";
 import EachDesign from "../../components/EachDesign";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
-import { listNailDesignDetails } from "../../redux/actions/nailDesignActions";
+import { listNailDesigns } from "../../redux/actions/nailDesignActions";
 
 const HomePage = () => {
   const dispatch = useDispatch();
 
   const nailDesignList = useSelector((state) => state.nailDesignList);
 
+  console.log("nailDesignList", nailDesignList);
+
   const { loading, error, nailDesigns } = nailDesignList;
 
   useEffect(() => {
-    dispatch(listNailDesignDetails());
+    dispatch(listNailDesigns());
   }, [dispatch]);
 
   return (
