@@ -5,6 +5,8 @@ import EachDesign from "../../components/EachDesign";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import { listNailDesigns } from "../../redux/actions/nailDesignActions";
+import Masonry from "react-masonry-css";
+import "../../css/Masonry.css";
 
 const NailGalleryPage = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,12 @@ const NailGalleryPage = () => {
     dispatch(listNailDesigns());
   }, [dispatch]);
 
+  const breakpoints = {
+    default: 3,
+    1100: 2,
+    700: 1,
+  };
+
   return (
     <Container className="nail-gallery" fluid="md">
       {loading ? (
@@ -27,13 +35,17 @@ const NailGalleryPage = () => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Row>
+          <Masonry
+            breakpointCols={breakpoints}
+            className="my-masonry-grid"
+            columnClassName="my-masonry-grid_column"
+          >
             {nailDesigns.map((eachDesign) => (
-              <Col sm={12} md={6} lg={4} xl={3}>
+              <div sm={12} md={6} lg={4} xl={3}>
                 <EachDesign eachDesign={eachDesign} />
-              </Col>
+              </div>
             ))}
-          </Row>
+          </Masonry>
         </>
       )}
     </Container>

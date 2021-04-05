@@ -7,9 +7,9 @@ const EachDesign = ({ eachDesign }) => {
     <Card className="my-3 p-3 rounded eachDesign">
       <Card.Img src={eachDesign.image} variant="top"></Card.Img>
       <Card.Body>
-        <div className="heart">
+        {/* <div className="heart">
           <i class="far fa-heart"></i>
-        </div>
+        </div> */}
         {/* <Link to={`/product/${eachDesign._id}`}> */}
         {/* <Card.Title as="div">
           <strong>{eachDesign.name}</strong>
