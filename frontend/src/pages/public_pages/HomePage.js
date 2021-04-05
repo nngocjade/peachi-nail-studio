@@ -38,7 +38,9 @@ const HomePage = () => {
                 Voluptate magnam illum minima commodi dolorem quibusdam quod hic
                 enim dignissimos excepturi.
               </div>
-              <Button type="button">Learn more</Button>
+              <Button type="button" className="learn-more">
+                <span>Learn more</span>
+              </Button>
             </div>
             <div>
               <img className="big-peach" src={Logo} alt="logo" />

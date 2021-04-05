@@ -61,6 +61,35 @@ header {
   box-shadow: 2px 5px 5px 5px rgba(128, 128, 128, 0.15) !important;
 }
 
+.learn-more {
+  padding: 8px 50px;
+  transition: all 0.5s;
+}
+
+.learn-more span {
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.learn-more span:after {
+  content: " \00bb";
+  position: absolute;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.learn-more:hover span {
+  padding-right: 25px;
+}
+
+button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
 /*====================== FOOTER =============== */
 footer {
   background-color: gray;
