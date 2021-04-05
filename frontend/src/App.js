@@ -16,6 +16,7 @@ import NailDesignEditPage from "./pages/user_admin_pages/NailDesignEditPage";
 import BlogPage from "./pages/public_pages/BlogPage";
 import BlogPostListPage from "./pages/user_admin_pages/BlogPostListPage";
 import BlogPostEditPage from "./pages/user_admin_pages/BlogPostEditPage";
+import NailGalleryPage from "./pages/public_pages/NailGalleryPage";
 
 const App = () => {
   return (
@@ -24,6 +25,7 @@ const App = () => {
       <main className="py-3">
         <Container fluid>
           <Route path="/about" component={AboutPage} />
+          <Route path="/nailGallery" component={NailGalleryPage} />
           <Route path="/blog" component={BlogPage} />
           <Route path="/reservation" component={ReservationPage} />
           <Route path="/login" component={LoginPage} />
