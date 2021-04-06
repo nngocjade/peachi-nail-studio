@@ -1,11 +1,14 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import "../css/Card.css";
 
 const EachDesign = ({ eachDesign }) => {
   return (
     <Card className="my-3 p-3 rounded eachDesign">
-      <Card.Img src={eachDesign.image} variant="top"></Card.Img>
+      <Link to={`/nailDesign/${eachDesign._id}`}>
+        <Card.Img src={eachDesign.image} variant="top"></Card.Img>
+      </Link>
       <Card.Body>
         {/* <div className="heart">
           <i class="far fa-heart"></i>

@@ -17,6 +17,7 @@ import BlogPage from "./pages/public_pages/BlogPage";
 import BlogPostListPage from "./pages/user_admin_pages/BlogPostListPage";
 import BlogPostEditPage from "./pages/user_admin_pages/BlogPostEditPage";
 import NailGalleryPage from "./pages/public_pages/NailGalleryPage";
+import NailDesignDetailPage from "./pages/public_pages/NailDesignDetailPage";
 
 const App = () => {
   return (
@@ -31,6 +32,8 @@ const App = () => {
           <Route path="/login" component={LoginPage} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/register" component={RegisterPage} />
+
+          <Route path="/nailDesign/:id" component={NailDesignDetailPage} />
 
           <Route path="/admin/userlist" component={UserListPage} />
           <Route path="/admin/nailDesignList" component={NailDesignListPage} />
