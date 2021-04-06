@@ -41,7 +41,7 @@ const NailGalleryPage = () => {
             columnClassName="my-masonry-grid_column"
           >
             {nailDesigns.map((eachDesign) => (
-              <div sm={12} md={6} lg={4} xl={3}>
+              <div>
                 <EachDesign eachDesign={eachDesign} />
               </div>
             ))}
