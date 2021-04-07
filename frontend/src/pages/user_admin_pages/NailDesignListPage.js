@@ -10,12 +10,15 @@ import {
   createNailDesign,
 } from "../../redux/actions/nailDesignActions";
 import { NAILDESIGN_CREATE_RESET } from "../../redux/constants/nailDesignConstants";
+import Paginate from "../../components/Paginate";
 
 const NailDesignListPage = ({ history, match }) => {
+  const pageNumber = match.params.pageNumber || 1;
+
   const dispatch = useDispatch();
 
   const nailDesignList = useSelector((state) => state.nailDesignList);
-  const { loading, error, nailDesigns } = nailDesignList;
+  const { loading, error, nailDesigns, page, pages } = nailDesignList;
 
   const nailDesignDelete = useSelector((state) => state.nailDesignDelete);
   const {
@@ -43,7 +46,7 @@ const NailDesignListPage = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/nailDesign/${createdNailDesign._id}/edit`);
     } else {
-      dispatch(listNailDesigns());
+      dispatch(listNailDesigns(" ", pageNumber));
     }
     // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
   }, [
@@ -53,6 +56,7 @@ const NailDesignListPage = ({ history, match }) => {
     successDelete,
     successCreate,
     createdNailDesign,
+    pageNumber,
   ]);
 
   const deleteHandler = (id) => {
@@ -126,6 +130,7 @@ const NailDesignListPage = ({ history, match }) => {
               ))}
             </tbody>
           </Table>
+          <Paginate pages={pages} page={page} isAdmin={true} />
         </>
       )}
     </>

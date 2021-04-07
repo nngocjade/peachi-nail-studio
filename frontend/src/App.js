@@ -47,7 +47,18 @@ const App = () => {
           <Route path="/nailDesign/:id" component={NailDesignDetailPage} />
 
           <Route path="/admin/userlist" component={UserListPage} />
-          <Route path="/admin/nailDesignList" component={NailDesignListPage} />
+
+          <Route
+            exact
+            path="/admin/nailDesignList"
+            component={NailDesignListPage}
+          />
+          <Route
+            exact
+            path="/admin/nailDesignList/:pageNumber"
+            component={NailDesignListPage}
+          />
+
           <Route path="/admin/blogPostList" component={BlogPostListPage} />
 
           <Route exact path="/admin/user/:id/edit" component={UserEditPage} />
