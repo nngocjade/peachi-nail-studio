@@ -11,6 +11,8 @@ const EachDesign = ({ eachDesign }) => {
         border: "none",
         boxShadow: "0 8px 10px 5px lightGray",
         backgroundColor: "transparent",
+        // backdropFilter: "blur(10px)",
+        backdropFilter: "blur(50px)",
       }}
     >
       <Link to={`/nailDesign/${eachDesign._id}`}>

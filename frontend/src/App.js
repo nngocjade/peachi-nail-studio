@@ -28,7 +28,13 @@ const App = () => {
           <Route path="/about" component={AboutPage} />
 
           <Route path="/nailGallery" component={NailGalleryPage} />
-          <Route path="/search/:keyword" component={NailGalleryPage} />
+          <Route exact path="/search/:keyword" component={NailGalleryPage} />
+          <Route exact path="/page/:pageNumber" component={NailGalleryPage} />
+          <Route
+            exact
+            path="/search/:keyword/page/:pageNumber"
+            component={NailGalleryPage}
+          />
 
           <Route path="/blog" component={BlogPage} />
 

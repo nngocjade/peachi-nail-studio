@@ -25,7 +25,12 @@ export const nailDesignListReducer = (state = { nailDesigns: [] }, action) => {
     case NAILDESIGN_LIST_REQUEST:
       return { loading: true, nailDesigns: [] };
     case NAILDESIGN_LIST_SUCCESS:
-      return { loading: false, nailDesigns: action.payload };
+      return {
+        loading: false,
+        nailDesigns: action.payload.nailDesigns,
+        pages: action.payload.pages,
+        page: action.payload.page,
+      };
     case NAILDESIGN_LIST_FAIL:
       return { loading: false, error: action.payload };
     default:

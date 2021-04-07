@@ -9,9 +9,13 @@ import Masonry from "react-masonry-css";
 import "../../css/Masonry.css";
 import SearchBox from "../../components/SearchBox";
 import { Route } from "react-router";
+import "../../css/Gallery.css";
+import Paginate from "../../components/Paginate";
 
 const NailGalleryPage = ({ match, history }) => {
   const keyword = match.params.keyword;
+
+  const pageNumber = match.params.pageNumber || 1;
 
   const dispatch = useDispatch();
 
@@ -19,11 +23,11 @@ const NailGalleryPage = ({ match, history }) => {
 
   console.log("nailDesignList", nailDesignList);
 
-  const { loading, error, nailDesigns } = nailDesignList;
+  const { loading, error, nailDesigns, page, pages } = nailDesignList;
 
   useEffect(() => {
-    dispatch(listNailDesigns(keyword));
-  }, [dispatch, keyword]);
+    dispatch(listNailDesigns(keyword, pageNumber));
+  }, [dispatch, keyword, pageNumber]);
 
   const breakpoints = {
     default: 3,
@@ -39,18 +43,17 @@ const NailGalleryPage = ({ match, history }) => {
       ) : error ? (
         <Message variant="danger">{error}</Message>
       ) : (
-        <>
-          <Masonry
-            breakpointCols={breakpoints}
-            className="my-masonry-grid"
-            columnClassName="my-masonry-grid_column"
-          >
-            {nailDesigns.map((eachDesign) => (
-              <EachDesign eachDesign={eachDesign} />
-            ))}
-          </Masonry>
-        </>
+        <Masonry
+          breakpointCols={breakpoints}
+          className="my-masonry-grid"
+          columnClassName="my-masonry-grid_column"
+        >
+          {nailDesigns.map((eachDesign) => (
+            <EachDesign eachDesign={eachDesign} />
+          ))}
+        </Masonry>
       )}
+      <Paginate pages={pages} page={page} keyword={keyword ? keyword : " "} />
     </Container>
   );
 };
