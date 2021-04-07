@@ -1,5 +1,6 @@
 const express = require("express");
 const asyncHandler = require("express-async-handler");
+const { countDocuments } = require("../models/nailDesignModel");
 const NailDesign = require("../models/nailDesignModel");
 
 // ===================== GET ALL NAIL DESIGNS ===================
@@ -8,6 +9,9 @@ const NailDesign = require("../models/nailDesignModel");
 // @route         GET /api/nailDesigns
 // @access        Public
 const getNailDesigns = asyncHandler(async (req, res) => {
+  const pageSize = 2;
+  const page = Number(req.query.pageNumber) || 1;
+
   const keyword = req.query.keyword
     ? {
         name: {
@@ -17,8 +21,13 @@ const getNailDesigns = asyncHandler(async (req, res) => {
       }
     : {};
 
-  const nailDesigns = await NailDesign.find({ ...keyword });
-  res.json(nailDesigns);
+  const count = await NailDesign.countDocuments({ ...keyword });
+
+  const nailDesigns = await NailDesign.find({ ...keyword })
+    .limit(pageSize)
+    .skip(pageSize * (page - 1));
+
+  res.json({ nailDesigns, page, pages: Math.ceil(count / pageSize) });
 });
 
 // ===================== GET NAIL DESIGN BY ID ===================
