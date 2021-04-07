@@ -19,9 +19,17 @@ const HomePage = () => {
             <span>Learn more</span>
           </Button>
         </div>
-        {/* <div>
-          <img className="big-peach" src={Logo} alt="logo" />
-        </div> */}
+        <div className="peach-wrapper">
+          <img
+            className="big-peach"
+            src={Logo}
+            alt="logo"
+            style={{
+              filter: "blur(10px)",
+            }}
+          />
+          <img className="big-peach-front" src={Logo} alt="logo" />
+        </div>
       </Row>
     </Container>
   );
