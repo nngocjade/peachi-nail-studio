@@ -8,7 +8,16 @@ const NailDesign = require("../models/nailDesignModel");
 // @route         GET /api/nailDesigns
 // @access        Public
 const getNailDesigns = asyncHandler(async (req, res) => {
-  const nailDesigns = await NailDesign.find({});
+  const keyword = req.query.keyword
+    ? {
+        name: {
+          $regex: req.query.keyword,
+          $options: "i",
+        },
+      }
+    : {};
+
+  const nailDesigns = await NailDesign.find({ ...keyword });
   res.json(nailDesigns);
 });
 

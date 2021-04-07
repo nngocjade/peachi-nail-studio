@@ -26,9 +26,14 @@ const App = () => {
       <main className="py-3">
         <Container fluid>
           <Route path="/about" component={AboutPage} />
+
           <Route path="/nailGallery" component={NailGalleryPage} />
+          <Route path="/search/:keyword" component={NailGalleryPage} />
+
           <Route path="/blog" component={BlogPage} />
+
           <Route path="/reservation" component={ReservationPage} />
+
           <Route path="/login" component={LoginPage} />
           <Route path="/profile" component={ProfilePage} />
           <Route path="/register" component={RegisterPage} />

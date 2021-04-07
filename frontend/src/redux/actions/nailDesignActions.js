@@ -20,11 +20,11 @@ import { logout } from "./userActions.js";
 
 // =========== LIST NAIL DESIGNS ACTION ==================
 
-export const listNailDesigns = () => async (dispatch) => {
+export const listNailDesigns = (keyword = "") => async (dispatch) => {
   try {
     dispatch({ type: NAILDESIGN_LIST_REQUEST });
 
-    const { data } = await axios.get("/api/nailDesigns");
+    const { data } = await axios.get(`/api/nailDesigns?keyword=${keyword}`);
 
     console.log("list nail designs", data);
 

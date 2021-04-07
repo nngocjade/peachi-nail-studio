@@ -7,8 +7,12 @@ import Message from "../../components/Message";
 import { listNailDesigns } from "../../redux/actions/nailDesignActions";
 import Masonry from "react-masonry-css";
 import "../../css/Masonry.css";
+import SearchBox from "../../components/SearchBox";
+import { Route } from "react-router";
 
-const NailGalleryPage = () => {
+const NailGalleryPage = ({ match, history }) => {
+  const keyword = match.params.keyword;
+
   const dispatch = useDispatch();
 
   const nailDesignList = useSelector((state) => state.nailDesignList);
@@ -18,8 +22,8 @@ const NailGalleryPage = () => {
   const { loading, error, nailDesigns } = nailDesignList;
 
   useEffect(() => {
-    dispatch(listNailDesigns());
-  }, [dispatch]);
+    dispatch(listNailDesigns(keyword));
+  }, [dispatch, keyword]);
 
   const breakpoints = {
     default: 3,
@@ -29,6 +33,7 @@ const NailGalleryPage = () => {
 
   return (
     <Container className="nail-gallery" fluid="md">
+      <Route render={({ history }) => <SearchBox history={history} />} />
       {loading ? (
         <Loader />
       ) : error ? (
