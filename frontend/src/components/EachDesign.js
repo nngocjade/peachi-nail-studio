@@ -5,7 +5,14 @@ import "../css/Card.css";
 
 const EachDesign = ({ eachDesign }) => {
   return (
-    <Card className="my-3 p-3 rounded eachDesign">
+    <Card
+      className="my-3 p-3 rounded eachDesign"
+      style={{
+        border: "none",
+        boxShadow: "0 8px 10px 5px lightGray",
+        backgroundColor: "transparent",
+      }}
+    >
       <Link to={`/nailDesign/${eachDesign._id}`}>
         <Card.Img src={eachDesign.image} variant="top"></Card.Img>
       </Link>
