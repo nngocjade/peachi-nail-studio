@@ -43,6 +43,7 @@ header {
 
 /* =============== BUTTON ================ */
 .btn {
+  transition: 0.4s;
   border: none;
   border-radius: 25px;
   padding: 0 8px;
@@ -58,7 +59,8 @@ header {
     #eea949ad,
     #f46b45c7
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  box-shadow: 2px 5px 5px 5px rgba(128, 128, 128, 0.15) !important;
+  box-shadow: 2px 5px 5px 2px #f46b4538 !important;
+  backdrop-filter: blur(4px) !important;
 }
 
 .learn-more {

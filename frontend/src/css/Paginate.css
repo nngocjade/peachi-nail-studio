@@ -1,0 +1,25 @@
+:root {
+  --peach: #f46b45c7;
+  --yellow: #eea949ad;
+}
+
+.nail-gallery .pagination {
+  position: fixed;
+  top: 50%;
+  left: 4%;
+  display: flex;
+  flex-direction: column;
+}
+.nail-gallery .page-item.active > .page-link {
+  background: linear-gradient(to right, var(--yellow), var(--peach));
+  border: none;
+  border-radius: 50%;
+  color: white !important;
+}
+
+.nail-gallery .page-item .page-link {
+  border-radius: 50%;
+
+  color: var(--peach);
+  margin: 0.2em;
+}
