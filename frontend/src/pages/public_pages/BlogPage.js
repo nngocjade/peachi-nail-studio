@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container } from "react-bootstrap";
+import { Col, Container, Row } from "react-bootstrap";
 import { listBlogPosts } from "../../redux/actions/blogPostActions";
 import BlogPost from "../../components/blogPost/BlogPost";
 
@@ -19,7 +19,9 @@ const BlogPage = () => {
     <Container>
       <h1>POSTS</h1>
       {blogPosts.map((blogPost) => (
-        <BlogPost blogPost={blogPost} />
+        <Col md={6} className="m-5">
+          <BlogPost blogPost={blogPost} />
+        </Col>
       ))}
     </Container>
   );

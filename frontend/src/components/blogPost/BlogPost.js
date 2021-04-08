@@ -5,8 +5,8 @@ const BlogPost = ({ blogPost }) => {
   const defaultImage =
     "https://image.freepik.com/free-vector/cute-pink-peach-sliced-seamless-patten_39151-367.jpg";
   return (
-    <div>
-      <Card style={{ width: "18rem" }}>
+    <>
+      <Card style={{ width: "100%" }}>
         <Card.Img variant="top" src={blogPost.image} />
         <Card.Body>
           <Card.Title>{blogPost.title}</Card.Title>
@@ -17,7 +17,7 @@ const BlogPost = ({ blogPost }) => {
           <Card.Link href="#">Another Link</Card.Link>
         </Card.Body>
       </Card>
-    </div>
+    </>
   );
 };
 
