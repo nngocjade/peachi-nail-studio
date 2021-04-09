@@ -193,6 +193,42 @@ const updateUser = asyncHandler(async (req, res) => {
   }
 });
 
+/**
+ * ===========================================================================
+ * -------------------------------- CLIENT ONLY -------------------------------
+ * ===========================================================================
+ */
+
+// // @description       Update user
+// // @route             PUT /api/users/favorites
+// // @access            Private/Client
+const addToFavorite = asyncHandler(async (req, res) => {
+  const userId = req.userId;
+  const { nailId } = req.body;
+
+  let user = await User.findById(userId);
+
+  if (user) {
+    if (user.favorites.includes(nailId)) {
+      throw new Error("Already added to favorites");
+    }
+
+    user = await User.findByIdAndUpdate(
+      userId,
+      {
+        $push: { favorites: nailId },
+      },
+      { new: true }
+    );
+    user = await user.populate("nailDesign").execPopulate();
+
+    res.json(user);
+  } else {
+    res.status(404);
+    throw new Error("User not found");
+  }
+});
+
 module.exports = {
   authUser,
   registerUser,
@@ -202,4 +238,5 @@ module.exports = {
   deleteUser,
   getUserById,
   updateUser,
+  addToFavorite,
 };

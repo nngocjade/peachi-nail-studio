@@ -25,6 +25,9 @@ import {
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
   USER_UPDATE_RESET,
+  USER_ADD_TO_FAVORITE_REQUEST,
+  USER_ADD_TO_FAVORITE_SUCCESS,
+  USER_ADD_TO_FAVORITE_FAIL,
 } from "../constants/userConstants";
 
 // ===================== USER LOGIN REDUCER =============================
@@ -140,6 +143,23 @@ export const userUpdateReducer = (state = { user: {} }, action) => {
     case USER_UPDATE_SUCCESS:
       return { loading: false, success: true };
     case USER_UPDATE_FAIL:
+      return { loading: false, error: action.payload };
+    case USER_UPDATE_RESET:
+      return { user: {} };
+    default:
+      return state;
+  }
+};
+
+// ===================== ADD TO FAVORITE REDUCER =============================
+
+export const addToFavoriteReducer = (state = { user: {} }, action) => {
+  switch (action.type) {
+    case USER_ADD_TO_FAVORITE_REQUEST:
+      return { loading: true };
+    case USER_ADD_TO_FAVORITE_SUCCESS:
+      return { loading: false, success: true, user: action.payload };
+    case USER_ADD_TO_FAVORITE_FAIL:
       return { loading: false, error: action.payload };
     case USER_UPDATE_RESET:
       return { user: {} };

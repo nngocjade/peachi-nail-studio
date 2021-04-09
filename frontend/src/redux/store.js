@@ -20,6 +20,7 @@ import {
   userDeleteReducer,
   userListReducer,
   userUpdateReducer,
+  addToFavoriteReducer,
 } from "../redux/reducers/userReducers";
 
 import {
@@ -44,6 +45,7 @@ const reducer = combineReducers({
   userList: userListReducer,
   userDelete: userDeleteReducer,
   userUpdate: userUpdateReducer,
+  addToFavorite: addToFavoriteReducer,
 
   blogPostList: blogPostListReducer,
   blogPostDetails: blogPostDetailsReducer,

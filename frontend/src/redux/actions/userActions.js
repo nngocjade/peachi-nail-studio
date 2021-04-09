@@ -25,6 +25,9 @@ import {
   USER_UPDATE_REQUEST,
   USER_UPDATE_SUCCESS,
   USER_UPDATE_FAIL,
+  USER_ADD_TO_FAVORITE_REQUEST,
+  USER_ADD_TO_FAVORITE_SUCCESS,
+  USER_ADD_TO_FAVORITE_FAIL,
 } from "../constants/userConstants.js";
 
 // ====================== LOGIN ACTION ===========================
@@ -324,6 +327,50 @@ export const updateUser = (user) => async (dispatch, getState) => {
     }
     dispatch({
       type: USER_UPDATE_FAIL,
+      payload: message,
+    });
+  }
+};
+
+//===========================
+
+export const addToFavorite = (nailId) => async (dispatch, getState) => {
+  try {
+    dispatch({
+      type: USER_ADD_TO_FAVORITE_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+    console.log("here", nailId);
+    const { data } = await axios.put(
+      `/api/users/favorites`,
+      { nailId },
+      config
+    );
+
+    dispatch({
+      type: USER_ADD_TO_FAVORITE_SUCCESS,
+      payload: data,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
+    dispatch({
+      type: USER_ADD_TO_FAVORITE_FAIL,
       payload: message,
     });
   }

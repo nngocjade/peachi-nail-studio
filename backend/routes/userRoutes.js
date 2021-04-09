@@ -12,9 +12,12 @@ const {
   deleteUser,
   getUserById,
   updateUser,
+  addToFavorite,
 } = require("../controllers/userController");
 
 router.route("/").post(registerUser).get(protect, admin, getUsers);
+
+router.put("/favorites", protect, addToFavorite);
 
 router.post("/login", authUser);
 

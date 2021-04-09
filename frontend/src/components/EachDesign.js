@@ -1,12 +1,19 @@
 import React from "react";
 import { Card } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import "../css/Card.css";
+import { addToFavorite } from "../redux/actions/userActions";
 
 const EachDesign = ({ eachDesign, handleShow }) => {
+  const dispatch = useDispatch();
+
+  const handleAddToFavorite = () => {
+    dispatch(addToFavorite(eachDesign._id));
+  };
+
   return (
     <Card
-      onClick={() => handleShow(eachDesign._id)}
       className="my-3 p-3 rounded eachDesign"
       style={{
         border: "none",
@@ -16,10 +23,14 @@ const EachDesign = ({ eachDesign, handleShow }) => {
         backdropFilter: "blur(50px)",
       }}
     >
-      <Card.Img src={eachDesign.image} variant="top"></Card.Img>
+      <Card.Img
+        onClick={() => handleShow(eachDesign._id)}
+        src={eachDesign.image}
+        variant="top"
+      ></Card.Img>
 
       <div className="heart">
-        <i class="far fa-heart"></i>
+        <i class="far fa-heart" onClick={handleAddToFavorite}></i>
       </div>
       <div className="title">{eachDesign.name}</div>
     </Card>
