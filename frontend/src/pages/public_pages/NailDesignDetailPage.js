@@ -27,57 +27,7 @@ const NailGalleryDetailPage = ({ history, match }) => {
     dispatch(listNailDesignDetails(match.params.id));
   }, [dispatch, match]);
 
-  return (
-    <>
-      <Link className="btn btn-light my-3" to="/nailGallery">
-        Go Back
-      </Link>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
-        <Row>
-          <Col md-6>
-            <Image src={nailDesign.image} alt={nailDesign.name} fluid />
-          </Col>
-          <Col md-3>
-            <ListGroup variant="flush">
-              <ListGroup.Item>
-                <h3>{nailDesign.name}</h3>
-              </ListGroup.Item>
-              <ListGroup.Item>
-                Description: {nailDesign.description}
-              </ListGroup.Item>
-            </ListGroup>
-          </Col>
-          <Col md={3}>
-            <Card>
-              <ListGroup variant="flush">
-                {/* PRICE */}
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Style:</Col>
-                    <Col>
-                      <strong>{nailDesign.style}</strong>
-                    </Col>
-                  </Row>
-                </ListGroup.Item>
-                {/* STATUS */}
-                <ListGroup.Item>
-                  <Row>
-                    <Col>Category:</Col>
-                    <Col>{nailDesign.category}</Col>
-                  </Row>
-                </ListGroup.Item>
-                {/* ADD TO FAVORITE */}
-              </ListGroup>
-            </Card>
-          </Col>
-        </Row>
-      )}
-    </>
-  );
+  return <></>;
 };
 
 export default NailGalleryDetailPage;

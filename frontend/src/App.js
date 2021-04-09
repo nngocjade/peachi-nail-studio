@@ -18,6 +18,7 @@ import BlogPostListPage from "./pages/user_admin_pages/BlogPostListPage";
 import BlogPostEditPage from "./pages/user_admin_pages/BlogPostEditPage";
 import NailGalleryPage from "./pages/public_pages/NailGalleryPage";
 import NailDesignDetailPage from "./pages/public_pages/NailDesignDetailPage";
+import BlogPostDetailPage from "./pages/public_pages/BlogPostDetailPage";
 
 const App = () => {
   return (
@@ -25,9 +26,9 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container fluid>
-          <Route path="/about" component={AboutPage} />
+          <Route exact path="/about" component={AboutPage} />
 
-          <Route path="/nailGallery" component={NailGalleryPage} />
+          <Route exact path="/nailGallery" component={NailGalleryPage} />
           <Route exact path="/search/:keyword" component={NailGalleryPage} />
           <Route exact path="/page/:pageNumber" component={NailGalleryPage} />
           <Route
@@ -36,17 +37,24 @@ const App = () => {
             component={NailGalleryPage}
           />
 
-          <Route path="/blog" component={BlogPage} />
+          <Route exact path="/blog" component={BlogPage} />
+          <Route exact path="/blogPost/:id" component={BlogPostDetailPage} />
 
-          <Route path="/reservation" component={ReservationPage} />
+          <Route exact path="/reservation" component={ReservationPage} />
 
-          <Route path="/login" component={LoginPage} />
-          <Route path="/profile" component={ProfilePage} />
-          <Route path="/register" component={RegisterPage} />
+          <Route exact path="/login" component={LoginPage} />
+          <Route exact path="/profile" component={ProfilePage} />
+          <Route exact path="/register" component={RegisterPage} />
 
-          <Route path="/nailDesign/:id" component={NailDesignDetailPage} />
+          <Route
+            exact
+            path="/nailDesign/:id"
+            component={NailDesignDetailPage}
+          />
 
-          <Route path="/admin/userlist" component={UserListPage} />
+          {/* ======================== ADMIN ========================= */}
+
+          <Route exact path="/admin/userlist" component={UserListPage} />
 
           <Route
             exact
@@ -59,7 +67,11 @@ const App = () => {
             component={NailDesignListPage}
           />
 
-          <Route path="/admin/blogPostList" component={BlogPostListPage} />
+          <Route
+            exact
+            path="/admin/blogPostList"
+            component={BlogPostListPage}
+          />
 
           <Route exact path="/admin/user/:id/edit" component={UserEditPage} />
           <Route
@@ -72,7 +84,7 @@ const App = () => {
             path="/admin/blogPosts/:id/edit"
             component={BlogPostEditPage}
           />
-          <Route path="/" component={HomePage} exact />
+          <Route exact path="/" component={HomePage} />
         </Container>
       </main>
       {/* <Footer /> */}

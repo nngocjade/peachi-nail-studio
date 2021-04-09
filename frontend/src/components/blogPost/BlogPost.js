@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Card, ListGroup, ListGroupItem } from "react-bootstrap";
 
 const BlogPost = ({ blogPost }) => {
@@ -13,8 +14,7 @@ const BlogPost = ({ blogPost }) => {
           <Card.Text>{blogPost.description}</Card.Text>
         </Card.Body>
         <Card.Body>
-          <Card.Link href="#">Card Link</Card.Link>
-          <Card.Link href="#">Another Link</Card.Link>
+          <Link to={`/blogPost/${blogPost._id}`}> More details...</Link>
         </Card.Body>
       </Card>
     </>

@@ -3,9 +3,10 @@ import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../css/Card.css";
 
-const EachDesign = ({ eachDesign }) => {
+const EachDesign = ({ eachDesign, handleShow }) => {
   return (
     <Card
+      onClick={() => handleShow(eachDesign._id)}
       className="my-3 p-3 rounded eachDesign"
       style={{
         border: "none",
@@ -15,9 +16,7 @@ const EachDesign = ({ eachDesign }) => {
         backdropFilter: "blur(50px)",
       }}
     >
-      <Link to={`/nailDesign/${eachDesign._id}`}>
-        <Card.Img src={eachDesign.image} variant="top"></Card.Img>
-      </Link>
+      <Card.Img src={eachDesign.image} variant="top"></Card.Img>
       <Card.Body>
         {/* <div className="heart">
           <i class="far fa-heart"></i>
