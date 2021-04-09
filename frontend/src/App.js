@@ -17,7 +17,6 @@ import BlogPage from "./pages/public_pages/BlogPage";
 import BlogPostListPage from "./pages/user_admin_pages/BlogPostListPage";
 import BlogPostEditPage from "./pages/user_admin_pages/BlogPostEditPage";
 import NailGalleryPage from "./pages/public_pages/NailGalleryPage";
-import NailDesignDetailPage from "./pages/public_pages/NailDesignDetailPage";
 import BlogPostDetailPage from "./pages/public_pages/BlogPostDetailPage";
 
 const App = () => {
@@ -45,12 +44,6 @@ const App = () => {
           <Route exact path="/login" component={LoginPage} />
           <Route exact path="/profile" component={ProfilePage} />
           <Route exact path="/register" component={RegisterPage} />
-
-          <Route
-            exact
-            path="/nailDesign/:id"
-            component={NailDesignDetailPage}
-          />
 
           {/* ======================== ADMIN ========================= */}
 

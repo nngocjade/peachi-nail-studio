@@ -1,9 +1,33 @@
 /* ==================== HEART =================== */
+.eachDesign {
+  position: relative;
+}
 
 .heart {
-  /* position: absolute;
-  top: 15px;
-  right: 15px; */
+  position: absolute;
+  top: 1em;
+  right: 1em;
   font-size: 1.5em;
-  /* color: rgb(156, 156, 156); */
+  color: rgb(156, 156, 156);
+  visibility: hidden;
 }
+
+.title {
+  visibility: hidden !important;
+  position: absolute;
+  bottom: 1.5em;
+  right: 1.5em;
+}
+
+.eachDesign:hover > .heart {
+  visibility: visible;
+}
+
+.eachDesign:hover > .title {
+  visibility: visible !important;
+}
+
+/* .eachDesign:hover > .heart:active {
+  visibility: visible;
+
+} */

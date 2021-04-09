@@ -17,22 +17,11 @@ const EachDesign = ({ eachDesign, handleShow }) => {
       }}
     >
       <Card.Img src={eachDesign.image} variant="top"></Card.Img>
-      <Card.Body>
-        {/* <div className="heart">
-          <i class="far fa-heart"></i>
-        </div> */}
-        {/* <Link to={`/product/${eachDesign._id}`}> */}
-        {/* <Card.Title as="div">
-          <strong>{eachDesign.name}</strong>
-        </Card.Title> */}
-        {/* </Link> */}
-        {/* <Card.Text as="div">
-          <Rating
-            value={eachDesign.rating}
-            text={`${eachDesign.numReviews} reviews`}
-          />
-        </Card.Text> */}
-      </Card.Body>
+
+      <div className="heart">
+        <i class="far fa-heart"></i>
+      </div>
+      <div className="title">{eachDesign.name}</div>
     </Card>
   );
 };
