@@ -24,6 +24,7 @@ Created with love by: Jade
 - npm i axios
 - npm i redux redux-thunk redux-devtools-extension
 - npm i react-google-login
+- moment js
 
 # Other resources
 
