@@ -78,7 +78,10 @@ export const listBlogPostDetails = (id) => async (dispatch) => {
 
 // =========== CREATE BLOG POSTS ACTION ==================
 
-export const createBlogPost = () => async (dispatch, getState) => {
+export const createBlogPost = ({ title, body, tags, imageUrl }) => async (
+  dispatch,
+  getState
+) => {
   try {
     dispatch({ type: BLOGPOST_CREATE_REQUEST });
 
@@ -92,7 +95,11 @@ export const createBlogPost = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post("/api/blogPosts", {}, config);
+    const { data } = await axios.post(
+      "/api/blogPosts",
+      { title, body, tags, imageUrl },
+      config
+    );
 
     console.log("create blog post", data);
 

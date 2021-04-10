@@ -138,3 +138,9 @@ const NailDesignListPage = ({ history, match }) => {
 };
 
 export default NailDesignListPage;
+
+// title,
+// body,
+// tags,
+// imageUrl,
+// author,

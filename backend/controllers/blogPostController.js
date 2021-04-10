@@ -50,13 +50,15 @@ const getBlogPostById = asyncHandler(async (req, res) => {
 // });
 
 const createBlogPost = asyncHandler(async (req, res) => {
+  const userId = req.userId;
   try {
+    const { title, body, tags, imageUrl } = req.body;
     const blogPost = new BlogPost({
-      title: "Sample title",
-      description: "Add some description",
-      tags: ["tag1", "tag2", "tag3", "tag4", "etc..."],
-      image: "add an image link here OR browse to upload",
-      creator: "who is the creator?",
+      title,
+      body,
+      tags,
+      imageUrl,
+      author: userId,
     });
 
     const createdBlogPost = await blogPost.save();

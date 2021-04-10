@@ -93,6 +93,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
   if (user) {
     user.name = req.body.name || user.name;
     user.email = req.body.email || user.email;
+    user.imageUrl = req.body.imageUrl || user.imageUrl;
 
     // This runs to check if the password has changed or not, which will trigger the middleware
     if (req.body.password) {
@@ -106,6 +107,7 @@ const updateUserProfile = asyncHandler(async (req, res) => {
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
       token: generateToken(updatedUser._id),
+      imageUrl: updatedUser.imageUrl,
     });
   } else {
     res.status(404);

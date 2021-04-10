@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
 import { Table, Button, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
@@ -10,8 +10,14 @@ import {
   deleteBlogPost,
 } from "../../redux/actions/blogPostActions";
 import { BLOGPOST_CREATE_RESET } from "../../redux/constants/blogPostConstants";
+import CreatePostModal from "../../components/CreatePostModal";
 
 const BlogPostListPage = ({ history, match }) => {
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const dispatch = useDispatch();
 
   const blogPostList = useSelector((state) => state.blogPostList);
@@ -29,7 +35,6 @@ const BlogPostListPage = ({ history, match }) => {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    blogPost: createdBlogPost,
   } = blogPostCreate;
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -41,28 +46,17 @@ const BlogPostListPage = ({ history, match }) => {
       history.push("/login");
     }
     if (successCreate) {
-      history.push(`/admin/blogPosts/${createdBlogPost._id}/edit`);
+      history.push(`/admin/blogPostList`);
     } else {
       dispatch(listBlogPosts());
     }
     // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
-  }, [
-    dispatch,
-    history,
-    userInfo,
-    successCreate,
-    createdBlogPost,
-    successDelete,
-  ]);
+  }, [dispatch, history, userInfo, successCreate, successDelete]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
       dispatch(deleteBlogPost(id));
     }
-  };
-
-  const createBlogPostHandler = () => {
-    dispatch(createBlogPost());
   };
 
   return (
@@ -72,7 +66,7 @@ const BlogPostListPage = ({ history, match }) => {
           <h1>Blog Post List</h1>
         </Col>
         <Col className="text-right">
-          <Button className="my-3" onClick={createBlogPostHandler}>
+          <Button className="my-3" onClick={() => handleShow()}>
             <i className="fas fa-plus"></i> Add Post
           </Button>
         </Col>
@@ -130,6 +124,11 @@ const BlogPostListPage = ({ history, match }) => {
               ))}
             </tbody>
           </Table>
+          <CreatePostModal
+            handleClose={handleClose}
+            show={show}
+            setShow={setShow}
+          />
         </>
       )}
     </>

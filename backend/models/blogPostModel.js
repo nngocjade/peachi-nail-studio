@@ -6,18 +6,17 @@ const postSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    description: {
+    body: {
       type: String,
       required: true,
     },
-    creator: {
-      type: String,
-      required: true,
-    },
-    tags: {
-      type: [String],
-    },
-    image: {
+    tags: [
+      {
+        type: String,
+        enum: ["tips", "everyday", "pattern", "abstract", "wedding"],
+      },
+    ],
+    imageUrl: {
       type: String,
       required: true,
     },
@@ -25,10 +24,7 @@ const postSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    createdAt: {
-      type: Date,
-      default: new Date(),
-    },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   },
   {
     timestamps: true,

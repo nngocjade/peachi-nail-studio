@@ -9,6 +9,7 @@ import {
   Tab,
   Nav,
   Card,
+  Image,
 } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message.js";
@@ -25,6 +26,7 @@ const ProfilePage = ({ history, location }) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [message, setMessage] = useState(null);
+  const [imageUrl, setImageUrl] = useState("");
 
   const dispatch = useDispatch();
 
@@ -49,6 +51,7 @@ const ProfilePage = ({ history, location }) => {
       } else {
         setName(user.name);
         setEmail(user.email);
+        setImageUrl(user.imageUrl);
       }
     }
   }, [history, userInfo, dispatch, user, success]);
@@ -59,7 +62,9 @@ const ProfilePage = ({ history, location }) => {
     if (password !== confirmPassword) {
       setMessage("Passwords do not match");
     } else {
-      dispatch(updateUserProfile({ id: user._id, name, email, password }));
+      dispatch(
+        updateUserProfile({ id: user._id, name, email, password, imageUrl })
+      );
     }
   };
   const updateProfile = (
@@ -71,6 +76,17 @@ const ProfilePage = ({ history, location }) => {
         {success && <Message variant="success">Profile Updated</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
+          {!imageUrl ? (
+            <Loader />
+          ) : (
+            <Image
+              src={
+                imageUrl
+                // ? "https://pbs.twimg.com/profile_images/602729491916435458/hSu0UjMC_400x400.jpg"
+                // : imageUrl
+              }
+            />
+          )}
           {/* NAME */}
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>
@@ -115,6 +131,10 @@ const ProfilePage = ({ history, location }) => {
             ></Form.Control>
           </Form.Group>
 
+          <Button onClick={() => myWidget.open()} variant="primary">
+            Upload
+          </Button>
+
           <Button type="submit" variant="primary">
             Update
           </Button>
@@ -125,7 +145,10 @@ const ProfilePage = ({ history, location }) => {
 
   const favorite = (
     <>
-      {!userDetails ? (
+      {!userDetails ||
+      userDetails === undefined ||
+      userDetails.user === undefined ||
+      userDetails.user.favorites === undefined ? (
         <Loader />
       ) : (
         userDetails.user.favorites.map((f) => (
@@ -147,6 +170,19 @@ const ProfilePage = ({ history, location }) => {
         ))
       )}
     </>
+  );
+
+  const myWidget = window.cloudinary.createUploadWidget(
+    {
+      cloudName: "nngocjade",
+      uploadPreset: "peachi",
+    },
+    (error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log("Done! Here is the image info: ", result.info);
+        setImageUrl(result.info.url);
+      }
+    }
   );
 
   return (

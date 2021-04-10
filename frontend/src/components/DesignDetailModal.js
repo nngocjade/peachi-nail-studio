@@ -14,15 +14,7 @@ import { listNailDesignDetails } from "../redux/actions/nailDesignActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 
-const DesignDetailModal = ({
-  handleClose,
-  show,
-  match,
-  history,
-  choosenId,
-}) => {
-  console.log(match);
-
+const DesignDetailModal = ({ handleClose, show, history, choosenId }) => {
   const dispatch = useDispatch();
 
   const nailDesignDetails = useSelector((state) => state.nailDesignDetails);

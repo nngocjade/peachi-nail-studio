@@ -27,6 +27,12 @@ const userSchema = mongoose.Schema(
       required: true,
       default: false,
     },
+    imageUrl: {
+      type: String,
+      required: true,
+      default:
+        "https://pbs.twimg.com/profile_images/602729491916435458/hSu0UjMC_400x400.jpg",
+    },
     favorites: [{ type: mongoose.Schema.Types.ObjectId, ref: "NailDesign" }],
   },
   {
