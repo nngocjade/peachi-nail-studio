@@ -1,0 +1,14 @@
+.blog-post-detail .text-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.blog-post-detail .artist-date {
+  display: flex;
+  justify-content: space-between;
+}
+
+.blog-post-detail .last-updated {
+  color: lightgray;
+}
