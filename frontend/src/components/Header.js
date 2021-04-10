@@ -38,7 +38,7 @@ const Header = () => {
               <Nav.Link href="/blog">Blog</Nav.Link>
               {userInfo && !userInfo.isAdmin ? (
                 <NavDropdown title={userInfo.name} id="username">
-                  <LinkContainer to="/profile/:id">
+                  <LinkContainer to="/profile">
                     <NavDropdown.Item>Profile</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
@@ -54,7 +54,7 @@ const Header = () => {
               )}
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown title="Admin" id="adminmenu">
-                  <LinkContainer to="/profile/:id">
+                  <LinkContainer to="/profile">
                     <NavDropdown.Item>Admin Profile</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to="/admin/userlist">

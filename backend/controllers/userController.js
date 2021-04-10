@@ -67,17 +67,15 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/profile
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.user._id);
+  let user = await (
+    await User.findOne({ _id: req.user._id }).populate("NailDesign")
+  ).execPopulate();
+  // user = await user.populate("NailDesign").execPopulate();
 
   console.log("user", user);
 
   if (user) {
-    res.json({
-      _id: user._id,
-      name: user.name,
-      email: user.email,
-      isAdmin: user.isAdmin,
-    });
+    res.json(user);
   } else {
     res.status(404);
     throw new Error("User not found");
@@ -156,7 +154,7 @@ const deleteUser = asyncHandler(async (req, res) => {
 // // @route             Get /api/users/:id
 // // @access            Private/Admin
 const getUserById = asyncHandler(async (req, res) => {
-  const user = await await User.findById(req.params.id).select("-password");
+  const user = await User.findById(req.params.id).select("-password");
 
   if (user) {
     res.json(user);
@@ -220,8 +218,8 @@ const addToFavorite = asyncHandler(async (req, res) => {
       },
       { new: true }
     );
-    user = await user.populate("nailDesign").execPopulate();
-
+    user = await user.populate("NailDesign").execPopulate();
+    console.log("user", user);
     res.json(user);
   } else {
     res.status(404);
