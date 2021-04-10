@@ -56,6 +56,6 @@ const nailDesignSchema = mongoose.Schema(
   }
 );
 
-const nailDesign = mongoose.model("nailDesign", nailDesignSchema);
+const NailDesign = mongoose.model("NailDesign", nailDesignSchema);
 
-module.exports = nailDesign;
+module.exports = NailDesign;
