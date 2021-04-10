@@ -34,7 +34,7 @@ const BlogPostDetailPage = ({ match, history }) => {
           <div>{blogPost.description}</div>
           <div className="artist-date">
             <div className="last-updated">
-              <Moment fromNow>{blogPost.updatedAt}</Moment>
+              Last updated: <Moment fromNow>{blogPost.updatedAt}</Moment>
             </div>
             <div>
               {blogPost.creator}

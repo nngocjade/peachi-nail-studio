@@ -67,9 +67,7 @@ const registerUser = asyncHandler(async (req, res) => {
 // @route   GET /api/users/profile
 // @access  Private
 const getUserProfile = asyncHandler(async (req, res) => {
-  let user = await (
-    await User.findOne({ _id: req.user._id }).populate("NailDesign")
-  ).execPopulate();
+  let user = await User.findOne({ _id: req.user._id }).populate("favorites");
   // user = await user.populate("NailDesign").execPopulate();
 
   console.log("user", user);
