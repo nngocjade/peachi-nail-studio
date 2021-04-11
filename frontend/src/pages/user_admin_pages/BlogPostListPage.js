@@ -59,6 +59,12 @@ const BlogPostListPage = ({ history, match }) => {
     }
   };
 
+  const truncateText = (text, textLength) => {
+    if (text.length > 20) {
+      return text.slice(0, textLength - 1) + "...";
+    } else return text;
+  };
+
   return (
     <>
       <Row className="align-items-center">
@@ -99,9 +105,9 @@ const BlogPostListPage = ({ history, match }) => {
                 <tr key={blogPost._id}>
                   <td>{blogPost._id}</td>
                   <td>{blogPost.title}</td>
-                  <td>{blogPost.body}</td>
+                  <td>{truncateText(blogPost.body, 50)}</td>
                   <td>{blogPost.author}</td>
-                  <td>{blogPost.imageUrl}</td>
+                  <td>{truncateText(blogPost.imageUrl, 50)}</td>
                   <td>{blogPost.likeCount}</td>
                   <td>{blogPost.updatedAt}</td>
                   <td>
