@@ -130,3 +130,7 @@ footer {
 /* ::-webkit-scrollbar {
     display: none;
   } */
+
+.image-input-wrapper {
+  display: flex;
+}

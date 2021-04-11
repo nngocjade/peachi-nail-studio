@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { BLOGPOST_UPDATE_RESET } from "../../redux/constants/blogPostConstants";
 import Message from "../../components/Message";
+import UpdateButton from "../../components/UpdateButton";
 
 const BlogPostEditPage = ({ match, history }) => {
   const blogPostId = match.params.id;
@@ -82,7 +83,7 @@ const BlogPostEditPage = ({ match, history }) => {
           <Link to="/admin/blogPostList" className="btn btn-light my-3">
             Go Back
           </Link>
-          <h1>Edit Blog Post</h1>
+          <h1 className="text-center">Edit Blog Post</h1>
           {loadingUpdate && <Loader />}
           {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
           {loading ? (
@@ -91,7 +92,6 @@ const BlogPostEditPage = ({ match, history }) => {
             <Message variant="danger">{error}</Message>
           ) : !loading ? (
             <>
-              <h2>Form:</h2>
               <Form onSubmit={submitHandler}>
                 {/* Title */}
                 <Form.Group controlId="title">
@@ -132,20 +132,19 @@ const BlogPostEditPage = ({ match, history }) => {
                 {/* IMAGE */}
                 <Form.Group controlId="image">
                   <Form.Label>Image</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter image url or upload"
-                    value={imageUrl}
-                    onChange={(e) => setImageUrl(e.target.value)}
-                  ></Form.Control>
+                  <div className="image-input-wrapper">
+                    <Form.Control
+                      type="text"
+                      placeholder="Enter image url or upload"
+                      value={imageUrl}
+                      onChange={(e) => setImageUrl(e.target.value)}
+                    ></Form.Control>
+                    <Button onClick={() => myWidget.open()} variant="primary">
+                      Upload
+                    </Button>
+                  </div>
                 </Form.Group>
-                <Button onClick={() => myWidget.open()} variant="primary">
-                  Upload
-                </Button>
-
-                <Button variant="primary" type="submit">
-                  Update
-                </Button>
+                <UpdateButton />
               </Form>
             </>
           ) : (
