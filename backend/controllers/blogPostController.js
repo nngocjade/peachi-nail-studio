@@ -5,7 +5,9 @@ const BlogPost = require("../models/blogPostModel");
 
 const getBlogPosts = asyncHandler(async (req, res) => {
   try {
-    const blogPosts = await BlogPost.find({});
+    const blogPosts = await BlogPost.find({}).sort({
+      createdAt: -1,
+    });
 
     console.log("blogPosts", blogPosts);
 
