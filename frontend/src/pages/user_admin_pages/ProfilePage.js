@@ -76,17 +76,7 @@ const ProfilePage = ({ history, location }) => {
         {success && <Message variant="success">Profile Updated</Message>}
         {loading && <Loader />}
         <Form onSubmit={submitHandler}>
-          {!imageUrl ? (
-            <Loader />
-          ) : (
-            <Image
-              src={
-                imageUrl
-                // ? "https://pbs.twimg.com/profile_images/602729491916435458/hSu0UjMC_400x400.jpg"
-                // : imageUrl
-              }
-            />
-          )}
+          {!imageUrl ? <Loader /> : <Image src={imageUrl} />}
           {/* NAME */}
           <Form.Group controlId="name">
             <Form.Label>Name</Form.Label>

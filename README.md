@@ -16,6 +16,7 @@ Created with love by: Jade
 - npm i multer (image upload)
 - npm i body-parser
 - npm i cors
+- npm i cloudinary cloudinary-react
 
 ## FRONTEND Folder
 

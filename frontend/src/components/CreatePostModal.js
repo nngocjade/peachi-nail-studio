@@ -42,6 +42,20 @@ const CreatePostModal = ({ handleClose, show, setShow }) => {
     setShow(false);
   };
 
+  // ============== CLOUDINARY IMAGE UPLOAD ==============
+  const myWidget = window.cloudinary.createUploadWidget(
+    {
+      cloudName: "nngocjade",
+      uploadPreset: "peachi",
+    },
+    (error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log("Done! Here is the image info: ", result.info);
+        setImageUrl(result.info.url);
+      }
+    }
+  );
+
   return (
     <>
       <Modal show={show} onHide={handleClose} animation={false}>
@@ -92,15 +106,20 @@ const CreatePostModal = ({ handleClose, show, setShow }) => {
             </Form.Group>
 
             {/* IMAGE */}
-            <Form.Group controlId="image">
-              <Form.Label>Image</Form.Label>
-              <Form.Control
-                type="text"
-                placeholder="Enter image url"
-                // value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-              ></Form.Control>
-            </Form.Group>
+            <div>
+              <Form.Group controlId="image">
+                <Form.Label>Image</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Past image url here or click upload"
+                  value={imageUrl}
+                  onChange={(e) => setImageUrl(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+              <Button onClick={() => myWidget.open()} variant="primary">
+                Upload
+              </Button>
+            </div>
 
             <Button variant="primary" type="submit">
               Update

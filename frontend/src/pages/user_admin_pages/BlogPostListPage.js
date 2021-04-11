@@ -86,11 +86,10 @@ const BlogPostListPage = ({ history, match }) => {
               <tr>
                 <th>ID</th>
                 <th>TITLE</th>
-                <th>DESCRIPTION</th>
-                <th>CREATOR</th>
-                <th>IMAGE</th>
-                <th>LINK COUNT</th>
-                <th>CREATED AT</th>
+                <th>BODY</th>
+                <th>AUTHOR</th>
+                <th>IMAGE URL</th>
+                <th>LIKE COUNT</th>
                 <th>LAST UPDATED</th>
                 <th></th>
               </tr>
@@ -100,11 +99,10 @@ const BlogPostListPage = ({ history, match }) => {
                 <tr key={blogPost._id}>
                   <td>{blogPost._id}</td>
                   <td>{blogPost.title}</td>
-                  <td>{blogPost.description}</td>
-                  <td>{blogPost.creator}</td>
-                  <td>{blogPost.image}</td>
+                  <td>{blogPost.body}</td>
+                  <td>{blogPost.author}</td>
+                  <td>{blogPost.imageUrl}</td>
                   <td>{blogPost.likeCount}</td>
-                  <td>{blogPost.createdAt}</td>
                   <td>{blogPost.updatedAt}</td>
                   <td>
                     <LinkContainer to={`/admin/blogPosts/${blogPost._id}/edit`}>

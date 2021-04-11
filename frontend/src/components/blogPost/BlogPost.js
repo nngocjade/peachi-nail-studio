@@ -7,11 +7,11 @@ const BlogPost = ({ blogPost }) => {
     <>
       <Card style={{ width: "100%" }}>
         <Link to={`/blogPost/${blogPost._id}`}>
-          <Card.Img variant="top" src={blogPost.image} />
+          <Card.Img variant="top" src={blogPost.imageUrl} />
         </Link>
         <Card.Body>
           <Card.Title>{blogPost.title}</Card.Title>
-          <Card.Text>{blogPost.description}</Card.Text>
+          <Card.Text>{blogPost.body}</Card.Text>
         </Card.Body>
         <Card.Body>
           <Link to={`/blogPost/${blogPost._id}`}> More details...</Link>
