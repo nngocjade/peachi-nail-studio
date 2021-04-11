@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import { createBlogPost } from "../redux/actions/blogPostActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import UpdateButton from "./UpdateButton";
 
 const CreatePostModal = ({ handleClose, show, setShow }) => {
   const [title, setTitle] = useState("");
@@ -107,26 +108,29 @@ const CreatePostModal = ({ handleClose, show, setShow }) => {
             </Form.Group>
 
             {/* IMAGE */}
-            <div>
-              <Form.Group controlId="image">
-                <Form.Label>Image</Form.Label>
+            <Form.Group controlId="image">
+              <Form.Label>Image</Form.Label>
+              <div
+                style={{
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                }}
+              >
                 <Form.Control
                   type="text"
-                  placeholder="Past image url here or click upload"
+                  placeholder="Paste image url here or click upload"
                   value={imageUrl}
                   onChange={(e) => setImageUrl(e.target.value)}
                 ></Form.Control>
-              </Form.Group>
-              <Button onClick={() => myWidget.open()} variant="primary">
-                Upload
-              </Button>
-            </div>
-
-            <Button variant="primary" type="submit">
-              Update
-            </Button>
+                <Button onClick={() => myWidget.open()} variant="primary">
+                  Upload
+                </Button>
+              </div>
+            </Form.Group>
+            <UpdateButton />
           </Form>
-          {/* )} */}
         </Modal.Body>
       </Modal>
     </>
