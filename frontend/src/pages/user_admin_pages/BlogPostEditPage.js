@@ -14,12 +14,12 @@ import Message from "../../components/Message";
 const BlogPostEditPage = ({ match, history }) => {
   const blogPostId = match.params.id;
 
-  const [title, setTitle] = useState("title");
-  const [description, setDescription] = useState("sample description");
-  const [creator, setCreator] = useState("creator");
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
   const [tags, setTags] = useState([]);
-  const [image, setImage] = useState("");
-  const [uploading, setUploading] = useState(false);
+  const [imageUrl, setImageUrl] = useState("");
+
+  const tagValue = ["tips", "everyday", "pattern", "abstract", "wedding"];
 
   const dispatch = useDispatch();
 
@@ -42,35 +42,11 @@ const BlogPostEditPage = ({ match, history }) => {
       dispatch(listBlogPostDetails(blogPostId));
     } else {
       setTitle(blogPost.title);
-      setDescription(blogPost.description);
-      setCreator(blogPost.creator);
+      setBody(blogPost.body);
       setTags(blogPost.tags);
-      setImage(blogPost.image);
+      setImageUrl(blogPost.imageUrl);
     }
   }, [dispatch, blogPostId, blogPost._id, history, blogPost, successUpdate]);
-
-  const uploadFileHandler = async (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("image", file);
-    setUploading(true);
-
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
-
-      const { data } = await axios.post("/api/upload", formData, config);
-
-      setImage(data);
-      setUploading(false);
-    } catch (error) {
-      console.error(error);
-      setUploading(false);
-    }
-  };
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -78,13 +54,27 @@ const BlogPostEditPage = ({ match, history }) => {
       updateBlogPost({
         _id: blogPostId,
         title,
-        description,
-        image,
+        body,
+        imageUrl,
         tags,
-        creator,
       })
     );
   };
+
+  // ============== CLOUDINARY IMAGE UPLOAD ==============
+  const myWidget = window.cloudinary.createUploadWidget(
+    {
+      cloudName: "nngocjade",
+      uploadPreset: "peachi",
+    },
+    (error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log("Done! Here is the image info: ", result.info);
+        setImageUrl(result.info.url);
+      }
+    }
+  );
+
   return (
     <Container>
       <Row>
@@ -114,37 +104,29 @@ const BlogPostEditPage = ({ match, history }) => {
                   ></Form.Control>
                 </Form.Group>
 
-                {/* DESCRIPTION */}
-                <Form.Group controlId="description">
-                  <Form.Label>Description</Form.Label>
+                {/* BODY */}
+                <Form.Group controlId="body">
+                  <Form.Label>Body</Form.Label>
                   <Form.Control
-                    type="text"
-                    placeholder="Enter description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
-
-                {/* CREATOR */}
-                <Form.Group controlId="creator">
-                  <Form.Label>Creator</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter creator name"
-                    value={creator}
-                    onChange={(e) => setCreator(e.target.value)}
-                  ></Form.Control>
+                    as="textarea"
+                    rows={3}
+                    placeholder="Enter body text"
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
+                  />
                 </Form.Group>
 
                 {/* TAGS */}
                 <Form.Group controlId="tags">
                   <Form.Label>Tags</Form.Label>
                   <Form.Control
-                    type="text"
-                    placeholder="Enter tags"
-                    value={tags}
+                    as="select"
                     onChange={(e) => setTags(e.target.value)}
-                  ></Form.Control>
+                  >
+                    {tagValue.map((tag) => (
+                      <option>{tag}</option>
+                    ))}
+                  </Form.Control>
                 </Form.Group>
 
                 {/* IMAGE */}
@@ -152,18 +134,14 @@ const BlogPostEditPage = ({ match, history }) => {
                   <Form.Label>Image</Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter image url"
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
+                    placeholder="Enter image url or upload"
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
                   ></Form.Control>
-                  <Form.File
-                    id="image-file"
-                    label="Choose File"
-                    custom
-                    onChange={uploadFileHandler}
-                  ></Form.File>
-                  {uploading && <Loader />}
                 </Form.Group>
+                <Button onClick={() => myWidget.open()} variant="primary">
+                  Upload
+                </Button>
 
                 <Button variant="primary" type="submit">
                   Update

@@ -21,7 +21,7 @@ const getBlogPosts = asyncHandler(async (req, res) => {
 // @route             GET /api/blogPosts/:id
 // @access            Public
 const getBlogPostById = asyncHandler(async (req, res) => {
-  const blogPost = await BlogPost.findById(req.params.id);
+  const blogPost = await BlogPost.findById(req.params.id).populate("author");
   if (blogPost) {
     res.json(blogPost);
   } else {
@@ -71,16 +71,15 @@ const createBlogPost = asyncHandler(async (req, res) => {
 // ====================== UPDATE BLOG POST ====================
 
 const updateBlogPost = asyncHandler(async (req, res) => {
-  const { title, description, creator, tags, image } = req.body;
+  const { title, body, tags, imageUrl } = req.body;
 
   const blogPost = await BlogPost.findById(req.params.id);
 
   if (blogPost) {
     blogPost.title = title;
-    blogPost.description = description;
+    blogPost.body = body;
     blogPost.tags = tags;
-    blogPost.image = image;
-    blogPost.creator = creator;
+    blogPost.imageUrl = imageUrl;
 
     const updatedBlogPost = await blogPost.save();
     res.json(updatedBlogPost);
