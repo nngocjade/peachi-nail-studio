@@ -12,6 +12,9 @@ const BlogPostDetailPage = ({ match, history }) => {
   const blogPostDetails = useSelector((state) => state.blogPostDetails);
   const { loading, error, blogPost } = blogPostDetails;
 
+  console.log("blogPostDetails", blogPost);
+  // console.log("blogPostAuthorImage", blogPost.author.imageUrl);
+
   useEffect(() => {
     dispatch(listBlogPostDetails(match.params.id));
   }, [dispatch, match]);
@@ -22,7 +25,7 @@ const BlogPostDetailPage = ({ match, history }) => {
         <Col className="image">
           <Image
             style={{ width: "30rem", borderRadius: "50%" }}
-            src={blogPost.image}
+            src={blogPost.imageUrl}
           />
         </Col>
         <Col className="text-body">
@@ -31,7 +34,7 @@ const BlogPostDetailPage = ({ match, history }) => {
               <strong>{blogPost.title}</strong>
             </h2>
           </div>
-          <div>{blogPost.description}</div>
+          <div>{blogPost.body}</div>
           <div className="artist-date">
             <div className="last-updated">
               Last updated: <Moment fromNow>{blogPost.updatedAt}</Moment>
@@ -40,7 +43,7 @@ const BlogPostDetailPage = ({ match, history }) => {
               {blogPost.creator}
               <Image
                 style={{ with: "10em", height: "10em" }}
-                src={AuthorIcon}
+                // src={blogPost.author.imageUrl}
               />
             </div>
           </div>

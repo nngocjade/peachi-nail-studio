@@ -80,15 +80,16 @@ const CreatePostModal = ({ handleClose, show, setShow }) => {
               ></Form.Control>
             </Form.Group>
 
-            {/* DESCRIPTION */}
-            <Form.Group controlId="description">
+            {/* BODY */}
+            <Form.Group controlId="body">
               <Form.Label>Body</Form.Label>
               <Form.Control
-                type="text"
-                placeholder="Enter body"
-                // value={body}
+                as="textarea"
+                rows={3}
+                placeholder="Enter body text"
+                value={body}
                 onChange={(e) => setBody(e.target.value)}
-              ></Form.Control>
+              />
             </Form.Group>
 
             {/* TAGS */}
