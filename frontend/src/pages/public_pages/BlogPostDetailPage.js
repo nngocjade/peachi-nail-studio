@@ -4,7 +4,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { listBlogPostDetails } from "../../redux/actions/blogPostActions";
 import "../../css/BlogPostDetail.css";
 import Moment from "react-moment";
-import AuthorIcon from "../../images/girl-svgrepo-com.svg";
 import Loader from "../../components/Loader";
 
 const BlogPostDetailPage = ({ match, history }) => {
