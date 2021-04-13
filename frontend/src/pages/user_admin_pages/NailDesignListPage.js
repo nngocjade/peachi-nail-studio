@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button, Row, Col } from "react-bootstrap";
+import { Table, Button, Row, Col, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
@@ -70,7 +70,7 @@ const NailDesignListPage = ({ history, match }) => {
   };
 
   return (
-    <>
+    <div className="admin-nail-design-list">
       <Row className="align-items-center">
         <Col>
           <h1>Nail Design List</h1>
@@ -97,6 +97,7 @@ const NailDesignListPage = ({ history, match }) => {
                 <th>ID</th>
                 <th>NAME</th>
                 <th>CATEGORY</th>
+                <th>IMAGE</th>
                 <th>STYLE</th>
                 <th>DESCRIPTION</th>
                 <th></th>
@@ -108,6 +109,15 @@ const NailDesignListPage = ({ history, match }) => {
                   <td>{nailDesign._id}</td>
                   <td>{nailDesign.name}</td>
                   <td>{nailDesign.category}</td>
+                  <td>
+                    <div className="image-wrapper">
+                      <Image
+                        className="small-image"
+                        src={nailDesign.image}
+                        alt="nail design image"
+                      />
+                    </div>
+                  </td>
                   <td>{nailDesign.style}</td>
                   <td>{nailDesign.description}</td>
                   <td>
@@ -133,7 +143,7 @@ const NailDesignListPage = ({ history, match }) => {
           <Paginate pages={pages} page={page} isAdmin={true} />
         </>
       )}
-    </>
+    </div>
   );
 };
 
