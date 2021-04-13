@@ -21,11 +21,15 @@ import { logout } from "./userActions";
 
 // =========== LIST BLOG POSTS ACTION ==================
 
-export const listBlogPosts = () => async (dispatch) => {
+export const listBlogPosts = (keyword = " ", pageNumber = " ") => async (
+  dispatch
+) => {
   try {
     dispatch({ type: BLOGPOST_LIST_REQUEST });
 
-    const { data } = await axios.get("/api/blogPosts");
+    const { data } = await axios.get(
+      `/api/blogPosts?keyword=${keyword}&pageNumber=${pageNumber}`
+    );
 
     console.log("list blog posts", data);
 

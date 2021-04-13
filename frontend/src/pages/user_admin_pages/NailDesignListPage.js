@@ -74,6 +74,7 @@ const NailDesignListPage = ({ history, match }) => {
       <Row className="align-items-center">
         <Col>
           <h1>Nail Design List</h1>
+          <Paginate pages={pages} page={page} isAdmin={true} />
         </Col>
         <Col className="text-right">
           <Button className="my-3" onClick={createDesignHandler}>
@@ -140,7 +141,6 @@ const NailDesignListPage = ({ history, match }) => {
               ))}
             </tbody>
           </Table>
-          <Paginate pages={pages} page={page} isAdmin={true} />
         </>
       )}
     </div>

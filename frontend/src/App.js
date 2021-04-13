@@ -62,6 +62,12 @@ const App = () => {
 
           <Route
             exact
+            path="/admin/blogPostList/:pageNumber"
+            component={BlogPostListPage}
+          />
+
+          <Route
+            exact
             path="/admin/blogPostList"
             component={BlogPostListPage}
           />

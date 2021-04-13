@@ -12,8 +12,11 @@ import {
 import { BLOGPOST_CREATE_RESET } from "../../redux/constants/blogPostConstants";
 import CreatePostModal from "../../components/CreatePostModal";
 import "../../css/Admin.css";
+import BlogPaginate from "../../components/BlogPaginate";
 
 const BlogPostListPage = ({ history, match }) => {
+  const pageNumber = match.params.pageNumber || 1;
+
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -22,7 +25,9 @@ const BlogPostListPage = ({ history, match }) => {
   const dispatch = useDispatch();
 
   const blogPostList = useSelector((state) => state.blogPostList);
-  const { loading, error, blogPosts } = blogPostList;
+  const { loading, error, blogPosts, page, pages } = blogPostList;
+
+  console.log("blog posts", blogPosts);
 
   const blogPostDelete = useSelector((state) => state.blogPostDelete);
   const {
@@ -49,10 +54,10 @@ const BlogPostListPage = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/blogPostList`);
     } else {
-      dispatch(listBlogPosts());
+      dispatch(listBlogPosts(" ", pageNumber));
     }
     // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
-  }, [dispatch, history, userInfo, successCreate, successDelete]);
+  }, [dispatch, history, userInfo, successCreate, successDelete, pageNumber]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {
@@ -71,6 +76,7 @@ const BlogPostListPage = ({ history, match }) => {
       <Row className="align-items-center">
         <Col>
           <h1>Blog Post List</h1>
+          <BlogPaginate pages={pages} page={page} isAdmin={true} />
         </Col>
         <Col className="text-right">
           <Button className="my-3" onClick={() => handleShow()}>

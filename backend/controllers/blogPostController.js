@@ -5,13 +5,33 @@ const BlogPost = require("../models/blogPostModel");
 
 const getBlogPosts = asyncHandler(async (req, res) => {
   try {
-    const blogPosts = await BlogPost.find({}).sort({
-      createdAt: -1,
-    });
+    const pageSize = 3;
+    const page = Number(req.query.pageNumber) || 1;
 
-    console.log("blogPosts", blogPosts);
+    console.log(`keyword '${req.query.keyword}'`);
 
-    res.status(200).json(blogPosts);
+    // const keyword = req.query.keyword
+    //   ? {
+    //       name: {
+    //         $regex: req.query.keyword,
+    //         $options: "i",
+    //       },
+    //     }
+    //   : {};
+
+    const count = await BlogPost.countDocuments();
+
+    console.log("count", count);
+    const blogPosts = await BlogPost.find({})
+      .sort({
+        createdAt: -1,
+      })
+      .limit(pageSize)
+      .skip(pageSize * (page - 1));
+
+    res
+      .status(200)
+      .json({ blogPosts, page, pages: Math.ceil(count / pageSize) });
   } catch (error) {
     res.status(404).json({ message: error.message });
   }
