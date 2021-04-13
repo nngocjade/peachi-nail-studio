@@ -1,5 +1,6 @@
 /* =========== BLOG POST IMAGE ========== */
-.admin-blog-post-list .image-wrapper {
+.admin-blog-post-list .image-wrapper,
+.admin-nail-design-list .image-wrapper {
   display: inline-block;
   position: relative;
   width: 200px;
@@ -7,7 +8,8 @@
   overflow: hidden;
   border-radius: 50%;
 }
-.admin-blog-post-list .image-wrapper .small-image {
+.admin-blog-post-list .image-wrapper .small-image,
+.admin-nail-design-list .image-wrapper .small-image {
   /* PORTRAIT image: height: auto , width: 100%  */
   /* LANDSCAPE image: width: auto , height: 100%  (can also set a margin left or right to push image to the desired position)  */
   height: auto;
