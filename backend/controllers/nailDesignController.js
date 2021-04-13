@@ -24,6 +24,7 @@ const getNailDesigns = asyncHandler(async (req, res) => {
   const count = await NailDesign.countDocuments({ ...keyword });
 
   const nailDesigns = await NailDesign.find({ ...keyword })
+    .sort({ createdAt: -1 })
     .limit(pageSize)
     .skip(pageSize * (page - 1));
 
