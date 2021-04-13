@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button, Row, Col } from "react-bootstrap";
+import { Table, Button, Row, Col, Image } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
@@ -11,6 +11,7 @@ import {
 } from "../../redux/actions/blogPostActions";
 import { BLOGPOST_CREATE_RESET } from "../../redux/constants/blogPostConstants";
 import CreatePostModal from "../../components/CreatePostModal";
+import "../../css/Admin.css";
 
 const BlogPostListPage = ({ history, match }) => {
   const [show, setShow] = useState(false);
@@ -66,7 +67,7 @@ const BlogPostListPage = ({ history, match }) => {
   };
 
   return (
-    <>
+    <div className="admin-blog-post-list">
       <Row className="align-items-center">
         <Col>
           <h1>Blog Post List</h1>
@@ -107,7 +108,15 @@ const BlogPostListPage = ({ history, match }) => {
                   <td>{blogPost.title}</td>
                   <td>{truncateText(blogPost.body, 50)}</td>
                   <td>{blogPost.author}</td>
-                  <td>{truncateText(blogPost.imageUrl, 50)}</td>
+                  <td>
+                    <div className="image-wrapper">
+                      <Image
+                        className="small-image"
+                        src={blogPost.imageUrl}
+                        alt="blog post image"
+                      />
+                    </div>
+                  </td>
                   <td>{blogPost.likeCount}</td>
                   <td>{blogPost.updatedAt}</td>
                   <td>
@@ -135,7 +144,7 @@ const BlogPostListPage = ({ history, match }) => {
           />
         </>
       )}
-    </>
+    </div>
   );
 };
 
