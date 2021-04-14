@@ -27,6 +27,7 @@ const App = () => {
         <Container fluid>
           <Route exact path="/about" component={AboutPage} />
 
+          {/* ==================== NAIL GALLERY ================== */}
           <Route exact path="/nailGallery" component={NailGalleryPage} />
           <Route
             exact
@@ -38,12 +39,18 @@ const App = () => {
             path="/nail/page/:pageNumber"
             component={NailGalleryPage}
           />
-          <Route exact path="/blog/page/:pageNumber" component={BlogPage} />
           <Route
             exact
             path="/nail/search/:keyword/page/:pageNumber"
             component={NailGalleryPage}
           />
+
+          {/* ============ BLOG PAGE ============ */}
+          <Route exact path="/blog" component={BlogPage} />
+
+          <Route exact path="/blog/search/:keyword" component={BlogPage} />
+
+          <Route exact path="/blog/page/:pageNumber" component={BlogPage} />
 
           <Route
             exact
@@ -51,7 +58,6 @@ const App = () => {
             component={BlogPage}
           />
 
-          <Route exact path="/blog" component={BlogPage} />
           <Route exact path="/blogPost/:id" component={BlogPostDetailPage} />
 
           <Route exact path="/reservation" component={ReservationPage} />

@@ -10,7 +10,7 @@ import "../../css/Masonry.css";
 import SearchBox from "../../components/SearchBox";
 import { Route } from "react-router";
 import "../../css/Gallery.css";
-import Paginate from "../../components/Paginate";
+import NailPaginate from "../../components/NailPaginate";
 import DesignDetailModal from "../../components/DesignDetailModal";
 
 const NailGalleryPage = ({ match, history }) => {
@@ -85,7 +85,11 @@ const NailGalleryPage = ({ match, history }) => {
             ))}
           </Masonry>
         )}
-        <Paginate pages={pages} page={page} keyword={keyword ? keyword : " "} />
+        <NailPaginate
+          pages={pages}
+          page={page}
+          keyword={keyword ? keyword : " "}
+        />
       </Container>
       <DesignDetailModal
         handleClose={handleClose}

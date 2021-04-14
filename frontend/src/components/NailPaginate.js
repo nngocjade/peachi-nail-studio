@@ -3,7 +3,7 @@ import { Pagination } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "../css/Paginate.css";
 
-const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
+const NailPaginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   return (
     pages > 1 && (
       <Pagination>
@@ -26,4 +26,4 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   );
 };
 
-export default Paginate;
+export default NailPaginate;

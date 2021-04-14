@@ -7,8 +7,9 @@ import { Route } from "react-router";
 import SearchBox from "../../components/SearchBox";
 import BlogPaginate from "../../components/BlogPaginate";
 
-const BlogPage = ({ match }) => {
-  const keyword = match.params.keyword;
+const BlogPage = ({ match, history }) => {
+  const matchedKeyword = match.params.keyword;
+  const [keyword, setKeyword] = useState("");
 
   const pageNumber = match.params.pageNumber || 1;
 
@@ -19,8 +20,21 @@ const BlogPage = ({ match }) => {
   const { loading, error, blogPosts, page, pages } = blogPostList;
 
   useEffect(() => {
-    dispatch(listBlogPosts(keyword, pageNumber));
-  }, [dispatch, keyword, pageNumber]);
+    dispatch(listBlogPosts(matchedKeyword, pageNumber));
+  }, [dispatch, matchedKeyword, pageNumber]);
+
+  // ================ SEARCH BOX SUBMIT =======================
+  // ================ SEARCH BOX SUBMIT =======================
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (keyword.trim()) {
+      history.push(`/blog/search/${keyword}`);
+    } else {
+      history.push("/blog");
+    }
+  };
+
+  console.log("blgo page keyword", keyword);
 
   return (
     <Container>
@@ -30,7 +44,15 @@ const BlogPage = ({ match }) => {
           <BlogPost blogPost={blogPost} />
         </Col>
       ))}
-      {/* <Route render={({ history }) => <SearchBox history={history} />} /> */}
+      <Route
+        render={({ history }) => (
+          <SearchBox
+            history={history}
+            submitHandler={submitHandler}
+            setKeyword={setKeyword}
+          />
+        )}
+      />
       <BlogPaginate
         pages={pages}
         page={page}
