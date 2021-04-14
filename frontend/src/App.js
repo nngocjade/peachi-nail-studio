@@ -30,10 +30,17 @@ const App = () => {
           <Route exact path="/nailGallery" component={NailGalleryPage} />
           <Route exact path="/search/:keyword" component={NailGalleryPage} />
           <Route exact path="/page/:pageNumber" component={NailGalleryPage} />
+          <Route exact path="/blog/page/:pageNumber" component={BlogPage} />
           <Route
             exact
             path="/search/:keyword/page/:pageNumber"
             component={NailGalleryPage}
+          />
+
+          <Route
+            exact
+            path="/blog/search/:keyword/page/:pageNumber"
+            component={BlogPage}
           />
 
           <Route exact path="/blog" component={BlogPage} />
