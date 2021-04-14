@@ -14,8 +14,8 @@ const BlogPaginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
             to={
               !isAdmin
                 ? keyword
-                  ? `/search/${keyword}/page/${x + 1}`
-                  : `/page/${x + 1}`
+                  ? `/blog/search/${keyword}/page/${x + 1}`
+                  : `/blog/page/${x + 1}`
                 : `/admin/blogPostList/${x + 1}`
             }
           >

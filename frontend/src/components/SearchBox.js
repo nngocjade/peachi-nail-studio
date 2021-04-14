@@ -21,7 +21,7 @@ const SearchBox = ({ history }) => {
         onChange={(e) => setKeyword(e.target.value)}
         placeholder="Search design..."
         className="search-txt"
-        autocomplete="off"
+        autoComplete="off"
       ></Form.Control>
       <Button type="submit" className="p-2 search-btn">
         <i class="fas fa-search"></i>

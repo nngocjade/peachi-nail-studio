@@ -52,7 +52,11 @@ const NailGalleryPage = ({ match, history }) => {
   return (
     <>
       <Container className="nail-gallery" fluid="md">
-        <Route render={({ history }) => <SearchBox history={history} />} />
+        <Route
+          render={({ history }) => (
+            <SearchBox history={history} nailDesigns={nailDesigns} />
+          )}
+        />
         {loading ? (
           <Loader />
         ) : error ? (
