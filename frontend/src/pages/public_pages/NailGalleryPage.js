@@ -15,7 +15,7 @@ import DesignDetailModal from "../../components/DesignDetailModal";
 
 const NailGalleryPage = ({ match, history }) => {
   const [choosenId, setChoosenId] = useState("");
-
+  const [keyword, setKeyword] = useState("");
   const [show, setShow] = useState(false);
 
   const handleClose = () => {
@@ -27,7 +27,7 @@ const NailGalleryPage = ({ match, history }) => {
     setShow(true);
     setChoosenId(id);
   };
-  const keyword = match.params.keyword;
+  const matchedKeyword = match.params.keyword;
 
   const pageNumber = match.params.pageNumber || 1;
 
@@ -40,13 +40,22 @@ const NailGalleryPage = ({ match, history }) => {
   const { loading, error, nailDesigns, page, pages } = nailDesignList;
 
   useEffect(() => {
-    dispatch(listNailDesigns(keyword, pageNumber));
-  }, [dispatch, keyword, pageNumber]);
+    dispatch(listNailDesigns(matchedKeyword, pageNumber));
+  }, [dispatch, matchedKeyword, pageNumber]);
 
   const breakpoints = {
     default: 3,
     1100: 2,
     700: 1,
+  };
+  // ================ SEARCH BOX SUBMIT =======================
+  const submitHandler = (e) => {
+    e.preventDefault();
+    if (keyword.trim()) {
+      history.push(`/nail/search/${keyword}`);
+    } else {
+      history.push("/nailGallery");
+    }
   };
 
   return (
@@ -54,7 +63,11 @@ const NailGalleryPage = ({ match, history }) => {
       <Container className="nail-gallery" fluid="md">
         <Route
           render={({ history }) => (
-            <SearchBox history={history} nailDesigns={nailDesigns} />
+            <SearchBox
+              history={history}
+              submitHandler={submitHandler}
+              setKeyword={setKeyword}
+            />
           )}
         />
         {loading ? (

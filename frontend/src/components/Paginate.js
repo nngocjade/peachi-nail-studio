@@ -13,8 +13,8 @@ const Paginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
             to={
               !isAdmin
                 ? keyword
-                  ? `/search/${keyword}/page/${x + 1}`
-                  : `/page/${x + 1}`
+                  ? `/nail/search/${keyword}/page/${x + 1}`
+                  : `/nail/page/${x + 1}`
                 : `/admin/nailDesignList/${x + 1}`
             }
           >
