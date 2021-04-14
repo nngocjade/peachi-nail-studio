@@ -5,6 +5,7 @@ import "../css/Paginate.css";
 
 const BlogPaginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
   console.log("page and pages", page, pages);
+  console.log("keyword", keyword);
   return (
     pages > 1 && (
       <Pagination>

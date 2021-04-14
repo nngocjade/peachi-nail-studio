@@ -12,17 +12,16 @@ const getBlogPosts = asyncHandler(async (req, res) => {
 
     const keyword = req.query.keyword
       ? {
-          name: {
+          title: {
             $regex: req.query.keyword,
             $options: "i",
           },
         }
       : {};
 
-    const count = await BlogPost.countDocuments();
+    const count = await BlogPost.countDocuments({ ...keyword });
 
-    console.log("count", count);
-    const blogPosts = await BlogPost.find({})
+    const blogPosts = await BlogPost.find({ ...keyword })
       .sort({
         createdAt: -1,
       })
