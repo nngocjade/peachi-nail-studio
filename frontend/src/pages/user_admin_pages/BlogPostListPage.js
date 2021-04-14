@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button, Row, Col, Image } from "react-bootstrap";
+import { Table, Button, Row, Col, Image, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
@@ -13,6 +13,7 @@ import { BLOGPOST_CREATE_RESET } from "../../redux/constants/blogPostConstants";
 import CreatePostModal from "../../components/CreatePostModal";
 import "../../css/Admin.css";
 import BlogPaginate from "../../components/BlogPaginate";
+import "../../css/Table.css";
 
 const BlogPostListPage = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1;
@@ -72,7 +73,7 @@ const BlogPostListPage = ({ history, match }) => {
   };
 
   return (
-    <div className="admin-blog-post-list">
+    <Container className="admin-blog-post-list">
       <Row className="align-items-center">
         <Col>
           <h1>Blog Post List</h1>
@@ -94,7 +95,7 @@ const BlogPostListPage = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Table striped bordered hover responsive className="table-sm">
+          <table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
                 <th>ID</th>
@@ -110,10 +111,10 @@ const BlogPostListPage = ({ history, match }) => {
             <tbody>
               {blogPosts.map((blogPost) => (
                 <tr key={blogPost._id}>
-                  <td>{blogPost._id}</td>
+                  <td>{truncateText(blogPost._id, 10)}</td>
                   <td>{blogPost.title}</td>
                   <td>{truncateText(blogPost.body, 50)}</td>
-                  <td>{blogPost.author}</td>
+                  <td>{truncateText(blogPost.author, 10)}</td>
                   <td>
                     <div className="image-wrapper">
                       <Image
@@ -142,7 +143,7 @@ const BlogPostListPage = ({ history, match }) => {
                 </tr>
               ))}
             </tbody>
-          </Table>
+          </table>
           <CreatePostModal
             handleClose={handleClose}
             show={show}
@@ -150,7 +151,7 @@ const BlogPostListPage = ({ history, match }) => {
           />
         </>
       )}
-    </div>
+    </Container>
   );
 };
 

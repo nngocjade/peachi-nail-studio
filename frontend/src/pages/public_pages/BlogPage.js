@@ -34,10 +34,10 @@ const BlogPage = ({ match, history }) => {
     }
   };
 
-  console.log("blgo page keyword", keyword);
+  console.log("blog page keyword", keyword);
 
   return (
-    <Container>
+    <Container className="blog">
       <h1>POSTS</h1>
       {blogPosts.map((blogPost) => (
         <Col md={6} className="m-5">

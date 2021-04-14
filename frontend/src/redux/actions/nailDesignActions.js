@@ -117,7 +117,13 @@ export const deleteNailDesign = (id) => async (dispatch, getState) => {
 
 // ================ CREATE NAIL DESIGN ACTION =================
 
-export const createNailDesign = () => async (dispatch, getState) => {
+export const createNailDesign = ({
+  name,
+  category,
+  style,
+  imageUrl,
+  description,
+}) => async (dispatch, getState) => {
   try {
     dispatch({
       type: NAILDESIGN_CREATE_REQUEST,
@@ -133,7 +139,11 @@ export const createNailDesign = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/nailDesigns`, {}, config);
+    const { data } = await axios.post(
+      `/api/nailDesigns`,
+      { name, category, style, imageUrl, description },
+      config
+    );
 
     dispatch({
       type: NAILDESIGN_CREATE_SUCCESS,

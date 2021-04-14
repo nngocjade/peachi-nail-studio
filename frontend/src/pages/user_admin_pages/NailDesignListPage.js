@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { LinkContainer } from "react-router-bootstrap";
-import { Table, Button, Row, Col, Image } from "react-bootstrap";
+import { Table, Button, Row, Col, Image, Container } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import Message from "../../components/Message";
 import Loader from "../../components/Loader";
@@ -11,9 +11,17 @@ import {
 } from "../../redux/actions/nailDesignActions";
 import { NAILDESIGN_CREATE_RESET } from "../../redux/constants/nailDesignConstants";
 import NailPaginate from "../../components/NailPaginate";
+import CreateNailModal from "../../components/CreateNailModal";
+import "../../css/Paginate.css";
+import "../../css/Table.css";
 
 const NailDesignListPage = ({ history, match }) => {
   const pageNumber = match.params.pageNumber || 1;
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const dispatch = useDispatch();
 
@@ -44,7 +52,7 @@ const NailDesignListPage = ({ history, match }) => {
       history.push("/login");
     }
     if (successCreate) {
-      history.push(`/admin/nailDesign/${createdNailDesign._id}/edit`);
+      history.push(`/admin/nailDesignList`);
     } else {
       dispatch(listNailDesigns(" ", pageNumber));
     }
@@ -65,19 +73,15 @@ const NailDesignListPage = ({ history, match }) => {
     }
   };
 
-  const createDesignHandler = () => {
-    dispatch(createNailDesign());
-  };
-
   return (
-    <div className="admin-nail-design-list">
+    <Container className="admin-nail-design-list">
       <Row className="align-items-center">
         <Col>
           <h1>Nail Design List</h1>
           <NailPaginate pages={pages} page={page} isAdmin={true} />
         </Col>
         <Col className="text-right">
-          <Button className="my-3" onClick={createDesignHandler}>
+          <Button className="my-3" onClick={() => handleShow()}>
             <i className="fas fa-plus"></i> Add Design
           </Button>
         </Col>
@@ -92,7 +96,7 @@ const NailDesignListPage = ({ history, match }) => {
         <Message variant="danger">{error}</Message>
       ) : (
         <>
-          <Table striped bordered hover responsive className="table-sm">
+          <table striped bordered hover responsive className="table-sm">
             <thead>
               <tr>
                 <th>ID</th>
@@ -114,7 +118,7 @@ const NailDesignListPage = ({ history, match }) => {
                     <div className="image-wrapper">
                       <Image
                         className="small-image"
-                        src={nailDesign.image}
+                        src={nailDesign.imageUrl}
                         alt="nail design image"
                       />
                     </div>
@@ -140,10 +144,15 @@ const NailDesignListPage = ({ history, match }) => {
                 </tr>
               ))}
             </tbody>
-          </Table>
+          </table>
+          <CreateNailModal
+            handleClose={handleClose}
+            show={show}
+            setShow={setShow}
+          />
         </>
       )}
-    </div>
+    </Container>
   );
 };
 
