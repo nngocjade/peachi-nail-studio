@@ -28,12 +28,20 @@ const App = () => {
           <Route exact path="/about" component={AboutPage} />
 
           <Route exact path="/nailGallery" component={NailGalleryPage} />
-          <Route exact path="/search/:keyword" component={NailGalleryPage} />
-          <Route exact path="/page/:pageNumber" component={NailGalleryPage} />
+          <Route
+            exact
+            path="/nail/search/:keyword"
+            component={NailGalleryPage}
+          />
+          <Route
+            exact
+            path="/nail/page/:pageNumber"
+            component={NailGalleryPage}
+          />
           <Route exact path="/blog/page/:pageNumber" component={BlogPage} />
           <Route
             exact
-            path="/search/:keyword/page/:pageNumber"
+            path="/nail/search/:keyword/page/:pageNumber"
             component={NailGalleryPage}
           />
 
