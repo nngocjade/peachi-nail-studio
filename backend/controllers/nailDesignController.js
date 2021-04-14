@@ -71,15 +71,17 @@ const deleteNailDesign = asyncHandler(async (req, res) => {
 // @route   POST /api/nailDesigns
 // @access  Private/Admin
 const createNailDesign = asyncHandler(async (req, res) => {
+  const userId = req.userId;
+
+  const { name, category, style, imageUrl, description } = req.body;
+
   const nailDesign = new NailDesign({
-    user: req.user._id,
-    name: "Sample name",
-    category: "NailArt",
-    style: "sample style",
-    image: "/images/sample.jpg",
-    description: "sample description",
-    rating: 10,
-    numReviews: 0,
+    user: userId,
+    name,
+    category,
+    style,
+    imageUrl,
+    description,
   });
 
   const createdNailDesign = await nailDesign.save();

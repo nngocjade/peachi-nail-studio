@@ -3,21 +3,28 @@
   --yellow: #eea949ad;
 }
 
-.nail-gallery .pagination {
+.nail-gallery .pagination,
+.blog .pagination {
   position: fixed;
   top: 50%;
   left: 4%;
   display: flex;
   flex-direction: column;
 }
-.nail-gallery .page-item.active > .page-link {
+.nail-gallery .page-item.active > .page-link,
+.blog .page-item.active > .page-link,
+.admin-nail-design-list .page-item.active > .page-link,
+.admin-blog-post-list .page-item.active > .page-link {
   background: linear-gradient(to right, var(--yellow), var(--peach));
   border: none;
   border-radius: 50%;
   color: white !important;
 }
 
-.nail-gallery .page-item .page-link {
+.nail-gallery .page-item .page-link,
+.blog .page-item .page-link,
+.admin-nail-design-list .page-item .page-link,
+.admin-blog-post-list .page-item .page-link {
   border-radius: 50%;
   color: var(--peach);
   margin: 0.2em;
