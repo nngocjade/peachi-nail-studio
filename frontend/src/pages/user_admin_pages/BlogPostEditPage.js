@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 import { BLOGPOST_UPDATE_RESET } from "../../redux/constants/blogPostConstants";
 import Message from "../../components/Message";
 import UpdateButton from "../../components/UpdateButton";
+import UploadButton from "../../components/UploadButton";
 
 const BlogPostEditPage = ({ match, history }) => {
   const blogPostId = match.params.id;
@@ -77,12 +78,14 @@ const BlogPostEditPage = ({ match, history }) => {
   );
 
   return (
-    <Container>
+    <Container className="text-center">
       <Row>
-        <Col>
-          <Link to="/admin/blogPostList" className="btn btn-light my-3">
-            Go Back
-          </Link>
+        <Col lg={10} className="mx-auto">
+          <div style={{ display: "flex" }}>
+            <Link to="/admin/blogPostList" className="btn btn-light my-3">
+              Go Back
+            </Link>
+          </div>
           <h1 className="text-center">Edit Blog Post</h1>
           {loadingUpdate && <Loader />}
           {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
@@ -109,7 +112,7 @@ const BlogPostEditPage = ({ match, history }) => {
                   <Form.Label>Body</Form.Label>
                   <Form.Control
                     as="textarea"
-                    rows={3}
+                    rows={5}
                     placeholder="Enter body text"
                     value={body}
                     onChange={(e) => setBody(e.target.value)}
@@ -139,9 +142,7 @@ const BlogPostEditPage = ({ match, history }) => {
                       value={imageUrl}
                       onChange={(e) => setImageUrl(e.target.value)}
                     ></Form.Control>
-                    <Button onClick={() => myWidget.open()} variant="primary">
-                      Upload
-                    </Button>
+                    <UploadButton myWidget={myWidget} />
                   </div>
                 </Form.Group>
                 <UpdateButton />

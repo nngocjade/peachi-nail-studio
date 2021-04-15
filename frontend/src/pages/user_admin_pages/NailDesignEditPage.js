@@ -10,6 +10,8 @@ import {
 } from "../../redux/actions/nailDesignActions";
 import { NAILDESIGN_UPDATE_RESET } from "../../redux/constants/nailDesignConstants.js";
 import axios from "axios";
+import UpdateButton from "../../components/UpdateButton.js";
+import UploadButton from "../../components/UploadButton.js";
 
 const NailDesignEditPage = ({ match, history }) => {
   const nailDesignId = match.params.id;
@@ -52,29 +54,6 @@ const NailDesignEditPage = ({ match, history }) => {
     }
   }, [nailDesign, dispatch, nailDesignId, successUpdate, history]);
 
-  const uploadFileHandler = async (e) => {
-    const file = e.target.files[0];
-    const formData = new FormData();
-    formData.append("image", file);
-    setUploading(true);
-
-    try {
-      const config = {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      };
-
-      const { data } = await axios.post("/api/upload", formData, config);
-
-      setImageUrl(data);
-      setUploading(false);
-    } catch (error) {
-      console.error(error);
-      setUploading(false);
-    }
-  };
-
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
@@ -89,94 +68,102 @@ const NailDesignEditPage = ({ match, history }) => {
     );
   };
 
-  return (
-    <>
-      <Link to="/admin/nailDesignList" className="btn btn-light my-3">
-        Go Back
-      </Link>
-      <Container className="text-center">
-        <Row>
-          <Col md={5}>
-            <h1>Edit Nail Design</h1>
-            {loadingUpdate && <Loader />}
-            {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
-            {loading ? (
-              <Loader />
-            ) : error ? (
-              <Message variant="danger">{error}</Message>
-            ) : (
-              <Form onSubmit={submitHandler}>
-                {/* NAME */}
-                <Form.Group controlId="name">
-                  <Form.Label>Name</Form.Label>
-                  <Form.Control
-                    type="name"
-                    placeholder="Enter name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
+  // ============== CLOUDINARY IMAGE UPLOAD ==============
+  const myWidget = window.cloudinary.createUploadWidget(
+    {
+      cloudName: "nngocjade",
+      uploadPreset: "peachi",
+    },
+    (error, result) => {
+      if (!error && result && result.event === "success") {
+        console.log("Done! Here is the image info: ", result.info);
+        setImageUrl(result.info.url);
+      }
+    }
+  );
 
-                {/* IMAGE */}
-                <Form.Group controlId="image">
-                  <Form.Label>Image</Form.Label>
+  return (
+    <Container className="text-center">
+      <div style={{ display: "flex" }}>
+        <Link to="/admin/nailDesignList" className="btn btn-light my-3">
+          Go Back
+        </Link>
+      </div>
+      <Row>
+        <Col lg={10} className="mx-auto">
+          <h1>Edit Nail Design</h1>
+          {loadingUpdate && <Loader />}
+          {errorUpdate && <Message variant="danger">{errorUpdate}</Message>}
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant="danger">{error}</Message>
+          ) : (
+            <Form onSubmit={submitHandler}>
+              {/* NAME */}
+              <Form.Group controlId="name">
+                <Form.Label>Name</Form.Label>
+                <Form.Control
+                  type="name"
+                  placeholder="Enter name"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              {/* CATEGORY */}
+              <Form.Group controlId="category">
+                <Form.Label>Category</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter category"
+                  value={category}
+                  onChange={(e) => setCategory(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              {/* STYLE */}
+              <Form.Group controlId="style">
+                <Form.Label>Style</Form.Label>
+                <Form.Control
+                  type="text"
+                  placeholder="Enter style"
+                  value={style}
+                  onChange={(e) => setStyle(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              {/* DESCRIPTION */}
+              <Form.Group controlId="description">
+                <Form.Label>Description</Form.Label>
+                <Form.Control
+                  as="textarea"
+                  rows={4}
+                  placeholder="Enter description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                ></Form.Control>
+              </Form.Group>
+
+              {/* IMAGE */}
+              <Form.Group controlId="image">
+                <Form.Label>Image</Form.Label>
+                <div className="image-input-wrapper">
                   <Form.Control
                     type="text"
                     placeholder="Enter image url"
                     value={imageUrl}
                     onChange={(e) => setImageUrl(e.target.value)}
                   ></Form.Control>
-                  <Form.File
-                    id="image-file"
-                    label="Choose File"
-                    custom
-                    onChange={uploadFileHandler}
-                  ></Form.File>
-                  {uploading && <Loader />}
-                </Form.Group>
-
-                {/* CATEGORY */}
-                <Form.Group controlId="category">
-                  <Form.Label>Category</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter category"
-                    value={category}
-                    onChange={(e) => setCategory(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
-
-                {/* STYLE */}
-                <Form.Group controlId="style">
-                  <Form.Label>Style</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter style"
-                    value={style}
-                    onChange={(e) => setStyle(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
-
-                {/* DESCRIPTION */}
-                <Form.Group controlId="description">
-                  <Form.Label>Description</Form.Label>
-                  <Form.Control
-                    type="text"
-                    placeholder="Enter description"
-                    value={description}
-                    onChange={(e) => setDescription(e.target.value)}
-                  ></Form.Control>
-                </Form.Group>
-
-                <Button type="submit" variant="primary">
-                  Update
-                </Button>
-              </Form>
-            )}
-          </Col>
-        </Row>
-      </Container>
-    </>
+                  <UploadButton myWidget={myWidget} />
+                </div>
+              </Form.Group>
+              <UpdateButton />
+            </Form>
+          )}
+        </Col>
+      </Row>
+    </Container>
   );
 };
 

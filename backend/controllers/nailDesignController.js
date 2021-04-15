@@ -94,13 +94,13 @@ const createNailDesign = asyncHandler(async (req, res) => {
 // @route   PUT /api/nailDesigns/:id
 // @access  Private/Admin
 const updateNailDesign = asyncHandler(async (req, res) => {
-  const { name, image, category, style, description } = req.body;
+  const { name, imageUrl, category, style, description } = req.body;
 
   const nailDesign = await NailDesign.findById(req.params.id);
 
   if (nailDesign) {
     nailDesign.name = name;
-    nailDesign.image = image;
+    nailDesign.imageUrl = imageUrl;
     nailDesign.category = category;
     nailDesign.style = style;
     nailDesign.description = description;
