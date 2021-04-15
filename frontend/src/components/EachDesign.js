@@ -25,7 +25,7 @@ const EachDesign = ({ eachDesign, handleShow }) => {
     >
       <Card.Img
         onClick={() => handleShow(eachDesign._id)}
-        src={eachDesign.image}
+        src={eachDesign.imageUrl}
         variant="top"
       ></Card.Img>
 

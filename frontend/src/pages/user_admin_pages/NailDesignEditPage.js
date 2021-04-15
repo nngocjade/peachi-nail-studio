@@ -15,7 +15,7 @@ const NailDesignEditPage = ({ match, history }) => {
   const nailDesignId = match.params.id;
 
   const [name, setName] = useState("");
-  const [image, setImage] = useState("");
+  const [imageUrl, setImageUrl] = useState("");
   const [category, setCategory] = useState("");
   const [style, setStyle] = useState("");
   const [description, setDescription] = useState("");
@@ -44,7 +44,7 @@ const NailDesignEditPage = ({ match, history }) => {
         dispatch(listNailDesignDetails(nailDesignId));
       } else {
         setName(nailDesign.name);
-        setImage(nailDesign.image);
+        setImageUrl(nailDesign.imageUrl);
         setCategory(nailDesign.category);
         setStyle(nailDesign.style);
         setDescription(nailDesign.description);
@@ -67,7 +67,7 @@ const NailDesignEditPage = ({ match, history }) => {
 
       const { data } = await axios.post("/api/upload", formData, config);
 
-      setImage(data);
+      setImageUrl(data);
       setUploading(false);
     } catch (error) {
       console.error(error);
@@ -81,7 +81,7 @@ const NailDesignEditPage = ({ match, history }) => {
       updateNailDesign({
         _id: nailDesignId,
         name,
-        image,
+        imageUrl,
         category,
         style,
         description,
@@ -123,8 +123,8 @@ const NailDesignEditPage = ({ match, history }) => {
                   <Form.Control
                     type="text"
                     placeholder="Enter image url"
-                    value={image}
-                    onChange={(e) => setImage(e.target.value)}
+                    value={imageUrl}
+                    onChange={(e) => setImageUrl(e.target.value)}
                   ></Form.Control>
                   <Form.File
                     id="image-file"
