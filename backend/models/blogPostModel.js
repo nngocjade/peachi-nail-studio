@@ -1,7 +1,20 @@
 const mongoose = require("mongoose");
 
+const reviewSchema = mongoose.Schema(
+  {
+    name: { type: String, required: true },
+    likeCount: { type: Number, required: true },
+    comment: { type: String, required: true },
+    author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  },
+  {
+    timestamps: true,
+  }
+);
+
 const postSchema = mongoose.Schema(
   {
+    author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
     title: {
       type: String,
       required: true,
@@ -24,7 +37,7 @@ const postSchema = mongoose.Schema(
       type: Number,
       default: 0,
     },
-    author: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+    reviews: [reviewSchema],
   },
   {
     timestamps: true,

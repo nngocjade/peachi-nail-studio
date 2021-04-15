@@ -51,25 +51,6 @@ const getBlogPostById = asyncHandler(async (req, res) => {
   }
 });
 
-// ====================== CREATE BLOG POST ====================
-
-// const createBlogPost = asyncHandler(async (req, res) => {
-//   try {
-//     const blogPost = new BlogPost({
-//       title: "Sample title",
-//       description: "short description",
-//       creator: "sample creator",
-//       image: "/images/sample.jpg",
-//       likeCount: 5,
-//     });
-
-//     const createdBlogPost = await blogPost.save();
-//     res.status(201).json(createdBlogPost);
-//   } catch (error) {
-//     res.status(404).json({ message: error.message });
-//   }
-// });
-
 const createBlogPost = asyncHandler(async (req, res) => {
   const userId = req.userId;
   try {
@@ -110,7 +91,7 @@ const updateBlogPost = asyncHandler(async (req, res) => {
   }
 });
 
-// ====================== UPDATE BLOG POST ====================
+// ====================== DELETE BLOG POST ====================
 
 // @desc    Delete a blog post
 // @route   DELETE /api/blogPosts/:id
@@ -127,10 +108,54 @@ const deleteBlogPost = asyncHandler(async (req, res) => {
   }
 });
 
+// ====================== CREATE BLOG POST REVIEW ====================
+
+// @desc    Create a new review
+// @route   POST /api/blogPosts/:id/reviews
+// @access  Private
+const createBlogPostReview = asyncHandler(async (req, res) => {
+  const { likeCount, comment } = req.body;
+
+  const blogPost = await BlogPost.findById(req.params.id);
+
+  if (blogPost) {
+    const alreadyReviewed = blogPost.reviews.find(
+      (r) => r.user.toString() === req.user._id.toString()
+    );
+
+    if (alreadyReviewed) {
+      res.status(400);
+      throw new Error("Blog already reviewed");
+    }
+
+    const review = {
+      name: req.user.name,
+      likeCount: Number(likeCount),
+      comment,
+      user: req.user._id,
+    };
+
+    blogPost.reviews.push(review);
+
+    blogPost.numReviews = blogPost.reviews.length;
+
+    blogPost.likeCount =
+      blogPost.reviews.reduce((acc, item) => item.likeCount + acc, 0) /
+      blogPost.reviews.length;
+
+    await blogPost.save();
+    res.status(201).json({ message: "Review added" });
+  } else {
+    res.status(404);
+    throw new Error("Blog post not found");
+  }
+});
+
 module.exports = {
   getBlogPosts,
   getBlogPostById,
   createBlogPost,
   updateBlogPost,
   deleteBlogPost,
+  createBlogPostReview,
 };
