@@ -16,10 +16,10 @@ import {
   BLOGPOST_DELETE_SUCCESS,
   BLOGPOST_DELETE_REQUEST,
   BLOGPOST_DELETE_FAIL,
-  BLOGPOST_CREATE_REVIEW_SUCCESS,
-  BLOGPOST_CREATE_REVIEW_REQUEST,
-  BLOGPOST_CREATE_REVIEW_FAIL,
-  BLOGPOST_CREATE_REVIEW_RESET,
+  BLOGPOST_CREATE_COMMENT_SUCCESS,
+  BLOGPOST_CREATE_COMMENT_REQUEST,
+  BLOGPOST_CREATE_COMMENT_FAIL,
+  BLOGPOST_CREATE_COMMENT_RESET,
 } from "../constants/blogPostConstants";
 import { logout } from "./userActions";
 
@@ -76,15 +76,15 @@ export const listBlogPostDetails = (id) => async (dispatch) => {
     });
   }
 };
-// ================ BLOG POST CREATE REVIEW ACTION =================
+// ================ BLOG POST CREATE COMMENT ACTION =================
 
-export const createBlogPostReview = (blogPostId, review) => async (
+export const createBlogPostComment = (blogPostId, comment) => async (
   dispatch,
   getState
 ) => {
   try {
     dispatch({
-      type: BLOGPOST_CREATE_REVIEW_REQUEST,
+      type: BLOGPOST_CREATE_COMMENT_REQUEST,
     });
 
     const {
@@ -98,10 +98,10 @@ export const createBlogPostReview = (blogPostId, review) => async (
       },
     };
 
-    await axios.post(`/api/blogPosts/${blogPostId}/reviews`, review, config);
+    await axios.post(`/api/blogPosts/${blogPostId}/comments`, comment, config);
 
     dispatch({
-      type: BLOGPOST_CREATE_REVIEW_SUCCESS,
+      type: BLOGPOST_CREATE_COMMENT_SUCCESS,
     });
   } catch (error) {
     const message =
@@ -112,7 +112,7 @@ export const createBlogPostReview = (blogPostId, review) => async (
       dispatch(logout());
     }
     dispatch({
-      type: BLOGPOST_CREATE_REVIEW_FAIL,
+      type: BLOGPOST_CREATE_COMMENT_FAIL,
       payload: message,
     });
   }

@@ -16,10 +16,10 @@ import {
   BLOGPOST_DELETE_REQUEST,
   BLOGPOST_DELETE_SUCCESS,
   BLOGPOST_DELETE_FAIL,
-  BLOGPOST_CREATE_REVIEW_REQUEST,
-  BLOGPOST_CREATE_REVIEW_SUCCESS,
-  BLOGPOST_CREATE_REVIEW_FAIL,
-  BLOGPOST_CREATE_REVIEW_RESET,
+  BLOGPOST_CREATE_COMMENT_REQUEST,
+  BLOGPOST_CREATE_COMMENT_SUCCESS,
+  BLOGPOST_CREATE_COMMENT_FAIL,
+  BLOGPOST_CREATE_COMMENT_RESET,
 } from "../constants/blogPostConstants";
 
 // ======================== BLOGPPOST LIST REDUCER ==========================
@@ -112,17 +112,17 @@ export const blogPostDeleteReducer = (state = {}, action) => {
   }
 };
 
-// ========================= REVIEW REDUCER =========================
+// ========================= COMMENT REDUCER =========================
 
-export const blogPostCreateReviewReducer = (state = {}, action) => {
+export const blogPostCreateCommentReducer = (state = {}, action) => {
   switch (action.type) {
-    case BLOGPOST_CREATE_REVIEW_REQUEST:
+    case BLOGPOST_CREATE_COMMENT_REQUEST:
       return { loading: true };
-    case BLOGPOST_CREATE_REVIEW_SUCCESS:
+    case BLOGPOST_CREATE_COMMENT_SUCCESS:
       return { loading: false, success: true };
-    case BLOGPOST_CREATE_REVIEW_FAIL:
+    case BLOGPOST_CREATE_COMMENT_FAIL:
       return { loading: false, error: action.payload };
-    case BLOGPOST_CREATE_REVIEW_RESET:
+    case BLOGPOST_CREATE_COMMENT_RESET:
       return {};
     default:
       return state;
