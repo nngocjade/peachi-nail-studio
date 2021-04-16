@@ -96,7 +96,10 @@ const BlogPostDetailPage = ({ match, history }) => {
           </Row>
           <Row>
             <Col md={6}>
-              <h2>Comments</h2>
+              <h2>
+                {blogPost.comments.length} Comment
+                {blogPost.comments.length > 0 ? "s" : ""}
+              </h2>
               {blogPost.comments.length === 0 && <Message>No Comments</Message>}
               <ListGroup variant="flush">
                 {blogPost.comments.map((comment) => (
@@ -115,22 +118,6 @@ const BlogPostDetailPage = ({ match, history }) => {
                   )}
                   {userInfo ? (
                     <Form onSubmit={submitHandler}>
-                      {/* <Form.Group controlId="likeCount">
-                        <Form.Label>Like Count</Form.Label>
-                        <Form.Control
-                          as="select"
-                          value={likeCount}
-                          onChange={(e) => setLikeCount(e.target.value)}
-                        >
-                          <option value="">Select...</option>
-                          <option value="1">1 - Poor</option>
-                          <option value="2">2 - Fair</option>
-                          <option value="3">3 - Good</option>
-                          <option value="4">4 - Very Good</option>
-                          <option value="5">5 - Excellent</option>
-                        </Form.Control>
-                      </Form.Group> */}
-
                       {/* COMMENT */}
                       <Form.Group controlId="comment">
                         <Form.Label>Comment</Form.Label>
