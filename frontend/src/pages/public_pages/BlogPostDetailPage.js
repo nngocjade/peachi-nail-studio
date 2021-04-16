@@ -12,19 +12,18 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import {
   listBlogPostDetails,
-  createBlogPostReview,
+  createBlogPostComment,
 } from "../../redux/actions/blogPostActions";
 import "../../css/BlogPostDetail.css";
 import Moment from "react-moment";
 import Loader from "../../components/Loader";
-import { BLOGPOST_CREATE_REVIEW_RESET } from "../../redux/constants/blogPostConstants";
+import { BLOGPOST_CREATE_COMMENT_RESET } from "../../redux/constants/blogPostConstants";
 import Message from "../../components/Message";
 
 const BlogPostDetailPage = ({ match, history }) => {
   const dispatch = useDispatch();
 
-  const [likeCount, setLikeCount] = useState(0);
-  const [comment, setComment] = useState(" ");
+  const [aComment, setAComment] = useState(" ");
 
   const blogPostDetails = useSelector((state) => state.blogPostDetails);
   const { loading, error, blogPost } = blogPostDetails;
@@ -32,30 +31,28 @@ const BlogPostDetailPage = ({ match, history }) => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  const blogPostCreateReview = useSelector(
-    (state) => state.blogPostCreateReview
+  const blogPostCreateComment = useSelector(
+    (state) => state.blogPostCreateComment
   );
   const {
-    success: successBlogPostReview,
-    error: errorBlogPostReview,
-  } = blogPostCreateReview;
+    success: successBlogPostComment,
+    error: errorBlogPostComment,
+  } = blogPostCreateComment;
 
   useEffect(() => {
-    if (successBlogPostReview) {
-      alert("Review Submitted!");
-      setLikeCount(0);
-      setComment("");
-      dispatch({ type: BLOGPOST_CREATE_REVIEW_RESET });
+    if (successBlogPostComment) {
+      alert("Comment Submitted!");
+      setAComment("");
+      dispatch({ type: BLOGPOST_CREATE_COMMENT_RESET });
     }
     dispatch(listBlogPostDetails(match.params.id));
-  }, [dispatch, match, successBlogPostReview]);
+  }, [dispatch, match, successBlogPostComment]);
 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(
-      createBlogPostReview(match.params.id, {
-        // likeCount,
-        comment,
+      createBlogPostComment(match.params.id, {
+        aComment,
       })
     );
   };
@@ -65,7 +62,7 @@ const BlogPostDetailPage = ({ match, history }) => {
       {!blogPost ||
       blogPost === undefined ||
       blogPost.author === undefined ||
-      blogPost.reviews === undefined ? (
+      blogPost.comments === undefined ? (
         <Loader />
       ) : (
         <>
@@ -99,22 +96,22 @@ const BlogPostDetailPage = ({ match, history }) => {
           </Row>
           <Row>
             <Col md={6}>
-              <h2>Reviews</h2>
-              {blogPost.reviews.length === 0 && <Message>No Reviews</Message>}
+              <h2>Comments</h2>
+              {blogPost.comments.length === 0 && <Message>No Comments</Message>}
               <ListGroup variant="flush">
-                {blogPost.reviews.map((review) => (
-                  <ListGroup.Item key={review._id}>
-                    <strong>{review.name}</strong>
+                {blogPost.comments.map((comment) => (
+                  <ListGroup.Item key={comment._id}>
+                    <strong>{comment.name}</strong>
                     {/* add  Ratin component here */}
-                    <p>{review.createdAt.substring(0, 10)}</p>
-                    <p>{review.comment}</p>
+                    <p>{comment.createdAt.substring(0, 10)}</p>
+                    <p>{comment.aComment}</p>
                   </ListGroup.Item>
                 ))}
-                {/* {!blogPost.reviews.some((rev) => rev.user === userInfo._id) && ( */}
+                {/* {!blogPost.Comments.some((rev) => rev.user === userInfo._id) && ( */}
                 <ListGroup.Item>
                   <h2>Write a Comment</h2>
-                  {errorBlogPostReview && (
-                    <Message>{errorBlogPostReview}</Message>
+                  {errorBlogPostComment && (
+                    <Message>{errorBlogPostComment}</Message>
                   )}
                   {userInfo ? (
                     <Form onSubmit={submitHandler}>
@@ -140,8 +137,8 @@ const BlogPostDetailPage = ({ match, history }) => {
                         <Form.Control
                           as="textarea"
                           row="3"
-                          value={comment}
-                          onChange={(e) => setComment(e.target.value)}
+                          value={aComment}
+                          onChange={(e) => setAComment(e.target.value)}
                         ></Form.Control>
                       </Form.Group>
 
