@@ -97,8 +97,8 @@ const BlogPostDetailPage = ({ match, history }) => {
           <Row>
             <Col md={6}>
               <h2>
-                {blogPost.comments.length} Comment
-                {blogPost.comments.length > 0 ? "s" : ""}
+                {blogPost.numComments} Comment
+                {blogPost.numComments > 0 ? "s" : ""}
               </h2>
               {blogPost.comments.length === 0 && <Message>No Comments</Message>}
               <ListGroup variant="flush">

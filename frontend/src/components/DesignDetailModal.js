@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { listNailDesignDetails } from "../redux/actions/nailDesignActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
+import "../css/Modal.css";
 
 const DesignDetailModal = ({ handleClose, show, history, choosenId }) => {
   const dispatch = useDispatch();
@@ -29,10 +30,13 @@ const DesignDetailModal = ({ handleClose, show, history, choosenId }) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} animation={false}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        animation={false}
+        className="design-detail-modal"
+      >
+        <Modal.Header closeButton></Modal.Header>
         <Modal.Body>
           {loading ? (
             <Loader />
@@ -41,7 +45,7 @@ const DesignDetailModal = ({ handleClose, show, history, choosenId }) => {
           ) : (
             <Row>
               <Col md-6>
-                <Image src={nailDesign.image} alt={nailDesign.name} fluid />
+                <Image src={nailDesign.imageUrl} alt={nailDesign.name} fluid />
               </Col>
               <Col md-3>
                 <ListGroup variant="flush">
@@ -79,11 +83,6 @@ const DesignDetailModal = ({ handleClose, show, history, choosenId }) => {
             </Row>
           )}
         </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
       </Modal>
     </>
   );
