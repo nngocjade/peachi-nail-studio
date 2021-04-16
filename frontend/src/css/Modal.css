@@ -9,16 +9,40 @@
 }
 
 .modal-content {
-  width: 40em;
-  height: 28em;
+  min-width: 30em;
+  min-height: 28em;
+  height: auto;
   background-color: rgba(255, 255, 255, 0.486);
   backdrop-filter: blur(15px);
   border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.616);
+}
+
+.modal-dialog {
+  min-width: 30em;
+  min-height: 28em;
+  height: auto;
 }
 
 .modal-body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 2rem;
+  padding: 0 2rem 2rem 2rem;
+}
+
+.list-group-item {
+  background-color: transparent !important;
+}
+
+.modal-description-style-category {
+  height: 12em;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: space-between !important;
+}
+
+.modal-image {
+  border-radius: 15px;
+  box-shadow: 0 0px 30px 2px #ffffff;
 }

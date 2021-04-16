@@ -45,40 +45,32 @@ const DesignDetailModal = ({ handleClose, show, history, choosenId }) => {
           ) : (
             <Row>
               <Col md-6>
-                <Image src={nailDesign.imageUrl} alt={nailDesign.name} fluid />
+                <Image
+                  src={nailDesign.imageUrl}
+                  alt={nailDesign.name}
+                  fluid
+                  className="modal-image"
+                />
               </Col>
-              <Col md-3>
+              <Col md-6>
                 <ListGroup variant="flush">
                   <ListGroup.Item>
                     <h3>{nailDesign.name}</h3>
                   </ListGroup.Item>
-                  <ListGroup.Item>
-                    Description: {nailDesign.description}
+                  <ListGroup.Item className="modal-description-style-category">
+                    <div>{nailDesign.description}</div>
+                    <div className="style-category">
+                      <div>
+                        <strong>Style: </strong>
+                        {nailDesign.style}
+                      </div>
+                      <div>
+                        <strong>Category: </strong>
+                        {nailDesign.category}
+                      </div>
+                    </div>
                   </ListGroup.Item>
                 </ListGroup>
-              </Col>
-              <Col md={3}>
-                <Card>
-                  <ListGroup variant="flush">
-                    {/* PRICE */}
-                    <ListGroup.Item>
-                      <Row>
-                        <Col>Style:</Col>
-                        <Col>
-                          <strong>{nailDesign.style}</strong>
-                        </Col>
-                      </Row>
-                    </ListGroup.Item>
-                    {/* STATUS */}
-                    <ListGroup.Item>
-                      <Row>
-                        <Col>Category:</Col>
-                        <Col>{nailDesign.category}</Col>
-                      </Row>
-                    </ListGroup.Item>
-                    {/* ADD TO FAVORITE */}
-                  </ListGroup>
-                </Card>
               </Col>
             </Row>
           )}
