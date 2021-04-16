@@ -108,43 +108,40 @@ const deleteBlogPost = asyncHandler(async (req, res) => {
   }
 });
 
-// ====================== CREATE BLOG POST REVIEW ====================
+// ====================== CREATE BLOG POST COMMENT ====================
 
-// @desc    Create a new review
-// @route   POST /api/blogPosts/:id/reviews
+// @desc    Create a new comment
+// @route   POST /api/blogPosts/:id/comments
 // @access  Private
-const createBlogPostReview = asyncHandler(async (req, res) => {
-  const { likeCount, comment } = req.body;
+const createBlogPostComment = asyncHandler(async (req, res) => {
+  const { aComment } = req.body;
 
   const blogPost = await BlogPost.findById(req.params.id);
 
   if (blogPost) {
-    const alreadyReviewed = blogPost.reviews.find(
-      (r) => r.user.toString() === req.user._id.toString()
+    const alreadyCommented = blogPost.comments.find(
+      (c) => c.user.toString() === req.user._id.toString()
     );
 
-    if (alreadyReviewed) {
+    console.log("alreadyCommented", alreadyCommented);
+
+    if (alreadyCommented) {
       res.status(400);
-      throw new Error("Blog already reviewed");
+      throw new Error("You have already made a comment");
     }
 
-    const review = {
+    const comment = {
       name: req.user.name,
-      likeCount: Number(likeCount),
-      comment,
+      aComment,
       user: req.user._id,
     };
 
-    blogPost.reviews.push(review);
+    blogPost.comments.push(comment);
 
-    blogPost.numReviews = blogPost.reviews.length;
-
-    blogPost.likeCount =
-      blogPost.reviews.reduce((acc, item) => item.likeCount + acc, 0) /
-      blogPost.reviews.length;
+    blogPost.numComments = blogPost.comments.length;
 
     await blogPost.save();
-    res.status(201).json({ message: "Review added" });
+    res.status(201).json({ message: "Comment added" });
   } else {
     res.status(404);
     throw new Error("Blog post not found");
@@ -157,5 +154,5 @@ module.exports = {
   createBlogPost,
   updateBlogPost,
   deleteBlogPost,
-  createBlogPostReview,
+  createBlogPostComment,
 };

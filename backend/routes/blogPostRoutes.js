@@ -8,7 +8,7 @@ const {
   createBlogPost,
   updateBlogPost,
   deleteBlogPost,
-  createBlogPostReview,
+  createBlogPostComment,
 } = require("../controllers/blogPostController");
 
 router.get("/", getBlogPosts);
@@ -17,5 +17,6 @@ router.get("/:id", getBlogPostById);
 router.put("/:id", protect, admin, updateBlogPost);
 router.delete("/:id", protect, admin, deleteBlogPost);
 
-router.route("/:id/reviews").post(protect, createBlogPostReview);
+router.route("/:id/comments").post(protect, createBlogPostComment);
+
 module.exports = router;
