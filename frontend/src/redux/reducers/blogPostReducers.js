@@ -16,6 +16,10 @@ import {
   BLOGPOST_DELETE_REQUEST,
   BLOGPOST_DELETE_SUCCESS,
   BLOGPOST_DELETE_FAIL,
+  BLOGPOST_CREATE_REVIEW_REQUEST,
+  BLOGPOST_CREATE_REVIEW_SUCCESS,
+  BLOGPOST_CREATE_REVIEW_FAIL,
+  BLOGPOST_CREATE_REVIEW_RESET,
 } from "../constants/blogPostConstants";
 
 // ======================== BLOGPPOST LIST REDUCER ==========================
@@ -103,6 +107,23 @@ export const blogPostDeleteReducer = (state = {}, action) => {
       return { loading: false, success: true };
     case BLOGPOST_DELETE_FAIL:
       return { loading: false, error: action.payload };
+    default:
+      return state;
+  }
+};
+
+// ========================= REVIEW REDUCER =========================
+
+export const blogPostCreateReviewReducer = (state = {}, action) => {
+  switch (action.type) {
+    case BLOGPOST_CREATE_REVIEW_REQUEST:
+      return { loading: true };
+    case BLOGPOST_CREATE_REVIEW_SUCCESS:
+      return { loading: false, success: true };
+    case BLOGPOST_CREATE_REVIEW_FAIL:
+      return { loading: false, error: action.payload };
+    case BLOGPOST_CREATE_REVIEW_RESET:
+      return {};
     default:
       return state;
   }
