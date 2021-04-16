@@ -16,6 +16,10 @@ import {
   BLOGPOST_DELETE_SUCCESS,
   BLOGPOST_DELETE_REQUEST,
   BLOGPOST_DELETE_FAIL,
+  BLOGPOST_CREATE_REVIEW_SUCCESS,
+  BLOGPOST_CREATE_REVIEW_REQUEST,
+  BLOGPOST_CREATE_REVIEW_FAIL,
+  BLOGPOST_CREATE_REVIEW_RESET,
 } from "../constants/blogPostConstants";
 import { logout } from "./userActions";
 
@@ -72,7 +76,47 @@ export const listBlogPostDetails = (id) => async (dispatch) => {
     });
   }
 };
+// ================ BLOG POST CREATE REVIEW ACTION =================
 
+export const createBlogPostReview = (blogPostId, review) => async (
+  dispatch,
+  getState
+) => {
+  try {
+    dispatch({
+      type: BLOGPOST_CREATE_REVIEW_REQUEST,
+    });
+
+    const {
+      userLogin: { userInfo },
+    } = getState();
+
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${userInfo.token}`,
+      },
+    };
+
+    await axios.post(`/api/blogPosts/${blogPostId}/reviews`, review, config);
+
+    dispatch({
+      type: BLOGPOST_CREATE_REVIEW_SUCCESS,
+    });
+  } catch (error) {
+    const message =
+      error.response && error.response.data.message
+        ? error.response.data.message
+        : error.message;
+    if (message === "Not authorized, token failed") {
+      dispatch(logout());
+    }
+    dispatch({
+      type: BLOGPOST_CREATE_REVIEW_FAIL,
+      payload: message,
+    });
+  }
+};
 /**
  *
  * =======================================================================
@@ -122,7 +166,7 @@ export const createBlogPost = ({ title, body, tags, imageUrl }) => async (
   }
 };
 
-// ================ UPDATE NAIL DESIGN ACTION =================
+// ================ UPDATE BLOG POST ACTION =================
 
 export const updateBlogPost = (blogPost) => async (dispatch, getState) => {
   try {

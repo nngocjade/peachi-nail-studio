@@ -29,6 +29,7 @@ import {
   blogPostCreateReducer,
   blogPostUpdateReducer,
   blogPostDeleteReducer,
+  blogPostCreateReviewReducer,
 } from "./reducers/blogPostReducers";
 
 const reducer = combineReducers({
@@ -52,6 +53,7 @@ const reducer = combineReducers({
   blogPostCreate: blogPostCreateReducer,
   blogPostUpdate: blogPostUpdateReducer,
   blogPostDelete: blogPostDeleteReducer,
+  blogPostCreateReview: blogPostCreateReviewReducer,
 });
 
 const userInfoFromStorage = localStorage.getItem("userInfo")
