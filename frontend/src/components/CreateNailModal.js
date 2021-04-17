@@ -16,6 +16,7 @@ import Loader from "../components/Loader";
 import Message from "../components/Message";
 import UpdateButton from "./UpdateButton";
 import { createNailDesign } from "../redux/actions/nailDesignActions";
+import UploadButton from "./UploadButton";
 
 const CreatePostModal = ({ handleClose, show, setShow }) => {
   const [name, setName] = useState("");
@@ -59,7 +60,12 @@ const CreatePostModal = ({ handleClose, show, setShow }) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        animation={false}
+        className="create-nail-modal"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Post a Nail Design</Modal.Title>
         </Modal.Header>
@@ -132,9 +138,7 @@ const CreatePostModal = ({ handleClose, show, setShow }) => {
                   value={imageUrl}
                   onChange={(e) => setImageUrl(e.target.value)}
                 ></Form.Control>
-                <Button onClick={() => myWidget.open()} variant="primary">
-                  Upload
-                </Button>
+                <UploadButton myWidget={myWidget} />
               </div>
             </Form.Group>
             <UpdateButton />

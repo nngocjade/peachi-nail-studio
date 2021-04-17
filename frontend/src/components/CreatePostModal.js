@@ -15,6 +15,7 @@ import { createBlogPost } from "../redux/actions/blogPostActions";
 import Loader from "../components/Loader";
 import Message from "../components/Message";
 import UpdateButton from "./UpdateButton";
+import UploadButton from "./UploadButton";
 
 const CreatePostModal = ({ handleClose, show, setShow }) => {
   const [title, setTitle] = useState("");
@@ -59,7 +60,12 @@ const CreatePostModal = ({ handleClose, show, setShow }) => {
 
   return (
     <>
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal
+        show={show}
+        onHide={handleClose}
+        animation={false}
+        className="create-post-modal"
+      >
         <Modal.Header closeButton>
           <Modal.Title>Create a post</Modal.Title>
         </Modal.Header>
@@ -124,9 +130,7 @@ const CreatePostModal = ({ handleClose, show, setShow }) => {
                   value={imageUrl}
                   onChange={(e) => setImageUrl(e.target.value)}
                 ></Form.Control>
-                <Button onClick={() => myWidget.open()} variant="primary">
-                  Upload
-                </Button>
+                <UploadButton myWidget={myWidget} />
               </div>
             </Form.Group>
             <UpdateButton />

@@ -143,7 +143,7 @@ const ProfilePage = ({ history, location }) => {
       ) : (
         userDetails.user.favorites.map((f) => (
           <Card.Body style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={f.image} />
+            <Card.Img variant="top" src={f.imageUrl} />
             <Card.Body>
               <Card.Title>{f.name}</Card.Title>
               <Card.Text>

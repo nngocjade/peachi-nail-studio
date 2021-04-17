@@ -8,7 +8,7 @@ const UploadButton = ({ myWidget }) => {
         class="fas fa-arrow-up"
         style={{
           width: "1.5em",
-          height: "1.5em",
+          height: "2em",
           display: "flex",
           alignItems: "center",
           justifyContent: "center",

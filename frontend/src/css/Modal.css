@@ -1,4 +1,6 @@
-.design-detail-modal {
+.design-detail-modal,
+.create-nail-modal,
+.create-post-modal {
   display: flex !important;
   justify-content: center;
   align-items: center;
@@ -46,4 +48,28 @@
 .modal-image {
   border-radius: 15px;
   box-shadow: 0 0px 30px 2px #ffffff;
+}
+
+/* CREATE NAIL MODAL */
+
+.create-nail-modal .modal-body,
+.create-post-modal .modal-body {
+  padding: 0 !important;
+}
+
+.create-nail-modal form,
+.create-post-modal form {
+  width: 80%;
+}
+
+.create-nail-modal .modal-title,
+.create-post-modal .modal-title {
+  width: 100%;
+  text-align: center;
+  margin-top: 0.5em;
+  color: #f46b45c7;
+}
+
+.create-nail-modal > .form-control:focus {
+  background-color: white !important;
 }
