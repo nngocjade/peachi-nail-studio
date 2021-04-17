@@ -22,7 +22,7 @@ const HomePage = () => {
         </div>
       </div>
       <Row>
-        <Col className="col-5">
+        <Col className="col-5 landing-content">
           <h1>Just Peachi</h1>
           <h2>Nails inspired by nature</h2>
           <div className="description">
@@ -36,7 +36,7 @@ const HomePage = () => {
         </Col>
         <Col className="peach-wrapper">
           <img className="big-peach" src={Logo} alt="logo" />
-          <img className="big-peach-front" src={Logo} alt="logo" />
+          <img className="big-peach-front blink_me" src={Logo} alt="logo" />
         </Col>
       </Row>
       <Row>

@@ -5,13 +5,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  background-color: thistle;
 }
 
 .home .row {
   width: 100%;
   margin: 2em 0;
-  background-color: white;
 }
 
 .home .peach-wrapper {
@@ -62,6 +60,24 @@
 .home > div > .btn {
   margin: 1rem 0;
   padding: 0.5rem 1rem;
+}
+
+.home .landing-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ==================== BLINK ======================== */
+
+.blink_me {
+  animation: blinker 5s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 25%;
+  }
 }
 
 /* ==================== WOBBLE ======================= */
