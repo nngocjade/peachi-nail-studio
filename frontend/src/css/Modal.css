@@ -16,6 +16,7 @@
   backdrop-filter: blur(15px);
   border-radius: 15px;
   border: 1px solid rgba(255, 255, 255, 0.616);
+  box-shadow: 0 0 20px 3px #636363;
 }
 
 .modal-dialog {
@@ -45,4 +46,9 @@
 .modal-image {
   border-radius: 15px;
   box-shadow: 0 0px 30px 2px #ffffff;
+}
+
+.modal-backdrop {
+  background-color: transparent;
+  backdrop-filter: blur(200px);
 }
