@@ -66,10 +66,11 @@ const BlogPostDetailPage = ({ match, history }) => {
         <Loader />
       ) : (
         <>
+          {/* HEADER */}
           <Row>
-            <Col className="image">
+            <Col>
               <Image
-                style={{ width: "30rem", borderRadius: "50%" }}
+                style={{ width: "30em", borderRadius: "15px" }}
                 src={blogPost.imageUrl}
               />
             </Col>
@@ -78,41 +79,55 @@ const BlogPostDetailPage = ({ match, history }) => {
                 <h2>
                   <strong>{blogPost.title}</strong>
                 </h2>
+                <div className="last-updated">
+                  <Moment fromNow>{blogPost.updatedAt}</Moment>
+                </div>
               </div>
               <div>{blogPost.body}</div>
-              <div className="artist-date">
+              <div className="artist-date-name">
                 <div className="last-updated">
-                  Last updated: <Moment fromNow>{blogPost.updatedAt}</Moment>
+                  {/* Last updated: <Moment fromNow>{blogPost.updatedAt}</Moment> */}
                 </div>
-                <div>
+                <div className="author-and-image">
                   {blogPost.author.name}
-                  <Image
-                    style={{ with: "10em", height: "10em" }}
-                    src={blogPost.author.imageUrl}
-                  />
+                  <div className="author-image-wrapper">
+                    <Image
+                      style={{ with: "10em", height: "10em" }}
+                      src={blogPost.author.imageUrl}
+                    />
+                  </div>
                 </div>
               </div>
             </Col>
           </Row>
+          {/* BODY */}
+          <Row className="body">
+            <div className="paragraph">{blogPost.body}</div>
+
+            <div className="paragraph">{blogPost.body}</div>
+          </Row>
+
           <Row>
-            <Col md={6}>
-              <h2>
+            <Col>
+              <h3>
                 {blogPost.numComments} Comment
                 {blogPost.numComments > 0 ? "s" : ""}
-              </h2>
+              </h3>
               {blogPost.comments.length === 0 && <Message>No Comments</Message>}
               <ListGroup variant="flush">
                 {blogPost.comments.map((comment) => (
                   <ListGroup.Item key={comment._id}>
-                    <strong>{comment.name}</strong>
-                    {/* add  Ratin component here */}
-                    <p>{comment.createdAt.substring(0, 10)}</p>
+                    <div className="comment-name-date">
+                      <strong>{comment.name}</strong>
+                      <p>{comment.createdAt.substring(0, 10)}</p>
+                    </div>
+
                     <p>{comment.aComment}</p>
                   </ListGroup.Item>
                 ))}
                 {/* {!blogPost.Comments.some((rev) => rev.user === userInfo._id) && ( */}
                 <ListGroup.Item>
-                  <h2>Write a Comment</h2>
+                  <h3 className="write-comment">Write a Comment</h3>
                   {errorBlogPostComment && (
                     <Message>{errorBlogPostComment}</Message>
                   )}

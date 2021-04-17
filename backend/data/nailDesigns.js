@@ -1,7 +1,7 @@
 const nailDesigns = [
   {
     name: "Cheetah",
-    image: "/images/CheattaColorBlockTips.png",
+    imageUrl: "/images/CheattaColorBlockTips.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",
@@ -11,7 +11,7 @@ const nailDesigns = [
   },
   {
     name: "Black Leaf",
-    image: "/images/BlackLeaf.png",
+    imageUrl: "/images/BlackLeaf.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",
@@ -21,7 +21,7 @@ const nailDesigns = [
   },
   {
     name: "Black & White",
-    image: "/images/blackWhiteTips.png",
+    imageUrl: "/images/blackWhiteTips.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",
@@ -31,7 +31,7 @@ const nailDesigns = [
   },
   {
     name: "Transparent Pink",
-    image: "/images/transparentPinkSquare.png",
+    imageUrl: "/images/transparentPinkSquare.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",
@@ -41,7 +41,7 @@ const nailDesigns = [
   },
   {
     name: "Corner Tips",
-    image: "/images/cornerWhiteTips.png",
+    imageUrl: "/images/cornerWhiteTips.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",
@@ -51,7 +51,7 @@ const nailDesigns = [
   },
   {
     name: "Multi Colors",
-    image: "/images/multiColorTips.png",
+    imageUrl: "/images/multiColorTips.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",
@@ -61,7 +61,7 @@ const nailDesigns = [
   },
   {
     name: "Retro Punk",
-    image: "/images/retroPunk.png",
+    imageUrl: "/images/retroPunk.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",
@@ -71,7 +71,7 @@ const nailDesigns = [
   },
   {
     name: "Neutral Ombre",
-    image: "/images/neutralOmbre.png",
+    imageUrl: "/images/neutralOmbre.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",
@@ -81,7 +81,7 @@ const nailDesigns = [
   },
   {
     name: "Tiny Polka Dots",
-    image: "/images/pokaDots.png",
+    imageUrl: "/images/pokaDots.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",
@@ -91,7 +91,7 @@ const nailDesigns = [
   },
   {
     name: "Polka Dot Tips",
-    image: "/images/PokaDottedRoundTips.png",
+    imageUrl: "/images/PokaDottedRoundTips.png",
     description:
       "Possimus quis earum veniam quasi aliquam eligendi, placeat qui corporis!",
     category: "NailArt",

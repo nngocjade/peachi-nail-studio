@@ -40,7 +40,7 @@ const BlogPage = ({ match, history }) => {
     <Container className="blog">
       <h1>POSTS</h1>
       {blogPosts.map((blogPost) => (
-        <Col md={6} className="m-5">
+        <Col md={8} className="m-5">
           <BlogPost blogPost={blogPost} />
         </Col>
       ))}
