@@ -1,13 +1,28 @@
 import React from "react";
 import "../../css/Home.css";
 import Logo from "../../peach.svg";
-import { Container, Button, Row } from "react-bootstrap";
+import NailPolish from "../../nail-polish.svg";
+import { Container, Button, Row, Col } from "react-bootstrap";
 
 const HomePage = () => {
   return (
     <Container className="home" fluid="md">
+      <div className="nail-polish-absolute">
+        <div className="nail-polish-wrapper">
+          <img
+            className="wobble animated infinite nail-polish"
+            src={NailPolish}
+            alt="nail-polish"
+          />
+          <img
+            className="wobble animated infinite nail-polish-front"
+            src={NailPolish}
+            alt="nail-polish"
+          />
+        </div>
+      </div>
       <Row>
-        <div className="col-5">
+        <Col className="col-5">
           <h1>Just Peachi</h1>
           <h2>Nails inspired by nature</h2>
           <div className="description">
@@ -18,18 +33,14 @@ const HomePage = () => {
           <Button type="button" className="learn-more">
             <span>Learn more</span>
           </Button>
-        </div>
-        <div className="peach-wrapper">
-          <img
-            className="big-peach"
-            src={Logo}
-            alt="logo"
-            style={{
-              filter: "blur(10px)",
-            }}
-          />
+        </Col>
+        <Col className="peach-wrapper">
+          <img className="big-peach" src={Logo} alt="logo" />
           <img className="big-peach-front" src={Logo} alt="logo" />
-        </div>
+        </Col>
+      </Row>
+      <Row>
+        <div>About</div>
       </Row>
     </Container>
   );
