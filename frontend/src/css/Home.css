@@ -207,16 +207,34 @@
 .home .services .blossom-wrapper-one {
   position: absolute;
   /* filter: blur(10px); */
-  opacity: 50%;
-  bottom: -4.5em;
-  right: -4.5em;
+  opacity: 15%;
+  top: -7em;
+  left: -9.5em;
+  /* z-index: 1; */
 }
 
-.home .services .blossom-wrapper .blossom,
-.home .services .blossom-wrapper .blossom-one {
+.home .services .blossom-wrapper .blossom {
   width: 10em;
 }
 
+.home .services .blossom-wrapper-one .blossom-one {
+  width: 5em;
+}
+
+.home .petal-wrapper {
+  opacity: 20%;
+  position: absolute;
+  top: 20em;
+  right: -5em;
+  z-index: -1;
+}
+.home .petal-wrapper .petal {
+  width: 10em;
+}
+
+.home .manicure img {
+  width: 15em;
+}
 /* .home .services .card:before {
   content: "";
   height: 25em;
