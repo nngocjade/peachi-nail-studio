@@ -43,48 +43,30 @@ header {
 
 /* =============== BUTTON ================ */
 .btn {
-  transition: 0.4s;
+  transition: all 0.5s ease !important;
   border: none;
   border-radius: 25px;
   padding: 0 8px;
   margin-left: 10px;
-  background: #f46b45; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #eea949ad,
-    #f46b45c7
-  ); /* Chrome 10-25, Safari 5.1-6 */
+  /* background: #f46b45; */
   background: linear-gradient(
     to right,
-    #eea949ad,
-    #f46b45c7
+    rgba(255, 195, 111, 0.8),
+    rgba(255, 127, 80, 0.8)
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  box-shadow: 2px 5px 5px 2px #f46b4538 !important;
-  backdrop-filter: blur(4px) !important;
+  box-shadow: 2px 5px 5px 2px #f46b4538;
+  backdrop-filter: blur(4px);
+  /* background-color: rgba(255, 255, 255, 0.2); */
+  /* border: 1px solid rgba(255, 255, 255, 0.8); */
+  /* border: 1px solid rgba(255, 127, 80, 1); */
+  /* background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  backdrop-filter: blur(4px); */
 }
 
-.learn-more {
-  padding: 8px 50px;
-  transition: all 0.5s;
-}
-
-.learn-more span {
-  display: inline-block;
-  position: relative;
-  transition: 0.5s;
-}
-
-.learn-more span:after {
-  content: " \00bb";
-  position: absolute;
-  top: 0;
-  right: -20px;
-  transition: 0.5s;
-  opacity: 0;
-}
-
-.learn-more:hover span {
-  padding-right: 25px;
+.btn:hover {
+  cursor: pointer;
+  background-color: rgba(255, 127, 80, 0.9);
 }
 
 button:hover span:after {

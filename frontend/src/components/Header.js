@@ -1,10 +1,10 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-
 import { logout } from "../redux/actions/userActions";
 
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -71,10 +71,17 @@ const Header = () => {
                   </NavDropdown.Item>
                 </NavDropdown>
               )}
-              <Button type="button">
-                <Nav.Link className="text-light" href="/reservation">
+              <Button type="button btn">
+                <Link
+                  to="/reservation"
+                  style={{
+                    color: "white",
+                    textDecoration: "none",
+                    padding: ".5em",
+                  }}
+                >
                   Book Now
-                </Nav.Link>
+                </Link>
               </Button>
             </Nav>
           </Navbar.Collapse>

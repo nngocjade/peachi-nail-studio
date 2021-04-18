@@ -68,15 +68,43 @@
   justify-content: center;
 }
 
+/* ==================== BUTTON ======================= */
+
+.learn-more {
+  padding: 8px 50px;
+  transition: all 0.5s ease;
+  position: relative;
+}
+
+.learn-more span {
+  display: inline-block;
+  position: relative;
+  transition: all 0.5s ease;
+  color: white !important;
+}
+
+.learn-more span:after {
+  content: " \00bb";
+  position: absolute;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+  opacity: 0;
+}
+
+.learn-more:hover span {
+  padding-right: 25px;
+}
+
 /* ==================== BLINK ======================== */
 
 .blink_me {
-  animation: blinker 5s linear infinite;
+  animation: blinker 4s linear infinite;
 }
 
 @keyframes blinker {
   50% {
-    opacity: 25%;
+    opacity: 20%;
   }
 }
 

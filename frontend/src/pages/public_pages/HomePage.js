@@ -24,15 +24,19 @@ const HomePage = () => {
       <Row>
         <Col className="col-5 landing-content">
           <h1>Just Peachi</h1>
-          <h2>Nails inspired by nature</h2>
-          <div className="description">
+          <h4 style={{ padding: ".5em 1em" }}>inspired by joy</h4>
+          <div className="description" style={{ paddingBottom: "1em" }}>
             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate
             magnam illum minima commodi dolorem quibusdam quod hic enim
             dignissimos excepturi.
           </div>
-          <Button type="button" className="learn-more">
+          <button
+            type="button"
+            className="learn-more btn"
+            style={{ width: "14em", margin: "1em" }}
+          >
             <span>Learn more</span>
-          </Button>
+          </button>
         </Col>
         <Col className="peach-wrapper">
           <img className="big-peach" src={Logo} alt="logo" />
