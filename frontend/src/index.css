@@ -18,39 +18,6 @@ main {
   min-height: 90vh;
 }
 
-.header {
-  padding-top: 1rem;
-  position: sticky;
-  top: 0;
-  transition: all 0.3s ease;
-  background-color: rgba(255, 255, 255, 0.603) !important;
-  z-index: 1;
-}
-
-.header-onscroll {
-  backdrop-filter: blur(5px);
-  box-shadow: 0 0 15px 3px rgba(255, 127, 80, 0.3);
-}
-
-/* ====================== NAVBAR ============== */
-
-.navbar {
-  background-color: transparent !important;
-}
-.navbar-toggler {
-  outline: none;
-  box-shadow: none;
-  border: none;
-}
-
-.logo {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: black;
-}
-
 /* =============== BUTTON ================ */
 .btn {
   transition: all 0.5s ease !important;

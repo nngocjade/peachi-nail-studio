@@ -1,5 +1,6 @@
 :root {
   --accent-color: rgba(255, 127, 80, 1);
+  --accent-color30: rgba(255, 127, 80, 0.3);
 }
 
 .home {
@@ -58,6 +59,7 @@
 .element-visible {
   visibility: visible !important;
   z-index: 1000 !important;
+  transition: all 0.2s ease;
 }
 
 .home .nail-polish-wrapper {
@@ -119,13 +121,114 @@
   padding-right: 25px;
 }
 
+/* ======================= CIRCLE ===================== */
+
+.home .circle {
+  height: 30em;
+  width: 30em;
+  position: absolute;
+  filter: blur(200px);
+  background-color: var(--accent-color);
+  z-index: -100 !important;
+  border-radius: 50%;
+  top: 50em;
+  left: -15em;
+}
+
+.home .circle:after {
+  content: "";
+  height: 30em;
+  width: 30em;
+  position: absolute;
+  filter: blur(200px);
+  background-color: var(--accent-color);
+  z-index: -100 !important;
+  border-radius: 50%;
+  bottom: 45em;
+  right: -15em;
+}
+
+.home .circle-one {
+  height: 40em;
+  width: 40em;
+  position: absolute;
+  filter: blur(250px);
+  background-color: var(--accent-color);
+  z-index: -100 !important;
+  border-radius: 50%;
+  bottom: -45em;
+  right: 25em;
+}
+
+/* .home .circle-one:after {
+  content: "";
+  height: 30em;
+  width: 30em;
+  position: absolute;
+  filter: blur(200px);
+  background-color: var(--accent-color);
+  z-index: -100 !important;
+  border-radius: 50%;
+  top: -20em;
+  right: -25em;
+} */
+
 /* ===================== SERVICES ==================== */
 
 .home .services {
+  position: relative;
   height: 50em;
-  background-color: var(--accent-color);
+  /* background-color: var(--accent-color); */
 }
 
+.home .services .card {
+  height: 25em;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.479);
+  backdrop-filter: blur(3px);
+  box-shadow: 0 0 15px 2px var(--accent-color30);
+  border: 1px solid white;
+  transition: all 0.3s ease;
+}
+.home .services .card:hover {
+  transform: translateY(-10px);
+}
+
+.home .services .blossom-wrapper {
+  position: absolute;
+  /* filter: blur(10px); */
+  opacity: 50%;
+  top: -4.5em;
+  left: -4.5em;
+}
+.home .services .blossom-wrapper-one {
+  position: absolute;
+  /* filter: blur(10px); */
+  opacity: 50%;
+  bottom: -4.5em;
+  right: -4.5em;
+}
+
+.home .services .blossom-wrapper .blossom,
+.home .services .blossom-wrapper .blossom-one {
+  width: 10em;
+}
+
+/* .home .services .card:before {
+  content: "";
+  height: 25em;
+  width: 25em;
+  position: absolute;
+  filter: blur(100px);
+  background-color: var(--accent-color);
+  z-index: -100 !important;
+  border-radius: 50%;
+  top: -18em;
+  left: -18em;
+} */
 /* ==================== BLINK ======================== */
 
 .blink_me {
@@ -233,5 +336,8 @@
   animation-name: wobble;
 }
 
-@media only screen and (max-width: 600px) {
-}
+/* @media only screen and (max-width: 600px) {
+  .home .circle-one:after {
+    display: none !important;
+  }
+} */
