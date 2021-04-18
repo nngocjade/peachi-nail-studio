@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/Home.css";
 import Logo from "../../svg/peach.svg";
 import NailPolish from "../../svg/nail-polish.svg";
@@ -6,6 +6,18 @@ import BackgroundPeach from "../../svg/peach(1).svg";
 import { Container, Button, Row, Col } from "react-bootstrap";
 
 const HomePage = () => {
+  const [visible, setVisible] = useState(false);
+
+  const makeNailPolishVisible = () => {
+    if (window.scrollY >= 80) {
+      setVisible(true);
+    } else {
+      setVisible(false);
+    }
+  };
+
+  window.addEventListener("scroll", makeNailPolishVisible);
+
   return (
     <Container className="home" fluid="md">
       {/* <div className="background-peach-wrapper">
@@ -15,7 +27,13 @@ const HomePage = () => {
           alt="background peach"
         />
       </div> */}
-      <div className="nail-polish-absolute">
+      <div
+        className={
+          visible
+            ? "nail-polish-absolute element-visible"
+            : "nail-polish-absolute"
+        }
+      >
         <div className="nail-polish-wrapper">
           <img
             className="wobble animated infinite nail-polish"

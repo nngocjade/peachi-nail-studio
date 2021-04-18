@@ -50,9 +50,14 @@
 
 .home .nail-polish-absolute {
   position: fixed;
-  display: none;
+  visibility: hidden;
   right: 4em;
   bottom: 4em;
+}
+
+.element-visible {
+  visibility: visible !important;
+  z-index: 1000 !important;
 }
 
 .home .nail-polish-wrapper {
