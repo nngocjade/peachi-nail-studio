@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../redux/actions/userActions";
 
 import { Button, Container, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import { Link } from "react-router-dom";
+import "../css/Header.css";
 
 const Header = () => {
+  const [header, setHeader] = useState(false);
+
   const dispatch = useDispatch();
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -16,9 +19,19 @@ const Header = () => {
   const logoutHandler = () => {
     dispatch(logout());
   };
+  // =========== ON SCROLL CHANGE HEADER STYLE ================
+  const changeHeaderStyle = () => {
+    if (window.scrollY >= 94.21) {
+      setHeader(true);
+    } else {
+      setHeader(false);
+    }
+  };
+
+  window.addEventListener("scroll", changeHeaderStyle);
 
   return (
-    <header>
+    <header className={header ? "header header-onscroll" : "header"}>
       <Navbar bg="light" expand="md">
         <Container fluid>
           <LinkContainer to="/">

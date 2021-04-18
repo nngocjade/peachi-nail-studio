@@ -1,12 +1,20 @@
 import React from "react";
 import "../../css/Home.css";
-import Logo from "../../peach.svg";
-import NailPolish from "../../nail-polish.svg";
+import Logo from "../../svg/peach.svg";
+import NailPolish from "../../svg/nail-polish.svg";
+import BackgroundPeach from "../../svg/peach(1).svg";
 import { Container, Button, Row, Col } from "react-bootstrap";
 
 const HomePage = () => {
   return (
     <Container className="home" fluid="md">
+      {/* <div className="background-peach-wrapper">
+        <img
+          className="background-peach"
+          src={BackgroundPeach}
+          alt="background peach"
+        />
+      </div> */}
       <div className="nail-polish-absolute">
         <div className="nail-polish-wrapper">
           <img
@@ -38,13 +46,17 @@ const HomePage = () => {
             <span>Learn more</span>
           </button>
         </Col>
-        <Col className="peach-wrapper">
-          <img className="big-peach" src={Logo} alt="logo" />
-          <img className="big-peach-front blink_me" src={Logo} alt="logo" />
+        <Col className="peach-col">
+          <div className="peach-wrapper">
+            <img className="big-peach" src={Logo} alt="logo" />
+            <img className="big-peach-front blink_me" src={Logo} alt="logo" />
+          </div>
         </Col>
       </Row>
-      <Row>
-        <div>About</div>
+      <Row className="services text-center ">
+        <Col>Mani / Pedi</Col>
+        <Col>Nail Design</Col>
+        <Col>Gel</Col>
       </Row>
     </Container>
   );

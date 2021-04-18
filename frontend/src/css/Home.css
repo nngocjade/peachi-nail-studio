@@ -1,3 +1,7 @@
+:root {
+  --accent-color: rgba(255, 127, 80, 1);
+}
+
 .home {
   width: 100%;
   height: 200vh;
@@ -9,30 +13,44 @@
 
 .home .row {
   width: 100%;
+  height: 45em;
   margin: 2em 0;
 }
 
-.home .peach-wrapper {
-  position: relative;
+/* .home .background-peach {
+  position: absolute;
+  filter: blur(5px);
+  top: 70%;
+  left: 10%;
+  width: 10em;
+} */
+
+.home .peach-col {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+.home .peach-wrapper {
+  position: relative;
+}
 
 .home .big-peach {
+  width: 100%;
   opacity: 50%;
   filter: blur(10px);
 }
 
 .home .big-peach-front {
-  opacity: 40%;
+  width: 100%;
+  opacity: 50%;
   position: absolute;
   top: 0;
-  left: 6.5em;
+  left: 1.7em;
 }
 
 .home .nail-polish-absolute {
   position: fixed;
+  display: none;
   right: 4em;
   bottom: 4em;
 }
@@ -94,6 +112,13 @@
 
 .learn-more:hover span {
   padding-right: 25px;
+}
+
+/* ===================== SERVICES ==================== */
+
+.home .services {
+  height: 50em;
+  background-color: var(--accent-color);
 }
 
 /* ==================== BLINK ======================== */
@@ -201,4 +226,7 @@
 .wobble {
   -webkit-animation-name: wobble;
   animation-name: wobble;
+}
+
+@media only screen and (max-width: 600px) {
 }
