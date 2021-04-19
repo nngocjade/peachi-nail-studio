@@ -233,8 +233,16 @@
 }
 
 .home .manicure img,
-.home .pedicure img {
+.home .pedicure img,
+.home .design img {
   width: 15em;
+}
+
+.home .card .service-title,
+.home .card .service-title,
+.home .card .service-title {
+  margin: 1.8rem 0 0 0;
+  color: var(--accent-color) !important;
 }
 /* .home .services .card:before {
   content: "";
