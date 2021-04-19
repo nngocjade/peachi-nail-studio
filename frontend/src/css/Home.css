@@ -6,7 +6,7 @@
 
 .home {
   width: 100%;
-  height: 200vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,7 +15,7 @@
 
 .home .row {
   width: 100%;
-  height: 45em;
+  height: auto;
   margin: 2em 0;
 }
 
@@ -186,12 +186,15 @@
 
 .home .services {
   position: relative;
-  height: 50em;
+  height: auto;
+  padding: 5em 0 8em 0;
+
   /* background-color: var(--accent-color); */
 }
 
 /* =========== SERVICE CARDS =========== */
-.home .service-title-row {
+.home .service-title-row,
+.home .about-title-row {
   height: auto;
   font-size: 3rem;
   /* color: var(--accent-color); */
@@ -200,9 +203,13 @@
   justify-content: center;
   margin: 5rem 0 1rem 0;
 }
+
+.home .services {
+  margin: 2rem 0 !important;
+}
 .home .services .card {
   padding: 2rem;
-  height: 25em;
+  height: 10em;
   border-radius: 25px;
   display: flex;
   justify-content: center;
@@ -212,6 +219,7 @@
   box-shadow: -4rem 0 3rem var(--accent-color30);
   border: 1.5px solid white;
   transition: all 0.3s ease;
+  margin: 3em 0;
 }
 
 .home .manicure img,
@@ -229,10 +237,12 @@
 
 .home .services .card:hover {
   transform: rotate3d(0, 0, 1, 5deg);
+  z-index: 1;
+  height: 22em;
 }
 
 .home .services .card:hover ~ .card {
-  transform: translatex(130px);
+  transform: translateX(130px);
 }
 
 .home .services .card:not(:first-child) {

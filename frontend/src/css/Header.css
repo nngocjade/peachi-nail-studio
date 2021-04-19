@@ -1,15 +1,14 @@
 .header {
-  padding-top: 1rem;
   position: sticky;
   top: 0;
   transition: all 0.2s ease;
-  z-index: 1;
+  z-index: 1000;
 }
 
 .header-onscroll {
   backdrop-filter: blur(10px);
   box-shadow: 0 0 15px 3px rgba(255, 127, 80, 0.3);
-  background-color: rgba(255, 255, 255, 0.603) !important;
+  background-color: rgba(255, 255, 255, 0.4) !important;
 }
 
 /* ====================== NAVBAR ============== */
@@ -24,6 +23,7 @@
 }
 
 .logo {
+  margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
   justify-content: center;

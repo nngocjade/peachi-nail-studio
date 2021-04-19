@@ -128,7 +128,10 @@ const HomePage = () => {
             </div> */}
           </Col>
         </Row>
-        <Row></Row>
+        <Row className="about-title-row">About</Row>
+        <Row>
+          <div className="card"></div>
+        </Row>
       </Container>
     </>
   );

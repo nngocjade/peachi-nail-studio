@@ -25,7 +25,7 @@ const App = () => {
       <Header />
       <main className="py-3">
         <Container fluid>
-          <Route exact path="/about" component={AboutPage} />
+          {/* <Route exact path="/about" component={AboutPage} /> */}
 
           {/* ==================== NAIL GALLERY ================== */}
           <Route exact path="/nailGallery" component={NailGalleryPage} />
@@ -107,7 +107,7 @@ const App = () => {
           <Route exact path="/" component={HomePage} />
         </Container>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </Router>
   );
 };
