@@ -249,6 +249,27 @@
   margin-left: -130px;
 }
 
+/* ================= ABOUT ================ */
+
+.home .about {
+  height: 30em;
+  background-color: rgba(221, 197, 197, 0.534);
+  backdrop-filter: blur(5px);
+  border: 1px solid white;
+  border-radius: 25px;
+}
+
+.home .about .card {
+  border-radius: 25px;
+}
+
+.home .about .text-body {
+  padding: 1rem;
+  border-radius: 25px;
+  background-color: rgb(219, 113, 113);
+  backdrop-filter: blur(10px);
+}
+
 /* ================ BACKGROUND DESIGNS ===================== */
 
 .home .services .blossom-wrapper {

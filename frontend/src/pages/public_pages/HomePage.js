@@ -129,8 +129,28 @@ const HomePage = () => {
           </Col>
         </Row>
         <Row className="about-title-row">About</Row>
-        <Row>
-          <div className="card"></div>
+        <Row className="about">
+          <Col sm={12} md={6} lg={6}>
+            <div className="card">
+              <div className="text-body">
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos
+                cupiditate nisi ipsa accusantium unde aut, eligendi ab culpa
+                aperiam omnis magni, rem similique enim esse commodi!
+                Repudiandae error unde magni. Totam optio, amet reiciendis
+                explicabo ad iste et voluptatem perferendis hic eveniet, earum
+                repellat inventore dolor. Praesentium optio impedit laboriosam,
+                minima tenetur debitis! Id, sed. Ratione placeat illum ad
+                quaerat alias! Eaque beatae explicabo dolor autem! Autem
+                molestiae laudantium tenetur qui modi facere eveniet quasi ea
+                dignissimos, quod dolores numquam aliquam! Magnam quos minus
+                consectetur ad est enim impedit cumque dolores aspernatur ea,
+                aperiam facere alias quaerat quas rerum facilis.
+              </div>
+            </div>
+          </Col>
+          <Col sm={12} md={6} lg={6}>
+            <div></div>
+          </Col>
         </Row>
       </Container>
     </>
