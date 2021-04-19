@@ -5,6 +5,7 @@ import NailPolish from "../../svg/nail-polish.svg";
 import Blossom from "../../svg/cherry-blossom(3).svg";
 import Petal from "../../svg/petal.svg";
 import Manicure from "../../svg/manicure.svg";
+import Pedicure from "../../svg/pedicure.svg";
 // import BackgroundPeach from "../../svg/peach(1).svg";
 import { Container, Button, Row, Col } from "react-bootstrap";
 
@@ -89,14 +90,19 @@ const HomePage = () => {
               <div className="manicure">
                 <img src={Manicure} alt="manicure" />
               </div>
-              <div>Mani / Pedi</div>
+              <div>Manicure</div>
             </div>
           </Col>
           <Col sm={12} md={6} lg={4}>
             <div className="card">Nail Design</div>
           </Col>
           <Col sm={12} md={6} lg={4}>
-            <div className="card">Gel</div>
+            <div className="card">
+              <div className="pedicure">
+                <img src={Pedicure} alt="pedicure" />
+              </div>
+              <div>Pedicure</div>
+            </div>
             <div className="petal-wrapper ">
               <img className="petal" src={Petal} alt="petal" />
             </div>

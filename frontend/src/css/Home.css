@@ -232,7 +232,8 @@
   width: 10em;
 }
 
-.home .manicure img {
+.home .manicure img,
+.home .pedicure img {
   width: 15em;
 }
 /* .home .services .card:before {
