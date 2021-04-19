@@ -1,6 +1,7 @@
 :root {
   --accent-color: rgba(255, 127, 80, 1);
   --accent-color30: rgba(255, 127, 80, 0.3);
+  --accent-color-two: rgba(255, 195, 111, 1);
 }
 
 .home {
@@ -16,6 +17,11 @@
   width: 100%;
   height: 45em;
   margin: 2em 0;
+}
+
+.dot {
+  color: rgb(253, 204, 175);
+  margin: 0 0.3rem;
 }
 
 /* .home .background-peach {
@@ -153,14 +159,14 @@
   width: 40em;
   position: absolute;
   filter: blur(250px);
-  background-color: var(--accent-color);
+  background-color: var(--accent-color-two);
   z-index: -100 !important;
   border-radius: 50%;
-  bottom: -45em;
-  right: 25em;
+  bottom: -50em;
+  right: 10em;
 }
 
-/* .home .circle-one:after {
+.home .circle-one:after {
   content: "";
   height: 30em;
   width: 30em;
@@ -169,9 +175,9 @@
   background-color: var(--accent-color);
   z-index: -100 !important;
   border-radius: 50%;
-  top: -20em;
+  bottom: -10em;
   right: -25em;
-} */
+}
 
 /* ===================== SERVICES ==================== */
 
@@ -181,7 +187,7 @@
   /* background-color: var(--accent-color); */
 }
 
-.home .services .card {
+/* .home .services .card {
   height: 25em;
   border-radius: 25px;
   display: flex;
@@ -195,7 +201,41 @@
 }
 .home .services .card:hover {
   transform: translateY(-10px);
+} */
+
+/* =========== SERVICE CARDS =========== */
+
+.home .services .card-list {
+  display: flex;
 }
+
+.home .services .card {
+  padding: 2rem;
+  height: 25em;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0.479);
+  backdrop-filter: blur(3px);
+  box-shadow: -4rem 0 3rem var(--accent-color30);
+  border: 1.5px solid white;
+  transition: all 0.3s ease;
+}
+
+.home .services .card:hover {
+  transform: rotate3d(0, 0, 1, 5deg);
+}
+
+.home .services .card:hover ~ .card {
+  transform: translatex(130px);
+}
+
+.home .services .card:not(:first-child) {
+  margin-left: -130px;
+}
+
+/* ================ BACKGROUND DESIGNS ===================== */
 
 .home .services .blossom-wrapper {
   position: absolute;
@@ -228,8 +268,21 @@
   right: -5em;
   z-index: -1;
 }
-.home .petal-wrapper .petal {
+.home .petal-wrapper .petal,
+.home .petal-wrapper-one .petal {
   width: 10em;
+}
+
+.home .petal-wrapper-one {
+  opacity: 70%;
+  transform: rotate(-20deg);
+  z-index: 1;
+  position: absolute;
+  bottom: 2em;
+  right: 0;
+}
+
+.home .petal-wrapper-one .petal {
 }
 
 .home .manicure img,
@@ -363,8 +416,12 @@
   animation-name: wobble;
 }
 
-/* @media only screen and (max-width: 600px) {
-  .home .circle-one:after {
-    display: none !important;
+/* @media (max-width: 600px) {
+  .home .services .card:hover ~ .card {
+    transform: translatex(200px) !important;
+  }
+
+  .home .services .card:not(:first-child) {
+    margin-left: -200px !important;
   }
 } */

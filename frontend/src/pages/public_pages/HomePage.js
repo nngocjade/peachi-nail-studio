@@ -86,12 +86,48 @@ const HomePage = () => {
           <div className="blossom-wrapper-one ">
             <img className="blossom-one" src={Blossom} alt="blossom" />
           </div>
+
+          {/* <div className="card-list">
+         
+            <div className="card">
+              <div className="pedicure">
+                <img src={Pedicure} alt="pedicure" />
+              </div>
+              <div className="service-title">Pedicure</div>
+            </div>
+            <div className="petal-wrapper ">
+              <img className="petal" src={Petal} alt="petal" />
+            </div>
+            <div className="petal-wrapper-one ">
+              <img className="petal" src={Petal} alt="petal" />
+            </div>
+ 
+            <div className="card">
+              <div className="design">
+                <img src={Design} alt="design" />
+              </div>
+              <div className="service-title">Nail Design</div>
+            </div>
+      
+            <div className="card">
+              <div className="manicure">
+                <img src={Manicure} alt="manicure" />
+              </div>
+              <div className="service-title">
+                Manicure <span className="dot">•</span> Gel{" "}
+                <span className="dot">•</span> Acrylic
+              </div>
+            </div>
+          </div> */}
           <Col sm={12} md={6} lg={4}>
             <div className="card">
               <div className="manicure">
                 <img src={Manicure} alt="manicure" />
               </div>
-              <div className="service-title">Manicure</div>
+              <div className="service-title">
+                Manicure <span className="dot">•</span> Gel{" "}
+                <span className="dot">•</span> Acrylic
+              </div>
             </div>
           </Col>
           <Col sm={12} md={6} lg={4}>
@@ -110,6 +146,9 @@ const HomePage = () => {
               <div className="service-title">Pedicure</div>
             </div>
             <div className="petal-wrapper ">
+              <img className="petal" src={Petal} alt="petal" />
+            </div>
+            <div className="petal-wrapper-one ">
               <img className="petal" src={Petal} alt="petal" />
             </div>
           </Col>
