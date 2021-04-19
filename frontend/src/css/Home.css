@@ -58,8 +58,8 @@
 .home .nail-polish-absolute {
   position: fixed;
   visibility: hidden;
-  right: 4em;
-  bottom: 4em;
+  right: 1.5em;
+  bottom: 1.5em;
 }
 
 .element-visible {
@@ -219,7 +219,7 @@
   box-shadow: -4rem 0 3rem var(--accent-color30);
   border: 1.5px solid white;
   transition: all 0.3s ease;
-  margin: 3em 0;
+  margin: 4.5em 0;
 }
 
 .home .manicure img,
