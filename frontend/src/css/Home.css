@@ -93,6 +93,9 @@
   padding: 0.5rem 1rem;
 }
 
+.home .landing-wrapper {
+  margin: 3rem 0 5rem 0 !important;
+}
 .home .landing-content {
   display: flex;
   flex-direction: column;
@@ -171,12 +174,12 @@
   height: 30em;
   width: 30em;
   position: absolute;
-  filter: blur(200px);
+  filter: blur(180px);
   background-color: var(--accent-color);
   z-index: -100 !important;
   border-radius: 50%;
   bottom: -10em;
-  right: -25em;
+  right: -20em;
 }
 
 /* ===================== SERVICES ==================== */
@@ -187,28 +190,16 @@
   /* background-color: var(--accent-color); */
 }
 
-/* .home .services .card {
-  height: 25em;
-  border-radius: 25px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.479);
-  backdrop-filter: blur(3px);
-  box-shadow: 0 0 15px 2px var(--accent-color30);
-  border: 1px solid white;
-  transition: all 0.3s ease;
-}
-.home .services .card:hover {
-  transform: translateY(-10px);
-} */
-
 /* =========== SERVICE CARDS =========== */
-
-.home .services .card-list {
+.home .service-title-row {
+  height: auto;
+  font-size: 3rem;
+  /* color: var(--accent-color); */
   display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5rem 0 1rem 0;
 }
-
 .home .services .card {
   padding: 2rem;
   height: 25em;
@@ -221,6 +212,19 @@
   box-shadow: -4rem 0 3rem var(--accent-color30);
   border: 1.5px solid white;
   transition: all 0.3s ease;
+}
+
+.home .manicure img,
+.home .pedicure img,
+.home .design img {
+  width: 15em;
+}
+
+.home .card .service-title,
+.home .card .service-title,
+.home .card .service-title {
+  margin: 1.8rem 0 0 0;
+  color: rgb(110, 110, 110) !important;
 }
 
 .home .services .card:hover {
@@ -273,30 +277,15 @@
   width: 10em;
 }
 
-.home .petal-wrapper-one {
+/* .home .petal-wrapper-one {
   opacity: 70%;
   transform: rotate(-20deg);
-  z-index: 1;
+  z-index: -1;
   position: absolute;
   bottom: 2em;
   right: 0;
-}
+} */
 
-.home .petal-wrapper-one .petal {
-}
-
-.home .manicure img,
-.home .pedicure img,
-.home .design img {
-  width: 15em;
-}
-
-.home .card .service-title,
-.home .card .service-title,
-.home .card .service-title {
-  margin: 1.8rem 0 0 0;
-  color: var(--accent-color) !important;
-}
 /* .home .services .card:before {
   content: "";
   height: 25em;

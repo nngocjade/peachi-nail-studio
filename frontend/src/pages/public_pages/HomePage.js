@@ -55,7 +55,7 @@ const HomePage = () => {
             />
           </div>
         </div>
-        <Row>
+        <Row className="landing-wrapper">
           <Col className="col-5 landing-content">
             <h1>Just Peachi</h1>
             <h4 style={{ padding: ".5em 1em" }}>inspired by joy</h4>
@@ -79,6 +79,9 @@ const HomePage = () => {
             </div>
           </Col>
         </Row>
+        <Row className="service-title-row">
+          <div className="services-main-title">Services</div>
+        </Row>
         <Row className="services text-center ">
           <div className="blossom-wrapper">
             <img className="blossom" src={Blossom} alt="blossom" />
@@ -87,38 +90,6 @@ const HomePage = () => {
             <img className="blossom-one" src={Blossom} alt="blossom" />
           </div>
 
-          {/* <div className="card-list">
-         
-            <div className="card">
-              <div className="pedicure">
-                <img src={Pedicure} alt="pedicure" />
-              </div>
-              <div className="service-title">Pedicure</div>
-            </div>
-            <div className="petal-wrapper ">
-              <img className="petal" src={Petal} alt="petal" />
-            </div>
-            <div className="petal-wrapper-one ">
-              <img className="petal" src={Petal} alt="petal" />
-            </div>
- 
-            <div className="card">
-              <div className="design">
-                <img src={Design} alt="design" />
-              </div>
-              <div className="service-title">Nail Design</div>
-            </div>
-      
-            <div className="card">
-              <div className="manicure">
-                <img src={Manicure} alt="manicure" />
-              </div>
-              <div className="service-title">
-                Manicure <span className="dot">•</span> Gel{" "}
-                <span className="dot">•</span> Acrylic
-              </div>
-            </div>
-          </div> */}
           <Col sm={12} md={6} lg={4}>
             <div className="card">
               <div className="manicure">
@@ -135,7 +106,9 @@ const HomePage = () => {
               <div className="design">
                 <img src={Design} alt="design" />
               </div>
-              <div className="service-title">Nail Design</div>
+              <div className="service-title">
+                Nail Design <span className="dot">•</span> Dip Powder
+              </div>
             </div>
           </Col>
           <Col sm={12} md={6} lg={4}>
@@ -143,16 +116,19 @@ const HomePage = () => {
               <div className="pedicure">
                 <img src={Pedicure} alt="pedicure" />
               </div>
-              <div className="service-title">Pedicure</div>
+              <div className="service-title">
+                Pedicure <span className="dot">•</span> Gel Pedi{" "}
+              </div>
             </div>
             <div className="petal-wrapper ">
               <img className="petal" src={Petal} alt="petal" />
             </div>
-            <div className="petal-wrapper-one ">
+            {/* <div className="petal-wrapper-one ">
               <img className="petal" src={Petal} alt="petal" />
-            </div>
+            </div> */}
           </Col>
         </Row>
+        <Row></Row>
       </Container>
     </>
   );
