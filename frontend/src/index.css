@@ -93,3 +93,9 @@ footer {
 .image-input-wrapper {
   display: flex;
 }
+
+/* ======================= FOOTER ========================= */
+
+.footer {
+  color: lightgray;
+}

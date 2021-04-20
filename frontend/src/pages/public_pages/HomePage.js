@@ -9,6 +9,7 @@ import Pedicure from "../../svg/pedicure.svg";
 import Design from "../../svg/nail-design.svg";
 // import BackgroundPeach from "../../svg/peach(1).svg";
 import { Container, Button, Row, Col } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 const HomePage = () => {
   const [visible, setVisible] = useState(false);
@@ -57,12 +58,18 @@ const HomePage = () => {
         </div>
         <Row className="landing-wrapper">
           <Col className="col-5 landing-content">
-            <h1>Just Peachi</h1>
-            <h4 style={{ padding: ".5em 1em" }}>inspired by joy</h4>
+            <h1>
+              <span className="landing-peachi-word">Peachi</span>
+              <span class="comma">,</span>{" "}
+              <span className="landing-aye-word">yea?</span>
+            </h1>
+            <h4 style={{ padding: ".5em 1em" }}>
+              Inspired by pure
+              <span className="landing-joy-word">joy</span>
+            </h4>
             <div className="description" style={{ paddingBottom: "1em" }}>
               Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Voluptate magnam illum minima commodi dolorem quibusdam quod hic
-              enim dignissimos excepturi.
+              Voluptate magnam illum minima.
             </div>
             <button
               type="button"
@@ -79,7 +86,14 @@ const HomePage = () => {
             </div>
           </Col>
         </Row>
-        <Row className="service-title-row">
+        <Row className="arrow-down-wrapper">
+          <div class="arrow bounce">
+            <a href="#service">
+              <i class="fas fa-chevron-down fa-2x"></i>{" "}
+            </a>
+          </div>
+        </Row>
+        <Row id="service" className="title-row">
           <div className="services-main-title">Services</div>
         </Row>
         <Row className="services text-center ">
@@ -128,9 +142,9 @@ const HomePage = () => {
             </div> */}
           </Col>
         </Row>
-        <Row className="about-title-row">About</Row>
+        {/* <Row className="about-title-row">About</Row>
         <Row className="about">
-          <Col sm={12} md={6} lg={6}>
+          <Col sm={12} md={6} lg={6} className="text-body-col">
             <div className="card">
               <div className="text-body">
                 Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos
@@ -151,7 +165,7 @@ const HomePage = () => {
           <Col sm={12} md={6} lg={6}>
             <div></div>
           </Col>
-        </Row>
+        </Row> */}
       </Container>
     </>
   );
