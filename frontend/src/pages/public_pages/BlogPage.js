@@ -39,7 +39,7 @@ const BlogPage = ({ match, history }) => {
   return (
     <Container className="blog">
       <h1>POSTS</h1>
-      {blogPosts.map((blogPost) => (
+      {blogPosts?.map((blogPost) => (
         <Col md={8} className="m-5">
           <BlogPost blogPost={blogPost} />
         </Col>
@@ -56,7 +56,7 @@ const BlogPage = ({ match, history }) => {
       <BlogPaginate
         pages={pages}
         page={page}
-        keyword={keyword ? keyword : " "}
+        keyword={keyword ? keyword : null}
       />
     </Container>
   );

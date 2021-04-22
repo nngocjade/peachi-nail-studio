@@ -46,8 +46,12 @@ const Header = () => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav" className="text-center">
             <Nav className="ml-auto">
-              <Nav.Link href="/nailGallery">Gallery</Nav.Link>
-              <Nav.Link href="/blog">Blog</Nav.Link>
+              <Nav.Link as={Link} to="/nailGallery">
+                Gallery
+              </Nav.Link>
+              <Nav.Link as={Link} to="/blog">
+                Blog
+              </Nav.Link>
               {userInfo && !userInfo.isAdmin ? (
                 <NavDropdown title={userInfo.name} id="username">
                   <LinkContainer to="/profile">

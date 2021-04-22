@@ -12,15 +12,16 @@ const getNailDesigns = asyncHandler(async (req, res) => {
   const pageSize = 8;
   const page = Number(req.query.pageNumber) || 1;
 
-  const keyword = req.query.keyword
-    ? {
-        name: {
-          $regex: req.query.keyword,
-          $options: "i",
-        },
-      }
-    : {};
-
+  const keyword =
+    req.query.keyword === "null"
+      ? {}
+      : {
+          name: {
+            $regex: req.query.keyword,
+            $options: "i",
+          },
+        };
+  console.log("keyword", keyword);
   const count = await NailDesign.countDocuments({ ...keyword });
 
   const nailDesigns = await NailDesign.find({ ...keyword })

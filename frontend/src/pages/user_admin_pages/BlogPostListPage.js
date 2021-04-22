@@ -55,7 +55,8 @@ const BlogPostListPage = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/blogPostList`);
     } else {
-      dispatch(listBlogPosts(" ", pageNumber));
+      let keyword;
+      dispatch(listBlogPosts(keyword, pageNumber));
     }
     // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
   }, [dispatch, history, userInfo, successCreate, successDelete, pageNumber]);

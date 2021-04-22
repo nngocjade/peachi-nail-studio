@@ -7,7 +7,6 @@ import Loader from "../../components/Loader";
 import {
   listNailDesigns,
   deleteNailDesign,
-  createNailDesign,
 } from "../../redux/actions/nailDesignActions";
 import { NAILDESIGN_CREATE_RESET } from "../../redux/constants/nailDesignConstants";
 import NailPaginate from "../../components/NailPaginate";
@@ -28,6 +27,8 @@ const NailDesignListPage = ({ history, match }) => {
   const nailDesignList = useSelector((state) => state.nailDesignList);
   const { loading, error, nailDesigns, page, pages } = nailDesignList;
 
+  console.log("nail design list", nailDesignList);
+
   const nailDesignDelete = useSelector((state) => state.nailDesignDelete);
   const {
     loading: loadingDelete,
@@ -40,7 +41,6 @@ const NailDesignListPage = ({ history, match }) => {
     loading: loadingCreate,
     error: errorCreate,
     success: successCreate,
-    nailDesign: createdNailDesign,
   } = nailDesignCreate;
 
   const userLogin = useSelector((state) => state.userLogin);
@@ -54,18 +54,11 @@ const NailDesignListPage = ({ history, match }) => {
     if (successCreate) {
       history.push(`/admin/nailDesignList`);
     } else {
-      dispatch(listNailDesigns(" ", pageNumber));
+      let keyword;
+      dispatch(listNailDesigns(keyword, pageNumber));
     }
     // ADDING THE SUCCESSDELETE TO USEFFECT WILL RELOAD/REFRESH PAGE AFTER AN ITEM HAS BEEN DELETED
-  }, [
-    dispatch,
-    history,
-    userInfo,
-    successDelete,
-    successCreate,
-    createdNailDesign,
-    pageNumber,
-  ]);
+  }, [dispatch, history, userInfo, successDelete, successCreate, pageNumber]);
 
   const deleteHandler = (id) => {
     if (window.confirm("Are you sure")) {

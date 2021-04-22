@@ -10,15 +10,15 @@ const getBlogPosts = asyncHandler(async (req, res) => {
 
     console.log(`keyword '${req.query.keyword}'`);
 
-    const keyword = req.query.keyword
-      ? {
-          title: {
-            $regex: req.query.keyword,
-            $options: "i",
-          },
-        }
-      : {};
-
+    const keyword =
+      req.query.keyword === "null"
+        ? {}
+        : {
+            title: {
+              $regex: req.query.keyword,
+              $options: "i",
+            },
+          };
     const count = await BlogPost.countDocuments({ ...keyword });
 
     const blogPosts = await BlogPost.find({ ...keyword })

@@ -25,14 +25,20 @@ import { logout } from "./userActions";
 
 // =========== LIST BLOG POSTS ACTION ==================
 
-export const listBlogPosts = (keyword = " ", pageNumber = " ") => async (
-  dispatch
-) => {
+export const listBlogPosts = (keyword, pageNumber) => async (dispatch) => {
   try {
+    let keywordQuery = `?keyword=null`;
+    let pageNumberQuery = `&pageNumber=1`;
+    if (keyword) {
+      keywordQuery = `?keyword=${keyword}`;
+    }
+    if (pageNumber) {
+      pageNumberQuery = `&pageNumber=${pageNumber}`;
+    }
     dispatch({ type: BLOGPOST_LIST_REQUEST });
 
     const { data } = await axios.get(
-      `/api/blogPosts?keyword=${keyword}&pageNumber=${pageNumber}`
+      `/api/blogPosts${keywordQuery}${pageNumberQuery}`
     );
 
     console.log("list blog posts", data);

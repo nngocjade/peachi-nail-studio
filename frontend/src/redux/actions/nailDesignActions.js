@@ -20,14 +20,20 @@ import { logout } from "./userActions.js";
 
 // =========== LIST NAIL DESIGNS ACTION ==================
 
-export const listNailDesigns = (keyword = "", pageNumber = " ") => async (
-  dispatch
-) => {
+export const listNailDesigns = (keyword, pageNumber) => async (dispatch) => {
   try {
+    let keywordQuery = `?keyword=null`;
+    let pageNumberQuery = `&pageNumber=1`;
+    if (keyword) {
+      keywordQuery = `?keyword=${keyword}`;
+    }
+    if (pageNumber) {
+      pageNumberQuery = `&pageNumber=${pageNumber}`;
+    }
     dispatch({ type: NAILDESIGN_LIST_REQUEST });
-
+    console.log(`/api/nailDesigns${keywordQuery}${pageNumberQuery}`);
     const { data } = await axios.get(
-      `/api/nailDesigns?keyword=${keyword}&pageNumber=${pageNumber}`
+      `/api/nailDesigns${keywordQuery}${pageNumberQuery}`
     );
 
     console.log("list nail designs", data);
@@ -149,6 +155,10 @@ export const createNailDesign = ({
       type: NAILDESIGN_CREATE_SUCCESS,
       payload: data,
     });
+
+    let pageNumber = 1;
+
+    dispatch(listNailDesigns(" ", pageNumber));
   } catch (error) {
     const message =
       error.response && error.response.data.message

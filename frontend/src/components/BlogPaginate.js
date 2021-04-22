@@ -3,7 +3,7 @@ import { Pagination } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
 import "../css/Paginate.css";
 
-const BlogPaginate = ({ pages, page, isAdmin = false, keyword = "" }) => {
+const BlogPaginate = ({ pages, page, isAdmin = false, keyword }) => {
   console.log("page and pages", page, pages);
   console.log("keyword", keyword);
   return (
